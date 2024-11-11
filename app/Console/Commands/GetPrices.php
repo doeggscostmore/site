@@ -51,15 +51,19 @@ class GetPrices extends Command
 
                 if (!$current) {
                     $this->warn("{$product->name} @ {$location->zip}, {$location->state} ({$location->location_id}): Out of stock?");
-                    continue;
+
+                    $current = new Price();
+                    $current->in_stock = false;
+                } else {
+                    $this->info("{$product->name} @ {$location->zip}, {$location->state} ({$location->location_id}): {$current->price}");
+
+                    $current->in_stock = true;                    
                 }
 
                 $current->location_id = $location->location_id;
                 $current->product_id = $product->product_id;
                 $current->time = new DateTime();
                 $current->save();
-
-                $this->info("{$product->name} @ {$location->zip}, {$location->state} ({$location->location_id}): {$current->price}");
             }
         }
     }

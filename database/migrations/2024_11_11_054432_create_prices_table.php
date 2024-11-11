@@ -16,10 +16,11 @@ return new class extends Migration
 
             $table->string('product_id', 15)->index();
             $table->string('location_id', 15)->index();
-            $table->decimal('price');
+            $table->decimal('price')->nullable();
             $table->decimal('promo')->nullable();
-            $table->string('item_qty', 25);
+            $table->string('item_qty', 25)->nullable();
             $table->dateTime('time');
+            $table->boolean('in_stock');
 
             $table->foreign('product_id')->references('product_id')->on('products');
             $table->foreign('location_id')->references('location_id')->on('store_locations');

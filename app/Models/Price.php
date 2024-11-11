@@ -13,6 +13,7 @@ class Price extends Model
         'price',
         'promo',
         'time',
+        'in_stock',
     ];
 
     public function product() {
