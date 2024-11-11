@@ -13,8 +13,7 @@ steps:
   - composer install --ansi --no-interaction --no-progress --no-dev -o
   - npm i -g yarn
   - yarn install
-  
-  # probably build things?  IDK
+  - yarn run build
 
 - name: rsync
   image: drillster/drone-rsync
