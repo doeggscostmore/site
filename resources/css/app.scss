@@ -42,3 +42,22 @@
         }
     }
 }
+
+.page {
+    padding: 10vh 2rem 100px 2rem;
+    min-height: 100vh;
+
+    & footer {
+        position: absolute;
+        text-align: center;
+        bottom: -75px;
+        left: 0;
+        width: 100%;
+        font-size: 0.85rem;
+        z-index: 2;
+
+        & a {
+            color: inherit;
+        }
+    }
+}
