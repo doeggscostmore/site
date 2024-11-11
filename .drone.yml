@@ -20,7 +20,7 @@ steps:
   image: drillster/drone-rsync
   settings:
     hosts: [10.10.0.23]
-    user: prices.grumpy.systems
+    user: doeggscostmore.com
     key:
       from_secret: deploy_key
     port: 2222
@@ -37,7 +37,7 @@ steps:
   settings:
     host:
       - 10.10.0.23
-    username: prices.grumpy.systems
+    username: doeggscostmore.com
     key:
       from_secret: deploy_key
     port: 2222
