@@ -19,4 +19,8 @@ class Product extends Model
         'product_id',
         'image_url',
     ];
+
+    public function category() {
+        return $this->hasOne(ProductCategory::class);
+    }
 }
