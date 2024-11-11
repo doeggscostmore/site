@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('store_locations', function (Blueprint $table) {
-            $table->string('location_id', 12);
+            $table->string('location_id', 15)
+                ->primary(true);
             $table->string('brand', 10);
             $table->string('zip', 7);
             $table->string('state', 2);
