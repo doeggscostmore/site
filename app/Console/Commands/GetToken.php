@@ -26,9 +26,6 @@ class GetToken extends Command
      */
     public function handle()
     {
-        $tokenHelper = new TokenHelper();
-        $token = $tokenHelper->GetToken();
-
-        $this->info($token);
+        $this->info(TokenHelper::GetToken());
     }
 }
