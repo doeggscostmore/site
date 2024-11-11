@@ -32,12 +32,19 @@ class SearchProduct extends Command
         
         $products = $kroger->SearchForProduct($this->argument('query'), $this->argument('location'));
 
+        $out = [];
         foreach ($products as $product) {
-            $this->line($product->name);
-            $this->line('    ' . $product->upc);
-            $this->line('    ' . $product->image_url);
-            $this->line('    ' . $product->item_qty);
-            $this->line('');
+            $out[] = [
+                'product_id' => $product->product_id,
+                'item_id' => $product->item_id,
+                'upc' => $product->upc,
+                'name' => $product->name,
+                'brand' => $product->brand,
+                'category' => $product->category,
+                'item_qty' => $product->item_qty,
+                'image_url' => $product->image_url,
+            ];
         }
+        var_export($out);
     }
 }
