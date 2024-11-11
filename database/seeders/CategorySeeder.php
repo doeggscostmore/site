@@ -14,15 +14,15 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            'Dairy',
-            'Fruits & Vegetables',
-            'Canned Goods',
-            'Bakery',
-            'Meat',
-            'Beverages',
-            'Snacks',
-            'Baby',
-            'Pets',
+            'eggs',
+            'soda',
+            'milk',
+            'chips',
+            'fresh fruit and vegetables',
+            'cereal',
+            'canned vegetables',
+            'frozen meals',
+            'bread',
         ];
 
         foreach ($categories as $category) {
