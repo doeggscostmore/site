@@ -17,4 +17,8 @@ class StoreLocation extends Model
         'brand',
         'state',
     ];
+
+    public function prices() {
+        return $this->hasMany(Price::class, 'location_id');
+    }
 }
