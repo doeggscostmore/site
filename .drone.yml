@@ -3,14 +3,18 @@ kind: pipeline
 name: build
 type: docker
 
-concurrency:
-  limit: 1
-
 steps:
 - name: laravel
   image: lbausch/laravel-ci:php82
   commands:
   - composer install --ansi --no-interaction --no-progress --no-dev -o
+  - npm i -g yarn
+  - yarn install
+  - yarn run build
+
+- name: node
+  image: lbausch/laravel-ci:php82
+  commands:
   - npm i -g yarn
   - yarn install
   - yarn run build
@@ -30,6 +34,9 @@ steps:
   when:
     branch:
       - master
+  depends_on:
+    - laravel
+    - node
 
 - name: deploy
   image: appleboy/drone-ssh
@@ -49,3 +56,5 @@ steps:
   when:
     branch:
       - master
+  depends_on:
+    - rsync
