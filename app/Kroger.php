@@ -82,10 +82,15 @@ class Kroger {
                 }
             }
 
+            $brand = '';
+            if (property_exists($row, 'brand')) {
+                $brand = $row->brand;
+            }
+
             $out[] = new Product([
                 'product_id' => $row->productId,
                 'upc' => $row->upc,
-                'brand' => $row->brand,
+                'brand' => $    brand,
                 'name' => $row->description,
                 'item_id' => $row->items[0]->itemId,
                 'item_qty' => $row->items[0]->size,
