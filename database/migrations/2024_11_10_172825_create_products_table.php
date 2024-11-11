@@ -22,6 +22,8 @@ return new class extends Migration
 
             $table->string('item_qty', 25);
             $table->string('image_url', 100);
+
+            $table->foreign('category')->references('name')->on('product_categories');
         });
     }
 
