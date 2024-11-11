@@ -18,6 +18,7 @@ class Product extends Model
         'item_qty',
         'product_id',
         'image_url',
+        'category',
     ];
 
     public function category() {
