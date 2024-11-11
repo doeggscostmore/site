@@ -1,0 +1,38 @@
+---
+kind: pipeline
+name: build
+type: docker
+
+concurrency:
+  limit: 1
+
+steps:
+- name: submodules
+  image: alpine/git
+  commands:
+  - git submodule init
+  - git submodule update --recursive
+
+- name: php
+  image: lbausch/laravel-ci:php82
+  commands:
+  - composer install --ansi --no-interaction --no-progress
+  - yarn install
+  
+  # probably build things?  IDK
+
+- name: deploy
+  image: drillster/drone-rsync
+  settings:
+    hosts: [10.10.0.23]
+    user: prrices.grumpy.systems
+    key:
+      from_secret: deploy_key
+    port: 2222
+    target: /home/web/html/
+    source: ./*
+    delete: true
+    recursive: true
+  when:
+    branch:
+      - master%    
