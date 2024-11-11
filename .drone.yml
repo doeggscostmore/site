@@ -11,9 +11,6 @@ steps:
   image: lbausch/laravel-ci:php82
   commands:
   - composer install --ansi --no-interaction --no-progress --no-dev -o
-  - npm i -g yarn
-  - yarn install
-  - yarn run build
 
 - name: node
   image: lbausch/laravel-ci:php82
