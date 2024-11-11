@@ -46,4 +46,4 @@ steps:
       cp /home/web/.env /home/web/html/.env &&
       cd html &&
       php artisan cache:clear &&
-      php artisan config:cache &&
+      php artisan config:cache
