@@ -22,7 +22,7 @@ class CategorySeeder extends Seeder
             'fresh fruit and vegetables',
             'cereal',
             'canned goods',
-            'frozen meals',
+            'frozen food',
             'bread',
         ];
 
