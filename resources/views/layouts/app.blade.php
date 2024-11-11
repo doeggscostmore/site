@@ -18,7 +18,7 @@
 
     <!-- Core / Vendor scripts -->
     <script src="{{ asset('build/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    
+
     <!-- App scripts -->
     @vite('resources/js/app.js')
 </body>
