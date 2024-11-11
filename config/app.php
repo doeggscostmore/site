@@ -123,4 +123,10 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // Kroger specific stuff
+    'kroger' => [
+        'secret' => env('KROGER_SECRET'),
+        'client_id' => env('KROGER_CLIENT_ID'),
+    ],
+
 ];
