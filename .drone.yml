@@ -22,7 +22,7 @@ steps:
   
   # probably build things?  IDK
 
-- name: deploy
+- name: rsync
   image: drillster/drone-rsync
   settings:
     hosts: [10.10.0.23]
