@@ -19,12 +19,4 @@ class Product extends Model
         'product_id',
         'image_url',
     ];
-
-    public $name;
-    public $brand;
-    public $upc;
-    public $product_id;
-    public $item_id;
-    public $item_qty;
-    public $image_url;
 }

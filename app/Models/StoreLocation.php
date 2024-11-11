@@ -17,10 +17,4 @@ class StoreLocation extends Model
         'brand',
         'state',
     ];
-
-    public $location_id;
-    public $zip;
-    public $brand;
-    public $state;
-    public $api;
 }
