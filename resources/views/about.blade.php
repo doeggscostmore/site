@@ -33,11 +33,11 @@
                     <p>
                         For each category of item (eggs, milk, etc), we're
                         getting at least 3 specific products and their prices
-                        from the grocery store.  These items are not selected in
+                        from the grocery store. These items are not selected in
                         any particular way, but they include a mix of variaties,
-                        brands, sizes, etc.  More are added periodically, but
+                        brands, sizes, etc. More are added periodically, but
                         around 40 specific items are tracked at the start.
-                    </p>        
+                    </p>
                     <p>
                         I'm not sharing the specific store or products for two
                         reasons:
@@ -84,8 +84,12 @@
                 </div>
             </div>
         </div>
-        <footer>
-            &copy; 2024.
-        </footer>
+        <div class="container">
+            <div class="row">
+                <footer>
+                    &copy; 2024.
+                </footer>
+            </div>
+        </div>
     </div>
 @endsection
