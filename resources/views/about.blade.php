@@ -65,14 +65,15 @@
                         know where to look.
                     </p>
 
-                    <h2>Data Terms</h2>
+                    <h2>Terms / Legal / Privacy</h2>
                     <p>
-                        Feel free to link to this site, cite it, etc.
-                    </p>
-                    <p>
-                        Right now, I don't have a public API or other way to
-                        share data in a machine readable format. Maybe in the
-                        future, but not now.
+                        Feel free to link to this site, cite it, etc.  The data
+                        is and source code is released under the <a
+                        href="https://creativecommons.org/licenses/by-sa/4.0/"
+                        rel="noopener noreferrer">Attribution-ShareAlike 4.0
+                        International</a> license.  The source code is available
+                        <a href="https://github.com/doeggscostmore/site"
+                        rel="noopener noreferrer">on GitHub.</a>
                     </p>
                     <p>
                         I don't modify the data I get and the caluclations are
@@ -80,6 +81,16 @@
                         statistician. Please don't form policy or make life
                         altering decisions based on the data I present on this
                         site.
+                    </p>
+                    <p>
+                        This site does not use cookies, but we may collect some
+                        data from your browser to track statistics for the site.
+                    </p>
+                    <p>
+                        This site is not funded by, endorsed by, or affiliated
+                        with any policial party, politician or action comittee;
+                        any NGOs; orange cats; or Strange men who would describe
+                        themselves as chimney enthusiasts.
                     </p>
                 </div>
             </div>
