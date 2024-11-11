@@ -48,8 +48,8 @@ steps:
       from_secret: deploy_key
     port: 2222
     command_timeout: 5m
-    script:
-      - cp /home/web/.env /home/web/html/.env
-      - cd html
-      - php artisan cache:clear
-      - php artisan config:cache
+    script: |
+      cp /home/web/.env /home/web/html/.env
+      cd html
+      php artisan cache:clear
+      php artisan config:cache
