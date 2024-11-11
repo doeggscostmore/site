@@ -35,4 +35,4 @@ steps:
     recursive: true
   when:
     branch:
-      - master%    
+      - master
