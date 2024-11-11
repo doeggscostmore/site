@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Do Eggs Cost More?')
+
 @section('content')
     <div class="container">
         <div class="row text-center">
