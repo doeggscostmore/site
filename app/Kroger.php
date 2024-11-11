@@ -5,6 +5,7 @@ namespace App;
 use App\Models\Product;
 use Exception;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use RuntimeException;
 
@@ -30,8 +31,8 @@ class Kroger
     {
         Log::info('Getting new access token.');
 
-        $clientId = env('KROGER_CLIENT_ID');
-        $secret = env('KROGER_SECRET');
+        $clientId = Config::get('app.kroger.client_id');
+        $secret = Config::get('app.kroger.secret');
 
         if (!$clientId || !$secret) {
             throw new RuntimeException('missing kroger API credentials');
