@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->string('name', 50)->primary();
+            $table->string('slug', 50)->index();
         });
     }
 
