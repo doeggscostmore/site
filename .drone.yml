@@ -16,7 +16,7 @@ steps:
 - name: laravel
   image: lbausch/laravel-ci:php82
   commands:
-  - composer install --ansi --no-interaction --no-progress --no-dev
+  - composer install --ansi --no-interaction --no-progress --no-dev -o
   - npm i -g yarn
   - yarn install
   
@@ -37,3 +37,19 @@ steps:
   when:
     branch:
       - master
+
+- name: deploy
+  image: appleboy/drone-ssh
+  settings:
+    host:
+      - 10.10.0.23
+    username: prices.grumpy.systems
+    key:
+      from_secret: deploy_key
+    port: 2222
+    command_timeout: 5m
+    script:
+      - cp /home/web/.env /home/web/html/.env
+      - cd html
+      - php artisan cache:clear
+      - php artisan config:cache
