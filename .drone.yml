@@ -34,9 +34,6 @@ steps:
   when:
     branch:
       - master
-  depends_on:
-    - laravel
-    - node
 
 - name: deploy
   image: appleboy/drone-ssh
@@ -57,5 +54,3 @@ steps:
   when:
     branch:
       - master
-  depends_on:
-    - rsync
