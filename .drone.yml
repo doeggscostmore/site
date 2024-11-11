@@ -3,6 +3,9 @@ kind: pipeline
 name: build
 type: docker
 
+concurrency:
+  limit: 1
+
 steps:
 - name: laravel
   image: lbausch/laravel-ci:php82
