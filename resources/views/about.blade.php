@@ -88,9 +88,9 @@
                     </p>
                     <p>
                         This site is not funded by, endorsed by, or affiliated
-                        with any policial party, politician or action comittee;
-                        any NGOs; orange cats; or Strange men who would describe
-                        themselves as chimney enthusiasts.
+                        with any policial party, politician or political action
+                        comittee; any NGOs; orange cats; or strange men who
+                        would describe themselves as chimney enthusiasts.
                     </p>
                 </div>
             </div>
