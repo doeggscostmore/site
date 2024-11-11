@@ -44,3 +44,6 @@ steps:
     command_timeout: 5m
     script: |
       cp /home/web/.env /home/web/html/.env
+  when:
+    branch:
+      - master
