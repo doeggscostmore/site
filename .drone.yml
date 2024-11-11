@@ -7,12 +7,6 @@ concurrency:
   limit: 1
 
 steps:
-- name: submodules
-  image: alpine/git
-  commands:
-  - git submodule init
-  - git submodule update --recursive
-
 - name: laravel
   image: lbausch/laravel-ci:php82
   commands:
