@@ -16,7 +16,7 @@ steps:
 - name: php
   image: lbausch/laravel-ci:php82
   commands:
-  - composer install --ansi --no-interaction --no-progress
+  - composer install --ansi --no-interaction --no-progress --no-dev
   - yarn install
   
   # probably build things?  IDK
