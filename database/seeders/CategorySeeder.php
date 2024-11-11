@@ -24,6 +24,7 @@ class CategorySeeder extends Seeder
             'canned goods',
             'frozen food',
             'bread',
+            'meat',
         ];
 
         foreach ($categories as $category) {
