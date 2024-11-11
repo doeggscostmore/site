@@ -3,11 +3,13 @@
 namespace App;
 
 use App\Models\Product;
+use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
 use RuntimeException;
 
-class Kroger {
+class Kroger
+{
     private $client;
     private $token;
 
@@ -24,7 +26,8 @@ class Kroger {
     /**
      * Get a new authentication token.
      */
-    public function GetAuthToken() {
+    public function GetAuthToken()
+    {
         Log::info('Getting new access token.');
 
         $clientId = env('KROGER_CLIENT_ID');
@@ -47,13 +50,14 @@ class Kroger {
 
         $data = json_decode($resp->getBody());
 
-        return($data->access_token);
+        return ($data->access_token);
     }
 
     /**
      * Search for a product at a location
      */
-    public function SearchForProduct($query, $location) {
+    public function SearchForProduct($query, $location)
+    {
         $resp = $this->client->get('products', [
             'query' => [
                 'filter.term' => $query,
@@ -90,7 +94,7 @@ class Kroger {
             $out[] = new Product([
                 'product_id' => $row->productId,
                 'upc' => $row->upc,
-                'brand' => $    brand,
+                'brand' => $brand,
                 'name' => $row->description,
                 'item_id' => $row->items[0]->itemId,
                 'item_qty' => $row->items[0]->size,
@@ -99,5 +103,54 @@ class Kroger {
         }
 
         return $out;
+    }
+
+    /**
+     * Get a specific product from the API.  Will throw an exception if none are found.
+     */
+    public function GetProduct($productId)
+    {
+        $resp = $this->client->get('products', [
+            'query' => [
+                'filter.productId' => $productId,
+            ],
+            'headers' => [
+                'Authorization' => "Bearer " . $this->token,
+            ]
+        ]);
+
+        $data = json_decode($resp->getBody());
+
+        if (count($data->data) === 0) {
+            throw new Exception('product not found');
+        }
+
+        $row = $data->data[0];
+
+        $image = '';
+        foreach ($row->images as $class) {
+            if (property_exists($class, 'featured') && $class->featured) {
+                foreach ($class->sizes as $size) {
+                    if ($size->size == "large") {
+                        $image = $size->url;
+                    }
+                }
+            }
+        }
+
+        $brand = '';
+        if (property_exists($row, 'brand')) {
+            $brand = $row->brand;
+        }
+
+        return new Product([
+            'product_id' => $row->productId,
+            'upc' => $row->upc,
+            'brand' => $brand,
+            'name' => $row->description,
+            'item_id' => $row->items[0]->itemId,
+            'item_qty' => $row->items[0]->size,
+            'image_url' => $image,
+        ]);
     }
 }

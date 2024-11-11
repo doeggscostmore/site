@@ -28,8 +28,8 @@ class SearchProduct extends Command
     public function handle()
     {
         $token = TokenHelper::CheckForToken();
-
         $kroger = new Kroger($token);
+        
         $products = $kroger->SearchForProduct($this->argument('query'), $this->argument('location'));
 
         foreach ($products as $product) {
