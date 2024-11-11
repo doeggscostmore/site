@@ -16,7 +16,7 @@ return new class extends Migration
                 ->primary(true);
             $table->string('item_id', 15)->index();
             $table->string('upc', 15);
-            $table->string('name', 50);
+            $table->string('name', 75);
             $table->string('brand', 50);
             $table->string('category', 50)->index();
 
