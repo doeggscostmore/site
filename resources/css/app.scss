@@ -26,4 +26,18 @@
     & .container, & .row {
         height: 100%;
     }
+
+    & footer {
+        position: absolute;
+        text-align: center;
+        bottom: 50px;
+        left: 0;
+        color: #fff;
+        width: 100%;
+        font-size: 0.85rem;
+
+        & a {
+            color: #fff;
+        }
+    }
 }
