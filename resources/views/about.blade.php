@@ -4,10 +4,19 @@
 
 @section('content')
     <div class="page">
+        <div class="hero">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1>About</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay"></div>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1>About</h1>
                     <p>
                         Do Eggs Cost More is a slightly political site that
                         tracks the prices of common grocery items, and compares
@@ -98,7 +107,8 @@
         <div class="container">
             <div class="row">
                 <footer>
-                    &copy; 2024.
+                    &copy; 2024. | 
+                    Photo by <a href="https://unsplash.com/@helloimnik?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" rel="noopener noreferrer">Nik</a> on <a href="https://unsplash.com/photos/brown-eggs-in-a-box-LUYD2b7MNrg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"  rel="noopener noreferrer">Unsplash</a>
                 </footer>
             </div>
         </div>
