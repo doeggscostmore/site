@@ -1,4 +1,5 @@
 build:
+	rm -f public/hot
 	tmux new-session './vendor/bin/sail up' \; split-window -h 'make js-dev' \;
 
 yarn:
