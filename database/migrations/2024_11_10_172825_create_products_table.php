@@ -14,10 +14,14 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->string('product_id', 15)
                 ->primary(true);
+            $table->string('item_id', 15)->index();
             $table->string('upc', 15);
             $table->string('name', 50);
             $table->string('brand', 50);
-            $table->string('item_id', 15)->index();
+            $table->string('category', 50)->index();
+
+            $table->string('item_qty', 25);
+            $table->string('image_url', 100);
         });
     }
 
