@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Price;
 use App\Models\Product;
 use Exception;
 use GuzzleHttp\Client;
@@ -154,6 +155,42 @@ class Kroger
             'item_id' => $row->items[0]->itemId,
             'item_qty' => $row->items[0]->size,
             'image_url' => $image,
+            'price' => $row->items[0]->price,
+        ]);
+    }
+
+    /**
+     * Get a price for a product
+     */
+    public function GetProductPrice($productId, $location = '') {
+        $query = ['filter.productId' => $productId];
+        if ($location) {
+            $query['filter.locationId'] = $location;
+        }
+        $resp = $this->client->get('products', [
+            'query' => $query,
+            'headers' => [
+                'Authorization' => "Bearer " . $this->token,
+            ]
+        ]);
+
+        $data = json_decode($resp->getBody());
+
+        if (count($data->data) === 0) {
+            throw new Exception('product not found');
+        }
+
+        $row = $data->data[0];
+
+        // This means the item isn't available.
+        if (!property_exists($row->items[0], 'price')) {
+            return false;
+        }
+
+        return new Price([
+            'price' => $row->items[0]->price->regular,
+            'item_qty' => $row->items[0]->size,
+            'promo' => ($row->items[0]->price->promo) ? $row->items[0]->price->promo : null, // Set null if 0 to keep the column empty.
         ]);
     }
 }
