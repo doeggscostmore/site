@@ -10,14 +10,13 @@ steps:
 - name: laravel
   image: lbausch/laravel-ci:php82
   commands:
-  - composer install --ansi --no-interaction --no-progress --no-dev -o
+  - make composer
 
 - name: node
   image: lbausch/laravel-ci:php82
   commands:
   - npm i -g yarn
-  - yarn install
-  - yarn run build
+  - make js
 
 - name: rsync
   image: drillster/drone-rsync
