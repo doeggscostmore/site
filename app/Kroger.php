@@ -108,12 +108,14 @@ class Kroger
     /**
      * Get a specific product from the API.  Will throw an exception if none are found.
      */
-    public function GetProduct($productId)
+    public function GetProduct($productId, $location = '')
     {
+        $query = ['filter.productId' => $productId];
+        if ($location) {
+            $query['filter.locationId'] = $location;
+        }
         $resp = $this->client->get('products', [
-            'query' => [
-                'filter.productId' => $productId,
-            ],
+            'query' => $query,
             'headers' => [
                 'Authorization' => "Bearer " . $this->token,
             ]
