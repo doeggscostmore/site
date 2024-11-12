@@ -18,14 +18,14 @@
                         @if ($data->isUp)
                             <h2>Yes<span id="insult"></span></h2>
                             <span class="tagline">
-                                The prices of {{ $category->name }} has
+                                The prices of {{ $category->name }} have
                                 gone up <b>{{ round($data->change, 1) }}%</b> since the
                                 2024 Election.
                             </span>
                         @else
                             <h2>No.</h2>
                             <span class="tagline">
-                                The prices of {{ $category->name }} has
+                                The prices of {{ $category->name }} have
                                 gone down <b>{{ round($data->change, 1) }}%</b> since
                                 the 2024 Election.
                             </span>
@@ -50,7 +50,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h3>Prices On Key Dates</h3>
+                        <h3>Price History</h3>
                     </div>
                 </div>
                 @foreach ($data->events as $event)
@@ -61,24 +61,25 @@
                         <div class="col-md-3 event-date">
                             {{ $event->date->format('F d, Y') }}
                             @if ($event->name == '2024 Presidential Election')
-                                <span class="helptext">This is the earliest data.</span>
+                                <span class="small">This is the earliest data.</span>
                             @endif
                         </div>
-                        {{-- @if ($event->name != '2024 Presidential Election') --}}
+                        @if ($event->name != '2024 Presidential Election')
                         <div class="col-md-3 event-change">
                             @if ($event->isUp)
-                                <span class="up">${{ round($event->price, 2) }} (Up
-                                    {{ round($event->change, 2) }}%)</span>
+                                <span class="up">${{ round($event->price, 2) }}</span>
+                                <span class="small">Up {{ round($event->change, 2) }}%</span>
                             @else
-                                <span class="down">${{ round($event->price, 2) }} (Down
-                                    {{ round($event->change, 2) }}%)</span>
+                                <span class="down">${{ round($event->price, 2) }}</span>
+                                <span class="small">Down {{ round($event->change, 2) }}%</span>
+
                             @endif
                         </div>
-                        {{-- @else --}}
-                        {{-- <div class="col-md-3 event-change">
+                        @else
+                        <div class="col-md-3 event-change">
                             <span class="baseline">${{ round($event->price, 2) }}</span>
                         </div>
-                        @endif --}}
+                        @endif
                     </div>
                 @endforeach
             </div>
