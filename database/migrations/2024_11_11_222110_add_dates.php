@@ -14,7 +14,7 @@ return new class extends Migration
     {
         $dates = [
             [
-                'date' => DateTime::createFromFormat('U', '1730786400'),
+                'date' => DateTime::createFromFormat('U', '1731384481'),
                 'name' => '2024 Election',
                 'description' => '2024 Presidential Election'
             ],
