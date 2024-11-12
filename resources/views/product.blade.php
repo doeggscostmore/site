@@ -4,6 +4,20 @@
     {{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?
 @endsection
 
+@section('head')
+<meta property="og:title" content=" {{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?">
+<meta property="og:type" content="article" />
+<meta property="og:image" content="@vite('resources/img/eggs-hero.jpg')">
+<meta property="og:url" content="https://doeggscostmore.com/{{ $category->slug }}">
+<meta name="twitter:card" content="summary_large_image">
+
+@if ($data->isUp)
+<meta property="og:description" content="Yes, the prices of {{ $category->name }} have gone up {{ round($data->change, 1) }}% since the 2024 Election.">
+@else
+<meta property="og:description" content="No, the prices of {{ $category->name }} have gone down {{ round($data->change, 1) }}% since the 2024 Election.">
+@endif
+@endsection
+
 @section('content')
     <div class="product @if ($isHome) home @endif">
         <div class="heading">
@@ -37,9 +51,9 @@
                     </div>
                     <div class="col col-lg-6 d-none d-lg-block">
                         @if ($data->isUp)
-                        <img id="picture-bad" alt="" />
+                        <img id="picture-bad" alt="an ai-generated image of unhappy food" />
                         @else
-                        <img id="picture-good" alt="" />
+                        <img id="picture-good" alt="an ai-generated image of happy food" />
                         @endif
                     </div>
                 </div>

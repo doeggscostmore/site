@@ -10,6 +10,9 @@ export default defineConfig({
 
                 // JS
                 'resources/js/app.js',
+
+                // Images we use outside JS or CSS
+                'resources/img/eggs-hero.jpg',
             ],
             refresh: true,
         }),
