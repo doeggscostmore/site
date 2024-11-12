@@ -66,7 +66,9 @@ class ProductCategory extends Model
 
         $out->events = [];
         $events = Cache::remember('events_list', 8 * 60 * 60, function() {
-            return Event::where('date', '<', new DateTime())->get();
+            return Event::where('date', '<', new DateTime())
+                ->orderBy('date', 'desc')
+                ->get();
         });
         foreach ($events as $event) {
             $price = $this->GetPriceOnDate($event->date);
