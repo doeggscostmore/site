@@ -1,0 +1,52 @@
+.product {
+    & .container {
+        max-width: 1000px;
+    }
+
+    & img {
+        max-width: 100%;
+    }
+
+    & .overall {
+        margin: 10vh auto 15vh auto;
+
+        & h1 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        & h2 {
+            font-size: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        & .tagline {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        & .current {
+            display: block;
+        }
+    }
+}
+
+.events {
+    & .row {
+        margin-bottom: 25px;
+    }
+
+    & .event {
+        margin-bottom: 15px;
+        font-size: 1.15rem;
+        text-align: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid grey;
+    }
+
+    & .helptext {
+        font-size: 0.85rem;
+        display: block;
+    }
+}
