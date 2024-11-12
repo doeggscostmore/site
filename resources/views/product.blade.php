@@ -36,7 +36,11 @@
                         </span>
                     </div>
                     <div class="col col-lg-6 d-none d-lg-block">
-                        <img id="picture" alt="" />
+                        @if ($data->isUp)
+                        <img id="picture-bad" alt="" />
+                        @else
+                        <img id="picture-good" alt="" />
+                        @endif
                     </div>
                 </div>
             </div>
