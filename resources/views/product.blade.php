@@ -8,7 +8,6 @@
 <meta property="og:title" content=" {{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?">
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://doeggscostmore.com/{{ $category->slug }}">
-<meta name="twitter:card" content="summary_large_image">
 
 @if ($data->isUp)
 <meta property="og:description" content="Yes, the prices of {{ $category->name }} have gone up {{ round($data->change, 1) }}% since the 2024 Election.">
