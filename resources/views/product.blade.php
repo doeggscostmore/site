@@ -7,7 +7,6 @@
 @section('head')
 <meta property="og:title" content=" {{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?">
 <meta property="og:type" content="article" />
-<meta property="og:image" content="@vite('resources/img/eggs-hero.jpg')">
 <meta property="og:url" content="https://doeggscostmore.com/{{ $category->slug }}">
 <meta name="twitter:card" content="summary_large_image">
 
