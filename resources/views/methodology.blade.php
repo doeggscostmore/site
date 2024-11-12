@@ -51,9 +51,9 @@
                     <p>
                         The products were intended to be reprentative of both
                         name brand and store brand items and common types of
-                        each.  Generic names are used as, again, this site is
-                        intended to be a general overview and not for specific
-                        products.
+                        each.  In the future, more granular data about products
+                        may be shared, but right now only aggregated data is
+                        made available.
                     </p>
 
                     <h4>Accessing Raw Data</h4>
