@@ -25,6 +25,7 @@ class ProductController extends Controller
             'data' => $category->CalculateSummary(),
             'categories' => $categories,
             'isHome' => true,
+            'canonical' => url("/{$category->slug}")
         ]);
     }
 
@@ -49,6 +50,7 @@ class ProductController extends Controller
             'data' => $category->CalculateSummary(),
             'categories' => $categories,
             'isHome' => false,
+            'canonical' => url("/{$category->slug}")
         ]);
     }
 }
