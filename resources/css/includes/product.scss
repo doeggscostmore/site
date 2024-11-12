@@ -1,4 +1,6 @@
 .product {
+    color: $dark;
+
     & .container {
         max-width: 1000px;
     }
@@ -13,26 +15,35 @@
         & h1 {
             font-size: 1.5rem;
             margin-bottom: 2rem;
+            color: $secondary;
         }
 
         & h2 {
             font-size: 3rem;
-            margin-bottom: 5rem;
+            margin-bottom: 1rem;
+            margin-top: 3rem;
+            color: $dark;
         }
 
         & .tagline {
             font-size: 1.5rem;
             display: block;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            color: $dark;
         }
 
         & .current {
             display: block;
+            color: $secondary;
         }
     }
 }
 
 .events {
+    & h3 {
+        color: $dark;
+    }
+
     & .row {
         margin-bottom: 25px;
     }
@@ -42,11 +53,12 @@
         font-size: 1.15rem;
         text-align: center;
         padding-bottom: 10px;
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid $secondary;
     }
 
-    & .helptext {
+    & .small {
         font-size: 0.85rem;
         display: block;
+        color: $secondary;
     }
 }
