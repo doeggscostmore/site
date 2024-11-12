@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Do Eggs Cost More?')
+@section('title')
+{{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?
+@endsection
 
 @section('content')
+@dump($category)
     <div class="product">
         <div class="heading">
             <div class="container overall">
@@ -40,7 +43,6 @@
                     </div>
                 </div>
                 @foreach ($data->events as $event)
-                @dump($event)
                     <div class="row">
                         <div class="col-md-3 event-date">
                             {{ $event->date->format('F d, Y') }}
