@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Core / Vendor styles -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('build/vendor/bootstrap/css/bootstrap.min.css') }}" />
+    @vite('resources/css/bootstrap.scss')
+    @vite('resources/css/fonts.scss')
 
     <!-- App styles -->
     @vite('resources/css/app.scss')
@@ -18,7 +19,7 @@
     @yield('content')
 
     <!-- Core / Vendor scripts -->
-    <script src="{{ asset('build/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    @vite('resources/js/bootstrap.js')
 
     <!-- App scripts -->
     @vite('resources/js/app.js')
