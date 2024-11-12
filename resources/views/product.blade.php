@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-@dump($category)
     <div class="product">
         <div class="heading">
             <div class="container overall">
