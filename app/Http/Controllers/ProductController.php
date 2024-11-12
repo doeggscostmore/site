@@ -16,7 +16,8 @@ class ProductController extends Controller
         return view('product', [
             'category' => $category,
             'data' => $category->CalculateSummary(),
-            'categories' => ProductCategory::all('name')
+            'categories' => ProductCategory::all('name'),
+            'isHome' => true,
         ]);
     }
 
@@ -33,7 +34,8 @@ class ProductController extends Controller
         return view('product', [
             'category' => $category,
             'data' => $category->CalculateSummary(),
-            'categories' => ProductCategory::all('name')
+            'categories' => ProductCategory::all('name'),
+            'isHome' => false,
         ]);
     }
 }
