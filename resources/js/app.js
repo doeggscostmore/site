@@ -1,1 +1,2 @@
-import './images'
+import './includes/images'
+import './includes/insult'
