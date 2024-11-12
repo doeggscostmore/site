@@ -19,7 +19,7 @@
                 <div class="col">
                     <p>
                         The methodology and data on this site is presented as
-                        accurattly as I can, but I'm not a statistician and
+                        accurately as I can, but I'm not a statistician and
                         errors may exist.  Please do not rely on this data to
                         make policy, make life alerting decisions, or similar.
                     </p>
@@ -49,11 +49,25 @@
                         ID, and they are identical items across all locations.
                     </p>
                     <p>
-                        The products were intended to be reprentative of both
+                        The products were intended to be representative of both
                         name brand and store brand items and common types of
                         each.  In the future, more granular data about products
                         may be shared, but right now only aggregated data is
                         made available.
+                    </p>
+
+                    <h4>Is The Data Real-Time?</h4>
+                    <p>
+                        No.  Through various caches and delays, the data is
+                        delays about 24 hours.  This is partly due to our
+                        crawling strategy, but largely due to internal caches we
+                        use to speed up the site.
+                    </p>
+
+                    <h4>How Far Back Does The Data Go?</h4>
+                    <p>
+                        New products are added periodically, but the oldest data
+                        is from about November 11.
                     </p>
 
                     <h4>Accessing Raw Data</h4>
