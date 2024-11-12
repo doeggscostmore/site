@@ -5,6 +5,7 @@ namespace App\Models;
 use DateInterval;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use stdClass;
 
 class ProductCategory extends Model
@@ -30,14 +31,24 @@ class ProductCategory extends Model
      * the side effect of lagging the data by about a day, though.
      */
     public function GetPriceOnDate($day) {
+        $cacheKey = "priceonday_{$this->slug}_{$day}";
+        $price = Cache::get($cacheKey);
+
+        if ($price) {
+            return $price;
+        }
+
         $start = new DateTime('midnight ' . $day);
         $end = clone $start;
         $end->add(new DateInterval('P1D'));
 
-        return Price::whereIn('product_id', $this->products->pluck('product_id'))
+        $price = Price::whereIn('product_id', $this->products->pluck('product_id'))
             ->where('time', '>=', $start)
             ->where('time', '<', $end)
             ->average('price');
+
+        Cache::put($cacheKey, $price, 4 * 60 * 60);
+        return $price;
     }
 
     public function CalculateSummary()
@@ -46,7 +57,7 @@ class ProductCategory extends Model
 
         $start = $this->GetPriceOnDate('2024-11-11');
         $yesterday = new DateTime('yesterday');
-        $current = $this->GetPriceOnDate($yesterday->format('Y-M-d'));
+        $current = $this->GetPriceOnDate($yesterday->format('Y-m-d'));
 
         $out->isUp = ($current > $start) ? true : false;
         $out->change = abs(($current - $start) / $start) * 100;
@@ -54,7 +65,10 @@ class ProductCategory extends Model
         $out->currentPrice = $current;
 
         $out->events = [];
-        foreach (Event::where('date', '<', new DateTime())->get() as $event) {
+        $events = Cache::remember('events_list', 8 * 60 * 60, function() {
+            return Event::where('date', '<', new DateTime())->get();
+        });
+        foreach ($events as $event) {
             $price = $this->GetPriceOnDate($event->date);
 
             if (!$price) {
