@@ -8,9 +8,6 @@ trigger:
     include:
       - master
 
-concurrency:
-  limit: 1
-
 steps:
 - name: laravel
   image: lbausch/laravel-ci:php82
@@ -23,6 +20,26 @@ steps:
   - npm i -g yarn
   - make js
 
+---
+kind: pipeline
+name: build
+type: docker
+
+trigger:
+  branch:
+    include:
+      - master
+  event:
+    exclude:
+      - pull_request
+
+concurrency:
+  limit: 1
+
+depends_on:
+  - build
+
+steps:
 - name: rsync
   image: drillster/drone-rsync
   settings:
@@ -35,13 +52,6 @@ steps:
     source: ./*
     delete: true
     recursive: true
-  when:
-    branch:
-      include:
-        - master
-    event:
-      exclude:
-        - pull_request
 
 - name: deploy
   image: appleboy/drone-ssh
@@ -59,10 +69,3 @@ steps:
       php artisan config:cache &&
       php artisan migrate &&
       php artisan cache:clear
-  when:
-    branch:
-      include:
-        - master
-    event:
-      exclude:
-        - pull_request
