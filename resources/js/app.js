@@ -1,5 +1,5 @@
 // Include Bootstrap
-import 'bootstrap';
+// import 'bootstrap';
 
 // App Code
 import './includes/images'
