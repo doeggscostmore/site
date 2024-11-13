@@ -15,6 +15,8 @@
 <body>
     @yield('content')
 
+    <!-- Include google before our scripts so we can reference stuff in our consent functions -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QXKWX543K"></script>
     @vite('resources/js/app.js')
 </body>
 
