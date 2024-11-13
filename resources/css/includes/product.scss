@@ -65,6 +65,8 @@
 }
 
 .events {
+    margin-bottom: 10rem;
+    
     & h3 {
         color: $dark;
     }
@@ -89,5 +91,15 @@
         font-size: 0.85rem;
         display: block;
         color: $secondary;
+    }
+
+    @include media-breakpoint-down(md) {
+        & .event-date {
+            margin-bottom: 1rem;
+        }
+
+        & .event {
+            margin-bottom: 2rem;
+        }
     }
 }
