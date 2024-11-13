@@ -10,6 +10,18 @@ footer {
         color: inherit;
     }
 
+    & .ccpa {
+        display: inline-block;
+        background-image: url('../img/ccpa.png');
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 29px;
+        height: 14px;
+        position: relative;
+        top: 3px;
+    }
+
     & .nav-item {
         margin: 0 5px;
     }
