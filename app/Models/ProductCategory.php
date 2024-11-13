@@ -55,7 +55,7 @@ class ProductCategory extends Model
     {
         $out = new stdClass;
 
-        $start = $this->GetPriceOnDate('2024-11-11');
+        $start = $this->GetPriceOnDate('2024-11-12');
         $yesterday = new DateTime('yesterday');
         $current = $this->GetPriceOnDate($yesterday->format('Y-m-d'));
 
