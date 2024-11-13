@@ -13,10 +13,16 @@
 
     @if ($data->isUp)
         <meta property="og:description"
-            content="Yes, the prices of {{ $category->name }} have gone up {{ round($data->change, 1) }}% since the 2024 Election.">
+            content="Yes, the prices of {{ $category->name }} have gone up {{ round($data->change, 1) }}% since the 2024 Election." />
+        <meta name="description"
+            content="Yes, the prices of {{ $category->name }} have gone up {{ round($data->change, 1) }}% since the 2024 Election." />
+
     @else
         <meta property="og:description"
-            content="No, the prices of {{ $category->name }} have gone down {{ round($data->change, 1) }}% since the 2024 Election.">
+            content="No, the prices of {{ $category->name }} have gone down {{ round($data->change, 1) }}% since the 2024 Election." />
+        <meta name="description"
+            content="No, the prices of {{ $category->name }} have gone down {{ round($data->change, 1) }}% since the 2024 Election." />
+
     @endif
 @endsection
 
