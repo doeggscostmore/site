@@ -62,8 +62,14 @@
                         href="/methodology">Methodology Page</a>.
                     </p>
                     <p>
-                        This site does not use cookies, but we may collect some
-                        data from your browser to track statistics for the site.
+                        This site makes use of cookies and Google Analytics to
+                        track visits.  This will store cookies on your machine
+                        to track return visits, session duration, and other
+                        usage data.
+                    </p>
+                    <p>
+                        <b><a href="#" id="trackingoptout">Click here to opt
+                        out of usage tracking.</a></b>
                     </p>
                     <p>
                         This site is not funded by, endorsed by, or affiliated
