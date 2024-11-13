@@ -1,5 +1,5 @@
 window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
+function gtag() { dataLayer.push(arguments); }
 
 const storageKey = "consent_revoked"
 const optOutLink = document.getElementById('trackingoptout')
@@ -31,18 +31,20 @@ if (localStorage.getItem(storageKey)) {
 gtag('js', new Date());
 gtag('config', 'G-8QXKWX543K');
 
-// Listen for the opt out event, then update the consent.
-optOutLink.addEventListener("click", function(event) {
-    event.preventDefault();
+if (optOutLink) {
+    // Listen for the opt out event, then update the consent.
+    optOutLink.addEventListener("click", function (event) {
+        event.preventDefault();
 
-    localStorage.setItem(storageKey, "true")
-    gtag('consent', 'update', {
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'analytics_storage': 'denied'
+        localStorage.setItem(storageKey, "true")
+        gtag('consent', 'update', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
+
+        // Update the link to be better text
+        optOutLink.innerHTML = "You've been opted out.";
     });
-
-    // Update the link to be better text
-    optOutLink.innerHTML = "You've been opted out.";
-});
+}
