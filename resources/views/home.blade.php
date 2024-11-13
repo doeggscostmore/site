@@ -7,7 +7,7 @@
 @section('head')
     <link rel="canonical" href="{{ url('/') }}" />
 
-    <meta property="og:title" content=" {{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?">
+    <meta property="og:title" content="Do Eggs Cost More? | Grocery Price Tracker">
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{{ url('/') }}">
 
