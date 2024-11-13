@@ -114,3 +114,19 @@
         margin-bottom: 1rem;
     }
 }
+
+.container.divider {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+.feature {
+    & h3 {
+        margin-bottom: 3rem;
+    }
+    
+    & p {
+        font-size: 1.15rem;
+        margin-bottom: 2rem;
+    }
+}

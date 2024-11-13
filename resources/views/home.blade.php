@@ -5,19 +5,14 @@
 @endsection
 
 @section('head')
-    <link rel="canonical" href="{{ $canonical }}" />
+    <link rel="canonical" href="{{ url('/') }}" />
 
     <meta property="og:title" content=" {{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?">
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="">
+    <meta property="og:url" content="{{ url('/') }}">
 
-    @if ($data->isUp)
-        <meta property="og:description"
-            content="Yes, the prices of {{ $category->name }} have gone up {{ round($data->change, 1) }}% since the 2024 Election.">
-    @else
-        <meta property="og:description"
-            content="No, the prices of {{ $category->name }} have gone down {{ round($data->change, 1) }}% since the 2024 Election.">
-    @endif
+    <meta property="og:description"
+        content="Track common grocery item prices and compare them to the price just after the 2024 election." />
 @endsection
 
 @section('content')
@@ -72,6 +67,34 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container divider">
+        <hr>
+    </div>
+
+    <div class="container feature">
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <h3>Track National Grocery Prices</h3>
+                <p>
+                    Do Eggs Cost More tracks common grocery prices across the
+                    United States and compares them to the prices just after the
+                    2024 election. Grocery prices, specifically eggs, were a
+                    common talking point in the election, so we decided to keep
+                    track and prove people right or wrong.
+                </p>
+                <p>
+                    Explore the links above to check prices and history for
+                    specific groups of items.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-hero">
+        <div class="overlay">
         </div>
     </div>
 
