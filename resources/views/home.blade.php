@@ -20,7 +20,7 @@
         <div class="heading">
             <div class="container overall">
                 <div class="row align-items-center">
-                    <div class="col">
+                    <div class="col-sm-12 col-lg-6">
                         <h1>{{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?</h1>
                         @if ($data->change == 0)
                             <h2>Not Really.</h2>
@@ -46,7 +46,7 @@
                             @endif
                         @endif
                     </div>
-                    <div class="col col-lg-6 item-list">
+                    <div class="col-sm-12 col-lg-6 item-list">
                         <div class="row">
                             @foreach ($categories as $category)
                                 <div class="col-sm-12 item">
