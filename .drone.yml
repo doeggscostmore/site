@@ -22,7 +22,7 @@ steps:
 
 ---
 kind: pipeline
-name: build
+name: deploy
 type: docker
 
 trigger:
