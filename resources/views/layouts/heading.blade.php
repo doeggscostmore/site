@@ -32,7 +32,7 @@
                 @endif
                 <span class="current">
                     The current average price of all our sampled
-                    products is <b>${{ round($data->currentPrice, 2) }}</b>.
+                    products is <b>${{ number_format($data->currentPrice, 2) }}</b>.
                 </span>
             </div>
             <div class="col col-lg-6 d-none d-lg-block">
