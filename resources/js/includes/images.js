@@ -67,3 +67,9 @@ const sadImage = document.getElementById('picture-bad');
 if (sadImage) {
     sadImage.src = sadImageSrc;
 }
+
+import hero from '../../img/eggs-hero.jpg';
+const heroImage = document.getElementById('hero-img')
+if (heroImage) {
+    heroImage.style.backgroundImage = "url(" + hero + ")";
+}

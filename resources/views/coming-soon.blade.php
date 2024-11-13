@@ -3,7 +3,7 @@
 @section('title', 'Do Eggs Cost More?')
 
 @section('content')
-    <div class="hero coming-soon">
+    <div class="hero coming-soon" id="hero-img">
         <div class="container">
             <div class="row align-items-center text-center">
                 <div class="col">
