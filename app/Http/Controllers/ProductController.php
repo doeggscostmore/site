@@ -17,7 +17,7 @@ class ProductController extends Controller
         });
 
         $categories = Cache::remember('all_categories', 8 * 60 * 60, function() {
-            return ProductCategory::all('name');
+            return ProductCategory::all(['name', 'slug']);
         });
         
         return view('product', [
@@ -42,7 +42,7 @@ class ProductController extends Controller
         }
 
         $categories = Cache::remember('all_categories', 8 * 60 * 60, function() {
-            return ProductCategory::all('name');
+            return ProductCategory::all(['name', 'slug']);
         });
 
         return view('product', [
