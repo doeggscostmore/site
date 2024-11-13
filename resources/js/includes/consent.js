@@ -16,7 +16,7 @@ if (localStorage.getItem(storageKey)) {
 
     // Also update our opt out button if it's on the page.
     if (optOutLink) {
-        optOutLink.innerHTML = "You've already opted out.";
+        optOutLink.innerHTML = "You've already opted out of cookies.";
     }
 } else {
     gtag('consent', 'default', {
