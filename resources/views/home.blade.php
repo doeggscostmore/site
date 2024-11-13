@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?
+Do Eggs Cost More? | Grocery Price Tracker
 @endsection
 
 @section('head')
