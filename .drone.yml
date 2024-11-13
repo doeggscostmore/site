@@ -3,6 +3,11 @@ kind: pipeline
 name: build
 type: docker
 
+trigger:
+  branch:
+    include:
+      - master
+
 concurrency:
   limit: 1
 
@@ -32,9 +37,11 @@ steps:
     recursive: true
   when:
     branch:
-      - master
+      include:
+        - master
     event:
-    - push
+      exclude:
+        - pull_request
 
 - name: deploy
   image: appleboy/drone-ssh
@@ -54,6 +61,8 @@ steps:
       php artisan cache:clear
   when:
     branch:
-      - master
+      include:
+        - master
     event:
-    - push
+      exclude:
+        - pull_request
