@@ -29,8 +29,15 @@
                 <div class="row align-items-center">
                     <div class="col col-lg-6">
                         <h1>{{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?</h1>
+                        @if ($data->change == 0)
+                        <h2>Not Really.</h2>
+                        <span class="tagline">
+                            The prices of {{ $category->name }} hasn't
+                            changed since the 2024 Election.
+                        </span>
+                        @else
                         @if ($data->isUp)
-                            <h2>Yes<span id="insult"></span></h2>
+                            <h2>Yes.</h2>
                             <span class="tagline">
                                 The prices of {{ $category->name }} have
                                 gone up <b>{{ round($data->change, 1) }}%</b> since the
@@ -43,6 +50,7 @@
                                 gone down <b>{{ round($data->change, 1) }}%</b> since
                                 the 2024 Election.
                             </span>
+                        @endif
                         @endif
                         <span class="current">
                             The current average price of all our sampled
@@ -131,6 +139,12 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            @include('layouts/footer')
         </div>
     </div>
 @endsection
