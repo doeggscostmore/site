@@ -68,8 +68,8 @@
                         usage data.
                     </p>
                     <p>
-                        <b><a href="#" id="trackingoptout">Click here to opt
-                        out of usage tracking.</a></b>
+                        <b><a href="#" id="trackingoptout">Click here to opt out
+                        of tracking cookies.</a></b>
                     </p>
                     <p>
                         This site is not funded by, endorsed by, or affiliated
