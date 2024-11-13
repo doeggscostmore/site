@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="page">
-        <div class="hero">
+        <div class="hero" id="hero-img">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col">

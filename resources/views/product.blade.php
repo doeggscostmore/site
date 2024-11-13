@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <div class="footer-hero">
+    <div class="footer-hero" id="hero-img">
         <div class="overlay"></div>
     </div>
 
