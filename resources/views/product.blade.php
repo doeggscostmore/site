@@ -19,88 +19,9 @@
 @endsection
 
 @section('content')
-    <div class="product @if ($isHome) home @endif">
-        <div class="heading">
-            @if ($data->isUp)
-            <div class="container overall up">
-            @else
-            <div class="container overall down">
-            @endif
-                <div class="row align-items-center">
-                    <div class="col col-lg-6">
-                        <h1>{{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?</h1>
-                        @if ($data->change == 0)
-                        <h2>Not Really.</h2>
-                        <span class="tagline">
-                            The prices of {{ $category->name }} hasn't
-                            changed since the 2024 Election.
-                        </span>
-                        @else
-                        @if ($data->isUp)
-                            <h2>Yes.</h2>
-                            <span class="tagline">
-                                The prices of {{ $category->name }} have
-                                gone up <b>{{ round($data->change, 1) }}%</b> since the
-                                2024 Election.
-                            </span>
-                        @else
-                            <h2>No.</h2>
-                            <span class="tagline">
-                                The prices of {{ $category->name }} have
-                                gone down <b>{{ round($data->change, 1) }}%</b> since
-                                the 2024 Election.
-                            </span>
-                        @endif
-                        @endif
-                        <span class="current">
-                            The current average price of all our sampled
-                            products is <b>${{ round($data->currentPrice, 2) }}</b>.
-                        </span>
-                    </div>
-                    <div class="col col-lg-6 d-none d-lg-block">
-                        @if ($data->isUp)
-                        <img id="picture-bad" alt="an ai-generated image of unhappy food" />
-                        @else
-                        <img id="picture-good" alt="an ai-generated image of happy food" />
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="share">
-            <div class="container">
-                <div class="row text-center">
-                    <div class="col">
-                        <h3>Tell The World</h3>
-                    </div>
-                </div>
-                <div class="row text-center">
-                    <div class="col">
-                        <a href="https://www.facebook.com/sharer.php?u={{ $canonical }}" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-facebook-f"></i>
-                            <span class="sr-only">Share to Facebook</span>
-                        </a>
-                        <a href="https://twitter.com/share?url={{ $canonical }}" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-twitter"></i>
-                            <span class="sr-only">Share to Twitter</span>
-                        </a>
-                        <a href="https://reddit.com/submit?url={{ $canonical }}" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-reddit"></i>
-                            <span class="sr-only">Share to Reddit</span>
-                        </a>
-                        <a href="https://www.threads.net/intent/post?text={{ urlencode($canonical) }}" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-threads"></i>
-                            <span class="sr-only">Share to Threads</span>
-                        </a>
-                        <a href="https://bsky.app/intent/post?text={{ urlencode($canonical) }}" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-bluesky"></i>
-                            <span class="sr-only">Share to Bluesky</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="product">
+        @include('layouts/heading')
+        @include('layouts/share')
 
         <div class="events">
             <div class="container">
@@ -128,7 +49,6 @@
                             @else
                                 <span class="down">${{ round($event->price, 2) }}</span>
                                 <span class="small">Down {{ round($event->change, 2) }}%</span>
-
                             @endif
                         </div>
                         @else

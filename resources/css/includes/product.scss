@@ -13,14 +13,14 @@
         margin: 12vh auto 5vh auto;
 
         & h1 {
-            font-size: 1.5rem;
+            font-size: 2.25rem;
             margin-bottom: 2rem;
             color: $secondary;
         }
 
         & h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.25rem;
+            margin-bottom: 3rem;
             margin-top: 3rem;
             color: $dark;
         }
@@ -101,5 +101,16 @@
         & .event {
             margin-bottom: 2rem;
         }
+    }
+}
+
+.item-list {
+    & a {
+        color: inherit;
+    }
+
+    & .item {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
     }
 }
