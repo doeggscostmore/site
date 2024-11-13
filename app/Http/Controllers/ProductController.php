@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CannedData;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -19,12 +20,18 @@ class ProductController extends Controller
         $categories = Cache::remember('all_categories', 8 * 60 * 60, function() {
             return ProductCategory::all(['name', 'slug']);
         });
+
+        $allStatus = CannedData::GetAllSummaries();
+
+        $summary = Cache::remember("summary_{$category->slug}", 8 * 60 * 60, function() use ($category) {
+            return $category->CalculateSummary();
+        });
         
-        return view('product', [
+        return view('home', [
             'category' => $category,
-            'data' => $category->CalculateSummary(),
+            'data' => $summary,
             'categories' => $categories,
-            'isHome' => true,
+            'allStatus' => $allStatus,
             'canonical' => url("/{$category->slug}")
         ]);
     }
@@ -45,11 +52,14 @@ class ProductController extends Controller
             return ProductCategory::all(['name', 'slug']);
         });
 
+        $summary = Cache::remember("summary_{$category->slug}", 8 * 60 * 60, function() use ($category) {
+            return $category->CalculateSummary();
+        });
+
         return view('product', [
             'category' => $category,
-            'data' => $category->CalculateSummary(),
+            'data' => $summary,
             'categories' => $categories,
-            'isHome' => false,
             'canonical' => url("/{$category->slug}")
         ]);
     }

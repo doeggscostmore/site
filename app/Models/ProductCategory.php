@@ -51,7 +51,10 @@ class ProductCategory extends Model
         return $price;
     }
 
-    public function CalculateSummary()
+    /**
+     * Calculate the summary for this product category.
+     */
+    public function CalculateSummary($events = true)
     {
         $out = new stdClass;
 
@@ -64,6 +67,10 @@ class ProductCategory extends Model
         $out->startPrice = $start;
         $out->currentPrice = $current;
 
+        if (!$events) {
+            return $out;
+        }
+        
         $out->events = [];
         $events = Cache::remember('events_list', 8 * 60 * 60, function() {
             return Event::where('date', '<', new DateTime())
