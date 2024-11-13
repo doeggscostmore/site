@@ -13,6 +13,8 @@ Do Eggs Cost More? | Grocery Price Tracker
 
     <meta property="og:description"
         content="Track common grocery item prices and compare them to the price just after the 2024 election." />
+    <meta name="description"
+        content="Track common grocery item prices and compare them to the price just after the 2024 election." />
 @endsection
 
 @section('content')
