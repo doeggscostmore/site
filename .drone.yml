@@ -7,6 +7,9 @@ trigger:
   branch:
     include:
       - master
+  event:
+    include:
+      - pull_request
 
 concurrency:
   limit: 1
