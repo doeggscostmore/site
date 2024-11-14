@@ -6,7 +6,7 @@
     @endif
         <div class="row align-items-center">
             <div class="col col-lg-6">
-                <h1>{{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?</h1>
+                <h1><a href="/">{{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?</a></h1>
                 @if ($data->change == 0)
                 <h2>Not Really.</h2>
                 <span class="tagline">
