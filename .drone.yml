@@ -65,3 +65,23 @@ steps:
     event:
       exclude:
         - pull_request
+
+- name: cache
+  image: alpine
+  when:
+    branch:
+      include:
+        - master
+    event:
+      exclude:
+        - pull_request
+
+  environment:
+    CF_API_KEY:
+      from_secret: cf_api_key
+    ZONE_ID:
+      from_secret: zone_id
+
+  commands:
+    - apk add --update wget
+    - bash purge.sh
