@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Data;
 use DateInterval;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
@@ -72,7 +73,7 @@ class ProductCategory extends Model
         }
         
         $out->events = [];
-        $events = Cache::remember('events_list', 8 * 60 * 60, function() {
+        $events = Cache::remember('events_list', Data::CACHE_TIME, function() {
             return Event::where('date', '<', new DateTime())
                 ->orderBy('date', 'desc')
                 ->get();
