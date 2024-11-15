@@ -88,7 +88,32 @@ steps:
     - apk add --update bash curl
     - bash purge.sh
 
-- name: rsync-staging
+---
+kind: pipeline
+name: build-staging
+type: docker
+
+trigger:
+  branch:
+    include:
+      - staging
+
+concurrency:
+  limit: 1
+
+steps:
+- name: laravel
+  image: lbausch/laravel-ci:php82
+  commands:
+  - make composer
+
+- name: node
+  image: lbausch/laravel-ci:php82
+  commands:
+  - npm i -g yarn
+  - make js
+
+- name: rsync
   image: drillster/drone-rsync
   settings:
     hosts: [10.10.0.23]
@@ -111,7 +136,7 @@ steps:
       exclude:
         - pull_request
 
-- name: deploy-staging
+- name: deploy
   image: appleboy/drone-ssh
   settings:
     host:
