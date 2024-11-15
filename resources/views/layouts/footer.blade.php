@@ -9,10 +9,10 @@
             <div class="col">
                 <ul role="navigation" class="nav justify-content-center">
                     <li class="nav-item">
-                        <a href="/about">About</a>
+                        <a href="/about/">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/methodology">Methodology</a>
+                        <a href="/methodology/">Methodology</a>
                     </li>
                     <li class="nav-item">
                         <a href="/about#trackingoptout" class="ccpa">
@@ -37,7 +37,7 @@
                     <ul role="navigation" class="nav justify-content-center">
                         @foreach ($categories as $category)
                         <li class="nav-item">
-                            <a href="/{{ $category->slug }}">{{ ucwords($category->name) }} Prices</a>
+                            <a href="/{{ $category->slug }}/">{{ ucwords($category->name) }} Prices</a>
                         </li>
                         @endforeach
                     </ul>

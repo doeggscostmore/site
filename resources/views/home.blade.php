@@ -52,7 +52,7 @@ Do Eggs Cost More? | Grocery Price Tracker
                         <div class="row">
                             @foreach ($categories as $category)
                                 <div class="col-sm-12 item">
-                                    <a href="/{{ $category->slug }}">{{ ucwords($category->name) }} prices</a>
+                                    <a href="/{{ $category->slug }}/">{{ ucwords($category->name) }} prices</a>
 
                                     @if ($allStatus[$category->slug]->change == 0)
                                         <span class="down">have not changed.</span>
