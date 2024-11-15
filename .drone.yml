@@ -83,5 +83,5 @@ steps:
       from_secret: zone_id
 
   commands:
-    - apk add --update wget
+    - apk add --update wget bash
     - bash purge.sh
