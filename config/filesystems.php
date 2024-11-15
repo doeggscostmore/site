@@ -57,6 +57,11 @@ return [
             'throw' => false,
         ],
 
+        'static' => [
+            'driver' => 'local',
+            'root' => base_path('static'),
+        ],
+
     ],
 
     /*
