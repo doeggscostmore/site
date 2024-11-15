@@ -8,3 +8,4 @@ use Illuminate\Support\Facades\Schedule;
 
 Schedule::command(GetPrices::class)->twiceDaily();
 Schedule::command(WarmCache::class)->everyOddHour();
+Schedule::command('export')->hourlyAt(30);
