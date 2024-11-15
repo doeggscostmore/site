@@ -56,11 +56,7 @@ steps:
     port: 2222
     command_timeout: 5m
     script: |
-      cp /home/web/.env /home/web/html/.env &&
-      cd /home/web/html &&
-      php artisan config:cache &&
-      php artisan migrate &&
-      php artisan cache:clear
+     cd /home/web/html && bash deploy.sh
   when:
     branch:
       include:
