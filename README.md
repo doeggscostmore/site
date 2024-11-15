@@ -17,3 +17,13 @@ so don't expect any pipeline results to be in your MR.
 
 Feel free to open issues, as noted above I do monitor things here and should
 reply in a somewhat timely manner.
+
+## How This Site Works
+
+This site runs Laravel, but since the pages are all fairly static, we export the
+site as a static site.  This site is exported each out into `/static`, then we
+point the CDN into that.  The site works locally as a normal PHP site so you can
+debug and build things like any other site.
+
+This probably breaks some features and makes things a bit weird in edge cases,
+but we don't worry about that on this site.
