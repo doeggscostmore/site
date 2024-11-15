@@ -87,3 +87,46 @@ steps:
   commands:
     - apk add --update bash curl
     - bash purge.sh
+
+- name: rsync-staging
+  image: drillster/drone-rsync
+  settings:
+    hosts: [10.10.0.23]
+    user: staging.doeggscostmore.com
+    key:
+      from_secret: deploy_key
+    port: 2222
+    target: /home/web/html/
+    exclude:
+      - "./storage/"
+      - "./static/"
+    source: ./*
+    delete: true
+    recursive: true
+  when:
+    branch:
+      include:
+        - staging
+    event:
+      exclude:
+        - pull_request
+
+- name: deploy-staging
+  image: appleboy/drone-ssh
+  settings:
+    host:
+      - 10.10.0.23
+    username: staging.doeggscostmore.com
+    key:
+      from_secret: deploy_key
+    port: 2222
+    command_timeout: 5m
+    script: |
+     cd /home/web/html && bash deploy.sh
+  when:
+    branch:
+      include:
+        - staging
+    event:
+      exclude:
+        - pull_request
