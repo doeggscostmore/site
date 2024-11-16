@@ -12,14 +12,14 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
-class GetPrices extends Command
+class GetPricesKroger extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:get-prices';
+    protected $signature = 'app:get-prices:kroger';
 
     /**
      * The console command description.
@@ -37,7 +37,7 @@ class GetPrices extends Command
         $kroger = new Kroger($token);
 
         $locations = StoreLocation::all();
-        $products = Product::all();
+        $products = Product::where('api', 'kroger')->get();
 
         foreach ($products as $product) {
             foreach ($locations as $location) {
