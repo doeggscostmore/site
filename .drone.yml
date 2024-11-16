@@ -105,7 +105,7 @@ steps:
 - name: laravel
   image: lbausch/laravel-ci:php82
   commands:
-  - make composer
+  - make composer-dev
 
 - name: node
   image: lbausch/laravel-ci:php82
