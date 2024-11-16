@@ -10,6 +10,7 @@
     @yield('head')
 
     @vite('resources/css/app.scss')
+    @vite('resources/css/vendor.scss')
 </head>
 
 <body>

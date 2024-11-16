@@ -1,0 +1,49 @@
+.feature {
+    & h3 {
+        margin-bottom: 3rem;
+    }
+    
+    & p {
+        font-size: 1.15rem;
+        margin-bottom: 2rem;
+    }
+}
+
+.container.divider {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+.item-list {
+    & a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    & .item {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+    }
+
+    & .up, & .down {
+        display: inline-block;
+        width: 85px;
+
+        & i {
+            display: inline-block;
+            width: 20px;
+        }
+    }
+
+    & .up {
+        color: $danger;
+    }
+
+    & .down {
+        color: $secondary;
+    }
+}
