@@ -8,6 +8,7 @@ use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
 
-Schedule::command(GetPricesKroger::class)->twiceDaily();
+Schedule::command(GetPricesKroger::class)->daily();
 Schedule::command(GetPricesEia::class)->weeklyOn('tuesday');
+
 Schedule::command('export')->hourlyAt(30);
