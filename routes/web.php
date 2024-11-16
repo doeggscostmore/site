@@ -7,17 +7,11 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/about', function () {
-    $categories = Cache::remember('all_categories', Data::CACHE_TIME, function() {
-        return ProductCategory::all(['name', 'slug']);
-    });
-
+    $categories = Data::Categories();
     return response()->view('about', ['categories' => $categories]);
 });
 Route::get('/methodology', function () {
-    $categories = Cache::remember('all_categories', Data::CACHE_TIME, function() {
-        return ProductCategory::all(['name', 'slug']);
-    });
-
+    $categories = Data::Categories();
     return response()->view('methodology', ['categories' => $categories]);
 });
 

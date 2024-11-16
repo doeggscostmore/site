@@ -31,7 +31,8 @@ class ProductCategory extends Model
      * prices between midnight on that date and midnight the next day.  This has
      * the side effect of lagging the data by about a day, though.
      */
-    public function GetPriceOnDate($day) {
+    public function GetPriceOnDate($day)
+    {
         $cacheKey = "priceonday_{$this->slug}_{$day}";
         $price = Cache::get($cacheKey);
 
@@ -63,6 +64,10 @@ class ProductCategory extends Model
         $yesterday = new DateTime('yesterday');
         $current = $this->GetPriceOnDate($yesterday->format('Y-m-d'));
 
+        if (!$start || !$current) {
+            return false;
+        }
+
         $out->isUp = ($current > $start) ? true : false;
         $out->change = abs(($current - $start) / $start) * 100;
         $out->startPrice = $start;
@@ -71,9 +76,9 @@ class ProductCategory extends Model
         if (!$events) {
             return $out;
         }
-        
+
         $out->events = [];
-        $events = Cache::remember('events_list', Data::CACHE_TIME, function() {
+        $events = Cache::remember('events_list', Data::CACHE_TIME, function () {
             return Event::where('date', '<', new DateTime())
                 ->orderBy('date', 'desc')
                 ->get();

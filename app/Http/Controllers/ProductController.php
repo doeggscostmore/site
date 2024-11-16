@@ -18,10 +18,7 @@ class ProductController extends Controller
             return ProductCategory::where('slug', 'eggs')->first();
         });
 
-        $categories = Cache::remember('all_categories', data::CACHE_TIME, function() {
-            return ProductCategory::all(['name', 'slug']);
-        });
-
+        $categories = Data::Categories();
         $allStatus = Data::GetAllSummaries();
 
         $summary = Cache::remember("summary_{$category->slug}", data::CACHE_TIME, function() use ($category) {
@@ -49,10 +46,7 @@ class ProductController extends Controller
             abort(404);
         }
 
-        $categories = Cache::remember('all_categories', data::CACHE_TIME, function() {
-            return ProductCategory::all(['name', 'slug']);
-        });
-
+        $categories = Data::Categories();
         $summary = Cache::remember("summary_{$category->slug}", data::CACHE_TIME, function() use ($category) {
             return $category->CalculateSummary();
         });

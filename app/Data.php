@@ -27,4 +27,12 @@ class Data
             return $out;
         });
     }
+
+    static function Categories() {
+        return Cache::remember('all_categories', data::CACHE_TIME, function() {
+            return ProductCategory::orderBy('sort', 'asc')
+                ->orderBy('name', 'asc')
+                ->get();
+        });
+    }
 }
