@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('prices', function(Blueprint $table) {
-            $table->dropForeign(['prices_product_id_foreign']);
+            $table->dropForeign(['prices_product_id']);
             $table->string('product_id', 30)->change();
         });
         
