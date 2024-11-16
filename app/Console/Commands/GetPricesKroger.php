@@ -36,7 +36,7 @@ class GetPricesKroger extends Command
         $token = TokenHelper::CheckForToken();
         $kroger = new Kroger($token);
 
-        $locations = StoreLocation::all();
+        $locations = StoreLocation::where('api', 'kroger')->get();
         $products = Product::where('api', 'kroger')->get();
 
         foreach ($products as $product) {
