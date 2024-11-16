@@ -97,7 +97,7 @@ steps:
 - name: test
   image: lbausch/laravel-ci:php82
   commands:
-  - make test
+  - make test-ci
 
 - name: rsync
   image: drillster/drone-rsync
