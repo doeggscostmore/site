@@ -14,7 +14,7 @@ js: yarn
 composer:
 	composer install --ansi --no-interaction --no-progress --no-dev -o
 
-	composer:
+composer-dev:
 	composer install --ansi --no-interaction --no-progress -o
 
 get-db:
