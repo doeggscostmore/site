@@ -6,7 +6,7 @@ type: docker
 trigger:
   branch:
     include:
-      - master
+      - main
 
 concurrency:
   limit: 1
@@ -41,7 +41,7 @@ steps:
   when:
     branch:
       include:
-        - master
+        - main
     event:
       exclude:
         - pull_request
@@ -61,7 +61,7 @@ steps:
   when:
     branch:
       include:
-        - master
+        - main
     event:
       exclude:
         - pull_request
@@ -71,7 +71,7 @@ steps:
   when:
     branch:
       include:
-        - master
+        - main
     event:
       exclude:
         - pull_request
