@@ -30,7 +30,8 @@ class Data
 
     static function Categories() {
         return Cache::remember('all_categories', data::CACHE_TIME, function() {
-            return ProductCategory::orderBy('sort', 'asc')
+            return ProductCategory::where('visible', '1')
+                ->orderBy('sort', 'asc')
                 ->orderBy('name', 'asc')
                 ->get();
         });
