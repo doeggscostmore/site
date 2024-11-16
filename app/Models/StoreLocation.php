@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StoreLocation extends Model
 {
-    protected $primary_key = 'location_id';
+    protected $primaryKey = 'location_id';
     public $incrementing = false;
     public $timestamps = false;
 

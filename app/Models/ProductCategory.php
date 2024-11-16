@@ -11,7 +11,7 @@ use stdClass;
 
 class ProductCategory extends Model
 {
-    protected $primary_key = 'name';
+    protected $primaryKey = 'name';
     public $incrementing = false;
     public $timestamps = false;
 
