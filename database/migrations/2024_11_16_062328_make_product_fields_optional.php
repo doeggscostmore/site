@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::table('prices', function(Blueprint $table) {
+            $table->string('product_id', 30)->change();
+        });
+        
         Schema::table('products', function(Blueprint $table) {
             $table->string('product_id', 30)->change();
             $table->string('item_id', 30)->change();
