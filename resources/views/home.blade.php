@@ -51,6 +51,9 @@ Do Eggs Cost More? | Grocery Price Tracker
                     <div class="col-sm-12 col-lg-6 item-list">
                         <div class="row">
                             @foreach ($categories as $category)
+                                @if (!$allStatus[$category->slug])
+                                    @continue
+                                @endif
                                 <div class="col-sm-12 item">
                                     @if ($allStatus[$category->slug]->isUp)
                                     <span class="up">
