@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('prices', function(Blueprint $table) {
+            $table->dropForeign(['prices_product_id_foreign']);
             $table->string('product_id', 30)->change();
         });
         
@@ -21,6 +22,10 @@ return new class extends Migration
             $table->string('upc', 15)->nullable(true)->change();
             $table->string('brand', 50)->nullable(true)->change();
             $table->string('image_url', 100)->nullable(true)->change();
+        });
+
+        Schema::table('prices', function(Blueprint $table) {
+            $table->foreign('product_id')->references('product_id')->on('products');
         });
     }
 
