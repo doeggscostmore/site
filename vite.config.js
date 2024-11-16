@@ -10,6 +10,7 @@ export default defineConfig({
             input: [
                 // SCSS
                 'resources/css/app.scss',
+                'resources/css/vendor.scss',
 
                 // JS
                 'resources/js/app.js',
