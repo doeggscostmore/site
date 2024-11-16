@@ -26,11 +26,15 @@
                     
                     <h4>Where Does The Data Come From</h4>
                     <p>
-                        The data on this site is collected from a public price
-                        API of a national grocery chain, and is collected twice
-                        per day.  Things like out of stock products and
-                        promotional pricing are noted in the raw data collected,
-                        but are not shown on the site currently.
+                        The data on the site can come from differrent sources,
+                        depending on the product category.
+                    </p>
+                    <p>
+                        All grocery products (milk, eggs, meat, etc) API of a
+                        national grocery chain, and is collected twice per day.
+                        Things like out of stock products and promotional
+                        pricing are noted in the raw data collected, but are not
+                        shown on the site currently.
                     </p>
                     <p>
                         I don't share the specific retailer as it's immaterial
@@ -39,6 +43,38 @@
                         rather it's intended to be general tracker for the
                         average price of items.
                     </p>
+                    <p>
+                        Fuel price data comes from the US Energy Information
+                        Administration's public API.  This data is updated
+                        weekly.
+                    </p>
+
+                    <h4>What Locations Do We Track</h4>
+                    <p>
+                        Grocery prices are tracked across the entire operating
+                        area of the grocery chain.  They do not operate in all
+                        50 states, and I don't see any other primary data
+                        sources I can use, so other states are not tracked.
+                    </p>
+                    <p>
+                        Since our grocery data is not fully complete, we only
+                        compare gas prices for states with grocery stores as
+                        well.
+                    </p>
+                    <p>
+                        Right now, these are the states with data:
+                    </p>
+                    <ul class="states">
+                        <li>SC</li>
+                        <li>OH</li>
+                        <li>MI</li>
+                        <li>IL</li>
+                        <li>IN</li>
+                        <li>KY</li>
+                        <li>VA</li>
+                        <li>TX</li>
+                        <li>KS</li>
+                    </ul>
 
                     <h4>What Products Do We Track?</h4>
                     <p>
@@ -59,7 +95,7 @@
                     <h4>Is The Data Real-Time?</h4>
                     <p>
                         No.  Through various caches and delays, the data is
-                        delays about 24 hours.  This is partly due to our
+                        delayed about 24 hours.  This is partly due to our
                         crawling strategy, but largely due to internal caches we
                         use to speed up the site.
                     </p>
@@ -67,12 +103,20 @@
                     <h4>How Far Back Does The Data Go?</h4>
                     <p>
                         New products are added periodically, but the oldest data
-                        is from about November 11.
+                        is from about November 11.  We'll share the exact date
+                        any time it's used in a calulation.
                     </p>
 
                     <h4>Accessing Raw Data</h4>
                     <p>
                         There is no API for this site ... yet.
+                    </p>
+
+                    <h4>My Prices Are Higher / Lower!</h4>
+                    <p>
+                        This data is a sample, your prices may vary off the
+                        sample we take.  This site speaks in general terms for
+                        that reason.
                     </p>
                 </div>
             </div>
