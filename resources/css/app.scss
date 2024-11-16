@@ -1,15 +1,7 @@
-// Any bootstrap overrides go here.
-
-// Import Bootstrap
-@import "../../node_modules/bootstrap/scss/bootstrap";
-
-// Import FA
-$fa-font-path: '../../node_modules/@fortawesome/fontawesome-free/webfonts/';
-
-@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
-
-@import '../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
-@import '../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
+// Import Bootstrap variables so we can re-use colors
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
 
 // App Styles
 @import 'includes/footer.scss';
