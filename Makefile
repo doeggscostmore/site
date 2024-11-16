@@ -6,6 +6,10 @@ test:
 	touch test.sqlite
 	./vendor/bin/sail phpunit
 
+test-ci:
+	touch test.sqlite
+	phpunit
+
 yarn:
 	yarn install
 
