@@ -8,7 +8,7 @@ test:
 
 test-ci:
 	touch test.sqlite
-	phpunit
+	./vendor/bin/phpunit
 
 yarn:
 	yarn install
