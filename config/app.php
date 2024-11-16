@@ -129,4 +129,8 @@ return [
         'client_id' => env('KROGER_CLIENT_ID'),
     ],
 
+    // EIA specific stuff
+    'eia' => [
+        'secret' => env('EIA_KEY'),
+    ]
 ];
