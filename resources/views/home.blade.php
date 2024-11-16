@@ -56,13 +56,13 @@ Do Eggs Cost More? | Grocery Price Tracker
                                     <span class="up">
                                         <i class="fa fa-up-long"></i>
                                         <span class="sr-only">Up</span>
-                                        {{ round($allStatus[$category->slug]->change, 1) }}%
+                                        {{ number_format($allStatus[$category->slug]->change, 1) }}%
                                     </span>
                                     @else
                                     <span class="down">
                                         <i class="fa fa-down-long"></i>
                                         <span class="sr-only">Down</span>
-                                        {{ round($allStatus[$category->slug]->change, 1) }}%
+                                        {{ number_format($allStatus[$category->slug]->change, 1) }}%
                                     </span>
                                     @endif
 
