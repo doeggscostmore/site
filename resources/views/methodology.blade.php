@@ -57,11 +57,6 @@
                         sources I can use, so other states are not tracked.
                     </p>
                     <p>
-                        Since our grocery data is not fully complete, we only
-                        compare gas prices for states with grocery stores as
-                        well.
-                    </p>
-                    <p>
                         Right now, these are the states with data:
                     </p>
                     <ul class="states">
@@ -75,6 +70,10 @@
                         <li>TX</li>
                         <li>KS</li>
                     </ul>
+                    <p>
+                        Fuel prices are tracked as the US national average as
+                        reported by the EIA.
+                    </p>
 
                     <h4>What Products Do We Track?</h4>
                     <p>

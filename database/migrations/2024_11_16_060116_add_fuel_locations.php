@@ -9,57 +9,8 @@ return new class extends Migration
 {
     private static $locations = [
         array(
-            'location_id' => 'FUEL_KS',
+            'location_id' => 'FUEL_US',
             'brand' => 'Fuel',
-            'state' => 'KS',
-            'api' => 'eia',
-        ),
-        array(
-            'location_id' => 'FUEL_TX',
-            'brand' => 'Fuel',
-            'state' => 'TX',
-            'api' => 'eia',
-        ),
-        array(
-            'location_id' => 'FUEL_VA',
-            'brand' => 'Fuel',
-            'state' => 'VA',
-            'api' => 'eia',
-        ),
-        array(
-            'location_id' => 'FUEL_KY',
-            'brand' => 'Fuel',
-            'state' => 'KY',
-            'api' => 'eia',
-        ),
-        array(
-            'location_id' => 'FUEL_IN',
-            'brand' => 'Fuel',
-            'state' => 'IN',
-            'api' => 'eia',
-        ),
-        array(
-            'location_id' => 'FUEL_IL',
-            'brand' => 'Fuel',
-            'state' => 'IL',
-            'api' => 'eia',
-        ),
-        array(
-            'location_id' => 'FUEL_MI',
-            'brand' => 'Fuel',
-            'state' => 'MI',
-            'api' => 'eia',
-        ),
-        array(
-            'location_id' => 'FUEL_OH',
-            'brand' => 'Fuel',
-            'state' => 'OH',
-            'api' => 'eia',
-        ),
-        array(
-            'location_id' => 'FUEL_SC',
-            'brand' => 'Fuel',
-            'state' => 'SC',
             'api' => 'eia',
         ),
     ];

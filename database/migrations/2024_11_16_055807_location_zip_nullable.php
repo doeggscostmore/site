@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('store_locations', function(Blueprint $table) {
             $table->string('zip', 7)->nullable(true)->change();
+            $table->string('state', 2)->nullable(true)->change();
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('store_locations', function(Blueprint $table) {
             $table->string('zip', 7)->nullable(false)->change();
+            $table->string('state', 2)->nullable(false)->change();
         });
     }
 };
