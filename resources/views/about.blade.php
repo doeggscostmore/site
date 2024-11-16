@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col">
                     <p>
-                        Do Eggs Cost More is a moderatly political site that
+                        Do Eggs Cost More is a slightly political site that
                         tracks the prices of common grocery items, and compares
                         them to various key dates after the 2024 election. While
                         political in nature, the data presented is not skewed or
