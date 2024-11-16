@@ -14,6 +14,9 @@ js: yarn
 composer:
 	composer install --ansi --no-interaction --no-progress --no-dev -o
 
+	composer:
+	composer install --ansi --no-interaction --no-progress -o
+
 get-db:
 	scp -P 2222 doeggscostmore.com@hosted.kc.gatewayks.net:backups/db/app-latest.sql.gz app.sql.gz
 	gunzip app.sql.gz
