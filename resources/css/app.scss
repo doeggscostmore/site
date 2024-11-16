@@ -4,6 +4,8 @@
 @import "../../node_modules/bootstrap/scss/mixins";
 
 // App Styles
+@import 'includes/events';
 @import 'includes/footer';
 @import 'includes/hero';
+@import 'includes/home';
 @import 'includes/product';
