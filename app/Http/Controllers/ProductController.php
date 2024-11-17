@@ -55,18 +55,19 @@ class ProductController extends Controller
             return $category->CalculateSummary();
         });
 
-        $events = Cache::remember('events_list', Data::CACHE_TIME, function () {
-            return Event::where('date', '<', now())
-                ->orderBy('date', 'desc')
-                ->get();
-        });
+        // $events = Cache::remember('events_list', Data::CACHE_TIME, function () {
+        //     return Event::where('date', '<', now())
+        //         ->orderBy('date', 'desc')
+        //         ->get();
+        // });
+        $events = new Collection();
 
         // For each event, get the summary
         $summaries = new Collection();
-        foreach ($events as $event) {
-            $summary = $category->CalculateSummary($event->date);
-            $summaries->add($summary);
-        }
+        // foreach ($events as $event) {
+        //     $summary = $category->CalculateSummary($event->date);
+        //     $summaries->add($summary);
+        // }
 
         return view('product', [
             'category' => $category,
