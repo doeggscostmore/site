@@ -34,11 +34,11 @@
         <div class="events">
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col text-center">
                         <h3>Price History</h3>
                     </div>
                 </div>
-                @foreach ($events as $event)
+                @forelse ($events as $event)
                     @php
                         $summary = $summaries->firstWhere('end', $event->date)
                     @endphp
@@ -73,7 +73,15 @@
                             </div>
                         @endif
                     </div>
-                @endforeach
+                @empty
+                    <div class="row event none">
+                        <div class="col">
+                            <p>
+                                Once key events after the 2024 election take place, we'll show the changes on those dates.
+                            </p>
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>
