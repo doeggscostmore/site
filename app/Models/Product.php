@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Data;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Product extends Model
 {
@@ -27,5 +30,34 @@ class Product extends Model
 
     public function prices() {
         return $this->hasMany(Price::class, 'product_id');
+    }
+
+    /**
+     * Get the prices on a date.
+     */
+    public function GetPriceOnDate($day)
+    {
+        if (!$day instanceof Carbon) {
+            $day = new Carbon($day);
+            $day->subDay();
+        }
+
+        return Cache::remember("productprice_{$this->product_id}_{$day}", Data::CACHE_TIME, function() use ($day) {
+            return Price::where('product_id', $this->product_id)
+                ->where('time', $day->format('Y-m-d'))
+                ->average('price');
+        });
+    }
+
+    /**
+     * Get the earliest date a product is tracked.
+     */
+    public function GetEarliestDate() {
+        return Cache::remember("productearliest_{$this->product_id}", Data::CACHE_TIME, function() {
+            return new Carbon(Price::where('product_id', $this->product_id)
+                ->orderBy('time', 'ASC')
+                ->first()
+                ->time);
+        });
     }
 }
