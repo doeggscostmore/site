@@ -2,6 +2,11 @@
 
 @section('title', 'Methodology | Do Eggs Cost More?')
 
+
+@section('head')
+    <link rel="canonical" href="{{ url('/methodology') }}" />
+@endsection
+
 @section('content')
     <div class="page">
         <div class="hero" id="hero-img">

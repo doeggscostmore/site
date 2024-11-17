@@ -5,7 +5,7 @@
 @endsection
 
 @section('head')
-    <link rel="canonical" href="{{ $canonical }}/" />
+    <link rel="canonical" href="{{ $canonical }}" />
 
     <meta property="og:title" content=" {{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?">
     <meta property="og:type" content="article" />
