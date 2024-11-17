@@ -44,8 +44,18 @@ class ProductCategory extends Model
         foreach ($this->products as $product) {
             $start = $product->GetEarliestDate();
 
+            // This means the product has no data.
+            if (!$start) {
+                continue;
+            }
+
             $startPrice = $product->GetPriceOnDate($start);
             $endPrice = $product->GetPriceOnDate($end);
+
+            // This can trigger a div/0
+            if (!$startPrice || !$endPrice) {
+                continue;
+            }
 
             $row = new PriceSummary();
             $row->start = $start;
@@ -65,6 +75,7 @@ class ProductCategory extends Model
         $out->end = $productSummaries->max('end');
         $out->change = $productSummaries->average('change');
         $out->isUp = ($out->change > 0);
+        $out->slug = $this->slug;
         $out->products = $productSummaries;
 
         return $out;

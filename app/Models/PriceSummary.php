@@ -11,4 +11,5 @@ class PriceSummary {
     public $isUp;
     public $products = [];
     public $product;
+    public $slug;
 }

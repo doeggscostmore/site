@@ -34,16 +34,22 @@ Do Eggs Cost More? | Grocery Price Tracker
                             @if ($data->isUp)
                                 <h2>Yes.</h2>
                                 <span class="tagline">
-                                    The prices of {{ $category->name }} have
-                                    gone up <b>{{ round($data->change, 1) }}%</b> since the
-                                    2024 Election.
+                                    The price of eggs has gone up since the 2024 election,
+                                    @if ($upCount)
+                                        and {{ $upCount - 1 }} other {{ Str::plural('product', $upCount - 1); }} also cost more.
+                                    @else
+                                        but other prices have not.
+                                    @endif
                                 </span>
                             @else
                                 <h2>No.</h2>
                                 <span class="tagline">
-                                    The prices of {{ $category->name }} have
-                                    gone down <b>{{ round($data->change, 1) }}%</b> since
-                                    the 2024 Election.
+                                    The price of eggs has gone down since the 2024 election,
+                                    @if ($upCount)
+                                        but {{ $upCount }} other {{ Str::plural('product', $upCount); }} cost more.
+                                    @else
+                                        and no other products currently cost more.
+                                    @endif
                                 </span>
                             @endif
                         @endif
@@ -51,21 +57,25 @@ Do Eggs Cost More? | Grocery Price Tracker
                     <div class="col-sm-12 col-lg-6 item-list">
                         <div class="row">
                             @foreach ($categories as $category)
-                                @if (!$allStatus[$category->slug])
+                                @php
+                                    $summary = $all->firstWhere('slug', $category->slug)
+                                @endphp
+
+                                @if (!$summary)
                                     @continue
                                 @endif
                                 <div class="col-sm-12 item">
-                                    @if ($allStatus[$category->slug]->isUp)
+                                    @if ($summary->isUp)
                                     <span class="up">
                                         <i class="fa fa-up-long"></i>
                                         <span class="sr-only">Up</span>
-                                        {{ number_format($allStatus[$category->slug]->change, 1) }}%
+                                        {{ number_format($summary->change, 1) }}%
                                     </span>
                                     @else
                                     <span class="down">
                                         <i class="fa fa-down-long"></i>
                                         <span class="sr-only">Down</span>
-                                        {{ number_format($allStatus[$category->slug]->change, 1) }}%
+                                        {{ number_format($summary->change, 1) }}%
                                     </span>
                                     @endif
 
