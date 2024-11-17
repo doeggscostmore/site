@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\CannedData;
 use App\Data;
+use App\Models\Event;
 use App\Models\ProductCategory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -53,11 +55,26 @@ class ProductController extends Controller
             return $category->CalculateSummary();
         });
 
+        $events = Cache::remember('events_list', Data::CACHE_TIME, function () {
+            return Event::where('date', '<', now())
+                ->orderBy('date', 'desc')
+                ->get();
+        });
+
+        // For each event, get the summary
+        $summaries = new Collection();
+        foreach ($events as $event) {
+            $summary = $category->CalculateSummary($event->date);
+            $summaries->add($summary);
+        }
+
         return view('product', [
             'category' => $category,
             'data' => $summary,
             'categories' => $categories,
-            'canonical' => url("/{$category->slug}")
+            'canonical' => url("/{$category->slug}"),
+            'events' => $events,
+            'summaries' => $summaries,
         ]);
     }
 }
