@@ -18,6 +18,7 @@ class ProductController extends Controller
             return ProductCategory::where('slug', 'eggs')->first();
         });
 
+        // Get all our data
         $categories = Data::Categories();
         $allStatus = Data::GetAllSummaries();
 
@@ -29,8 +30,9 @@ class ProductController extends Controller
             'category' => $category,
             'data' => $summary,
             'categories' => $categories,
-            'allStatus' => $allStatus,
-            'canonical' => url("/{$category->slug}")
+            'all' => $allStatus,
+            'canonical' => url("/"),
+            'upCount' => $allStatus->where('change', '>', 0)->count(),
         ]);
     }
 

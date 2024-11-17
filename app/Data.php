@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\ProductCategory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 use stdClass;
 
@@ -17,10 +18,10 @@ class Data
     static function GetAllSummaries()
     {
         return Cache::remember('all_summaries', self::CACHE_TIME, function () {
-            $out = [];
+            $out = new Collection();
 
             foreach (ProductCategory::all() as $category) {
-                $out[$category->slug] = $category->CalculateSummary(false);
+                $out->add($category->CalculateSummary());
             }
 
             return $out;
