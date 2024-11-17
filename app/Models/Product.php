@@ -54,10 +54,15 @@ class Product extends Model
      */
     public function GetEarliestDate() {
         return Cache::remember("productearliest_{$this->product_id}", Data::CACHE_TIME, function() {
-            return new Carbon(Price::where('product_id', $this->product_id)
+            $time = Price::where('product_id', $this->product_id)
                 ->orderBy('time', 'ASC')
-                ->first()
-                ->time);
+                ->first();
+
+            if (!$time) {
+                return false;
+            }
+
+            return new Carbon($time->time);
         });
     }
 }
