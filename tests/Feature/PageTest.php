@@ -9,8 +9,6 @@ use Tests\TestCase;
 
 class PageTest extends TestCase
 {
-    use RefreshDatabase;
-
     /**
      * Test other pages
      */

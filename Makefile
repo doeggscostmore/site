@@ -3,11 +3,15 @@ build:
 	tmux new-session './vendor/bin/sail up' \; split-window -h 'make js-dev' \;
 
 test:
-	touch test.sqlite
+	./vendor/bin/sail artisan --env=test db:wipe
+	./vendor/bin/sail artisan --env=test db:seed
+	./vendor/bin/sail artisan --env=test migrate
 	./vendor/bin/sail phpunit
 
 test-ci:
-	touch test.sqlite
+	php artisan --env=test db:wipe
+	php artisan --env=test db:seed
+	php artisan --env=test migrate
 	./vendor/bin/phpunit
 
 yarn:
