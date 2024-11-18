@@ -7,7 +7,7 @@ test:
 	./vendor/bin/sail artisan --env=testing migrate:fresh
 	./vendor/bin/sail artisan --env=testing db:seed
 	./vendor/bin/sail artisan --env=testing migrate
-	./vendor/bin/sail phpunit
+	./vendor/bin/sail phpunit --coverage-html public/coverage/
 
 test-ci:
 	touch test.sqlite

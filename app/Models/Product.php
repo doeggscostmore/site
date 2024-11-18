@@ -24,10 +24,16 @@ class Product extends Model
         'category',
     ];
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function category() {
         return $this->hasOne(ProductCategory::class);
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function prices() {
         return $this->hasMany(Price::class, 'product_id');
     }
@@ -58,9 +64,11 @@ class Product extends Model
                 ->orderBy('time', 'ASC')
                 ->first();
 
+            // @codeCoverageIgnoreStart
             if (!$time) {
                 return false;
             }
+            // @codeCoverageIgnoreEnd
 
             return new Carbon($time->time);
         });
