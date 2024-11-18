@@ -24,3 +24,4 @@ yarn-error.log
 /*.sql.gz
 /static/
 /test.sqlite
+/public/coverage
