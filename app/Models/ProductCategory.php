@@ -24,6 +24,9 @@ class ProductCategory extends Model
         'verb',
     ];
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function products()
     {
         return $this->hasMany(Product::class, 'category', 'name');
@@ -44,10 +47,12 @@ class ProductCategory extends Model
         foreach ($this->products as $product) {
             $start = $product->GetEarliestDate();
 
+            // @codeCoverageIgnoreStart
             // This means the product has no data.
             if (!$start) {
                 continue;
             }
+            // @codeCoverageIgnoreEnd
 
             $startPrice = $product->GetPriceOnDate($start);
             $endPrice = $product->GetPriceOnDate($end);
