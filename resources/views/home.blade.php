@@ -36,7 +36,7 @@ Do Eggs Cost More? | Grocery Price Tracker
                                 <span class="tagline">
                                     The price of eggs has gone up since the 2024 election,
                                     @if ($upCount)
-                                        and {{ $upCount - 1 }} other {{ Str::plural('product', $upCount - 1); }} also cost more.
+                                        and {{ $upCount - 1 }} other {{ Str::plural('product', $upCount - 1); }} also costs more.
                                     @else
                                         but other prices have not.
                                     @endif
@@ -46,7 +46,7 @@ Do Eggs Cost More? | Grocery Price Tracker
                                 <span class="tagline">
                                     The price of eggs has gone down since the 2024 election,
                                     @if ($upCount)
-                                        but {{ $upCount }} other {{ Str::plural('product', $upCount); }} cost more.
+                                        but {{ $upCount }} other {{ Str::plural('product', $upCount); }} does cost more.
                                     @else
                                         and no other products currently cost more.
                                     @endif
