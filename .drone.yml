@@ -94,6 +94,11 @@ steps:
   - npm i -g yarn
   - make js
 
+- name: test
+  image: lbausch/laravel-ci:php82
+  commands:
+  - make test-ci
+
 - name: rsync
   image: drillster/drone-rsync
   settings:

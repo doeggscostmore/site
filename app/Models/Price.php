@@ -16,10 +16,16 @@ class Price extends Model
         'in_stock',
     ];
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function product() {
         return $this->hasOne(Product::class, 'product_id');
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function location() {
         return $this->hasOne(StoreLocation::class, 'location_id');
     }

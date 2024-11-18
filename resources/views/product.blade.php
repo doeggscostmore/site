@@ -5,7 +5,7 @@
 @endsection
 
 @section('head')
-    <link rel="canonical" href="{{ $canonical }}/" />
+    <link rel="canonical" href="{{ $canonical }}" />
 
     <meta property="og:title" content=" {{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?">
     <meta property="og:type" content="article" />
@@ -34,22 +34,30 @@
         <div class="events">
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col text-center">
                         <h3>Price History</h3>
                     </div>
                 </div>
-                @foreach ($data->events as $event)
+                @forelse ($events as $event)
+                    @php
+                        $summary = $summaries->firstWhere('end', $event->date)
+                    @endphp
+                    @dump($summaries)
+
                     <div class="row event">
                         <div class="col-md-6 event-name">
-                            {{ $event->name }}
+                            {{ $event->description }}
                         </div>
                         <div class="col-md-3 event-date">
-                            {{ $event->date->format('F d, Y') }}
-                            @if ($event->name == '2024 Presidential Election')
+                            @php
+                                // $date = new Carbon\Carbon($summary->start)
+                            @endphp
+                            {{-- {{ $date->format('F d, Y') }} --}}
+                            @if ($event->description == '2024 Presidential Election')
                                 <span class="small">This is the earliest data.</span>
                             @endif
                         </div>
-                        @if ($event->name != '2024 Presidential Election')
+                        @if ($event->description != '2024 Presidential Election')
                             <div class="col-md-3 event-change">
                                 @if ($event->isUp)
                                     <span class="up">${{ number_format($event->price, 2) }}</span>
@@ -65,7 +73,15 @@
                             </div>
                         @endif
                     </div>
-                @endforeach
+                @empty
+                    <div class="row event none">
+                        <div class="col">
+                            <p>
+                                Once key events after the 2024 election take place, we'll show the changes on those dates.
+                            </p>
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

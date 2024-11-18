@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProductCategory;
+use Exception;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
@@ -14,24 +14,14 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = [
-            'eggs',
-            'soda',
-            'milk',
-            'chips',
-            'fresh fruit and vegetables',
-            'cereal',
-            'canned goods',
-            'frozen food',
-            'bread',
-            'meat',
-        ];
-
-        foreach ($categories as $category) {
-            DB::table('product_categories')->insert([
-                'name' => $category,
-                'slug' => Str::slug($category)      
-            ]);
+        $data = [];
+        eval('$data = ' . file_get_contents('./seeds/categories.php') . ';');
+        foreach ($data as $row) {
+            try {
+                ProductCategory::create($row);
+            } catch (Exception $e) {
+                // Ignore it.  These fail for data that we have in our migrations, 
+            }
         }
     }
 }
