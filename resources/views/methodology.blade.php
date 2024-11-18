@@ -2,6 +2,11 @@
 
 @section('title', 'Methodology | Do Eggs Cost More?')
 
+
+@section('head')
+    <link rel="canonical" href="{{ url('/methodology') }}" />
+@endsection
+
 @section('content')
     <div class="page">
         <div class="hero" id="hero-img">
@@ -31,10 +36,10 @@
                     </p>
                     <p>
                         All grocery products (milk, eggs, meat, etc) API of a
-                        national grocery chain, and is collected twice per day.
-                        Things like out of stock products and promotional
-                        pricing are noted in the raw data collected, but are not
-                        shown on the site currently.
+                        national grocery chain, and is collected daily. Things
+                        like out of stock products and promotional pricing are
+                        noted in the raw data collected, but are not shown on
+                        the site currently.
                     </p>
                     <p>
                         I don't share the specific retailer as it's immaterial
