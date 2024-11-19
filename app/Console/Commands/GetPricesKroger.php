@@ -63,7 +63,17 @@ class GetPricesKroger extends Command
                 $current->location_id = $location->location_id;
                 $current->product_id = $product->product_id;
                 $current->time = new DateTime();
-                $current->save();
+
+                try {
+                    $current->save();
+                } catch (Exception $e) {
+                    // This is a duplicate entry, which we just ignore.
+                    if ($e->getCode() == 23000) {
+                        continue;
+                    }
+
+                    throw $e;
+                }
             }
         }
     }

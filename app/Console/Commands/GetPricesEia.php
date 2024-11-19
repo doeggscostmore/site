@@ -6,6 +6,7 @@ use App\Eia;
 use App\Models\Product;
 use App\Models\StoreLocation;
 use DateTime;
+use Exception;
 use Illuminate\Console\Command;
 
 class GetPricesEia extends Command
@@ -42,7 +43,19 @@ class GetPricesEia extends Command
             $price->product_id = $product->product_id;
             $price->time = now();
             $price->in_stock = true;
-            $price->save();
+
+            $this->info("{$product->name}: {$price->price}");
+
+            try {
+                $price->save();
+            } catch (Exception $e) {
+                // This is a duplicate entry, which we just ignore.
+                if ($e->getCode() == 23000) {
+                    continue;
+                }
+
+                throw $e;
+            }
         }
     }
 }
