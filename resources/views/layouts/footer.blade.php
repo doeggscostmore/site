@@ -14,9 +14,14 @@
                     <li class="nav-item">
                         <a href="/methodology/">Methodology</a>
                     </li>
+                </ul>
+                <ul role="navigation" class="nav justify-content-center">
                     <li class="nav-item">
-                        <a href="/privacy#opt-out" class="ccpa">
-                            <span class="sr-only">Do Not Sell My Information</span>
+                        <a href="/privacy/">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/privacy#opt-out">
+                            Do Not Sell My Personal Information
                         </a>
                     </li>
                 </ul>
