@@ -86,6 +86,24 @@ Do Eggs Cost More? | Grocery Price Tracker
                     </div>
                 </div>
             </div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3722637490494929"
+                            crossorigin="anonymous"></script>
+                        <!-- Heading Banner -->
+                        <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-3722637490494929"
+                            data-ad-slot="9440288662"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

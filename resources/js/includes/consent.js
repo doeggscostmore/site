@@ -28,6 +28,16 @@ function revokeConsent(event) {
     if (optOutBannerLink) {
         optOutBannerLink.innerHTML = "You've been opted out."
     }
+
+    setAdsRestricted();
+}
+
+function setAdsRestricted() {
+    var ads = document.getElementsByTagName('ins');
+
+    for (var i = 0; i < ads.length; i++) {
+        ads[i].setAttribute('data-restrict-data-processing', '1');
+    }
 }
 
 // If we've already revoked consent, we set the default to all denied.  We do
@@ -44,6 +54,8 @@ if (localStorage.getItem(consentRevokedKey)) {
     if (optOutPageLink) {
         optOutPageLink.innerHTML = "You've already opted out of cookies.";
     }
+
+    setAdsRestricted();
 } else {
     gtag('consent', 'default', {
         'ad_storage': 'granted',
