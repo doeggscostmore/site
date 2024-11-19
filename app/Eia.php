@@ -16,7 +16,7 @@ class Eia
     {
         $this->client = new Client([
             'base_uri' => 'https://api.eia.gov/v2/',
-            'timeout'  => 10.0,
+            'timeout'  => 90.0,
         ]);
 
         $this->token = $token;
