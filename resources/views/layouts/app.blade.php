@@ -11,6 +11,10 @@
 
     @vite('resources/css/app.scss')
     @vite('resources/css/vendor.scss')
+
+    <!-- Adsense verification -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3722637490494929"
+     crossorigin="anonymous"></script>
 </head>
 
 <body>
