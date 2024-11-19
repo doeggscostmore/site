@@ -15,7 +15,7 @@
                         <a href="/methodology/">Methodology</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/about#trackingoptout" class="ccpa">
+                        <a href="/privacy#opt-out" class="ccpa">
                             <span class="sr-only">Do Not Sell My Information</span>
                         </a>
                     </li>

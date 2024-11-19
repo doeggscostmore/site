@@ -19,6 +19,14 @@
             <div class="overlay"></div>
         </div>
         <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">About</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="container">
             <div class="row">
                 <div class="col">
                     <p>
@@ -46,40 +54,33 @@
                         know where to look.
                     </p>
 
-                    <h2>Terms / Legal / Privacy</h2>
+                    <h2>Terms / Legal </h2>
                     <p>
-                        Feel free to link to this site, cite it, etc.  The data
-                        is and source code is released under the <a
-                        href="https://creativecommons.org/licenses/by-sa/4.0/"
-                        rel="noopener noreferrer">Attribution-ShareAlike 4.0
-                        International</a> license.  The source code is available
-                        <a href="https://github.com/doeggscostmore/site"
-                        rel="noopener noreferrer">on GitHub.</a>
+                        Feel free to link to this site, cite it, etc. The data
+                        is and source code is released under the <a href="https://creativecommons.org/licenses/by-sa/4.0/"
+                            rel="noopener noreferrer">Attribution-ShareAlike 4.0
+                            International</a> license. The source code is available
+                        <a href="https://github.com/doeggscostmore/site" rel="noopener noreferrer">on GitHub.</a>
                     </p>
                     <p>
                         I don't modify the data I get and the calculations are
                         accurate to the best of my knowledge, but I'm not a
                         statistician. Please don't form policy or make life
                         altering decisions based on the data I present on this
-                        site.  More information about the methods used to
-                        collect and calculate data are on the <a
-                        href="/methodology">Methodology Page</a>.
-                    </p>
-                    <p>
-                        This site makes use of cookies and Google Analytics to
-                        track visits.  This will store cookies on your machine
-                        to track return visits, session duration, and other
-                        usage data.
-                    </p>
-                    <p>
-                        <b><a href="#" id="trackingoptout">Click here to opt out
-                        of tracking cookies.</a></b>
+                        site. More information about the methods used to
+                        collect and calculate data are on the <a href="/methodology">Methodology Page</a>.
                     </p>
                     <p>
                         This site is not funded by, endorsed by, or affiliated
                         with any policial party, politician or political action
                         committee; any NGOs; orange cats; or strange men who
                         would describe themselves as chimney enthusiasts.
+                    </p>
+
+                    <h2>Privacy Policy</h2>
+                    <p>
+                        Please read our <a href="/privacy">Privacy
+                            Policy</a>.
                     </p>
                 </div>
             </div>

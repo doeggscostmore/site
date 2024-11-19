@@ -10,6 +10,10 @@ Route::get('/about', function () {
     $categories = Data::Categories();
     return response()->view('about', ['categories' => $categories]);
 });
+Route::get('/privacy', function () {
+    $categories = Data::Categories();
+    return response()->view('privacy', ['categories' => $categories]);
+});
 Route::get('/methodology', function () {
     $categories = Data::Categories();
     return response()->view('methodology', ['categories' => $categories]);
