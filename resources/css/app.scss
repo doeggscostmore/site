@@ -4,6 +4,7 @@
 @import "../../node_modules/bootstrap/scss/mixins";
 
 // App Styles
+@import 'includes/consent';
 @import 'includes/events';
 @import 'includes/footer';
 @import 'includes/hero';
@@ -12,4 +13,24 @@
 
 ul.states {
     columns: 2;
+}
+
+.page {
+    h2 {
+        margin-bottom: 1.5rem;
+        margin-top: 2rem;
+    }
+    h3 {
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+    }
+
+    .breadcrumb {
+        margin-bottom: 2rem;
+    }
+}
+
+// Bump the bottom padding out so our consent modal never blocks it.
+body {
+    padding-bottom: 100px;
 }
