@@ -123,14 +123,8 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    // Kroger specific stuff
-    'kroger' => [
-        'secret' => env('KROGER_SECRET'),
-        'client_id' => env('KROGER_CLIENT_ID'),
-    ],
-
-    // EIA specific stuff
-    'eia' => [
-        'secret' => env('EIA_KEY'),
+    // BLS specific stuff
+    'bls' => [
+        'token' => env('BLS_TOKEN'),
     ]
 ];

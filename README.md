@@ -27,3 +27,22 @@ debug and build things like any other site.
 
 This probably breaks some features and makes things a bit weird in edge cases,
 but we don't worry about that on this site.
+
+# A note on BLS Series IDs
+
+The BLS publishes a ton of data, and it's very well organized, though the system
+takes a moment to understand.
+
+Each item they track has a code, and the longer the code the higher specificity
+it has.  For example, 08 refers to a group of goods, 081 refers to lumber,
+081107 refers to softwood lumber.  The place you'll find this is
+[here](https://www.bls.gov/web/ppi/ppi_dr.pdf) for the PPI and here for the CPI.
+
+We then need to determine the series ID for that value, which for the PPI is
+WPS1234, where WP and fixed, S is either an S for seasonally adjusted data or a
+U for unadjusted data, then the commodity code.
+
+Adjusted data accounts for normal price trends throughout the year, such as
+seasonality.  For example, a product may always cost more at the end of the
+year.  The adjusted price will handle this normal variance and show us the price
+changes that are more abnormal.
