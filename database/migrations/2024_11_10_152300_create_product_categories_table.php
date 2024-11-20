@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('product_categories', function (Blueprint $table) {
             $table->string('name', 50)->primary();
             $table->string('slug', 50)->index();
+            $table->string('verb', 10);
+            $table->boolean('visible');
+            $table->tinyInteger('sort')->default(50);
         });
     }
 

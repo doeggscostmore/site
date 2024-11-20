@@ -22,6 +22,8 @@ class ProductCategory extends Model
         'name',
         'slug',
         'verb',
+        'visible',
+        'sort',
     ];
 
     /**
