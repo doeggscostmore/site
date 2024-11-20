@@ -19,14 +19,14 @@
                     <h2>Yes.</h2>
                     <span class="tagline">
                         The prices of {{ $category->name }} have
-                        gone up <b>{{ round($data->change, 1) }}%</b> since the
+                        gone up <b>{{ abs(round($data->change, 1)) }}%</b> since the
                         2024 Election.
                     </span>
                 @else
                     <h2>No.</h2>
                     <span class="tagline">
                         The prices of {{ $category->name }} have
-                        gone down <b>{{ round($data->change, 1) }}%</b> since
+                        gone down <b>{{ abs(round($data->change, 1)) }}%</b> since
                         the 2024 Election.
                     </span>
                 @endif
