@@ -40,96 +40,70 @@
                     
                     <h4>Where Does The Data Come From</h4>
                     <p>
-                        The data on the site can come from differrent sources,
-                        depending on the product category.
+                        All data on this site comes from either the Consumer
+                        Price Index or Producer Price Index calculated by the
+                        Bureau of Labor Statistics.  Data is released on all
+                        products Monthly.
                     </p>
                     <p>
-                        All grocery products (milk, eggs, meat, etc) API of a
-                        national grocery chain, and is collected daily. Things
-                        like out of stock products and promotional pricing are
-                        noted in the raw data collected, but are not shown on
-                        the site currently.
+                        The data is a <a
+                        href="https://en.wikipedia.org/wiki/Price_index"
+                        rel="noreferrer nofollow">Price Index</a>, which means
+                        it's a normalized sample of prices for a given product.
+                        A specific product is not tracked, but a group of
+                        products is tracked and weighted by smart people.
                     </p>
                     <p>
-                        I don't share the specific retailer as it's immaterial
-                        to the point I'm trying to make.  This shouldn't be a
-                        tracker for a specific product in a specific place,
-                        rather it's intended to be general tracker for the
-                        average price of items.
-                    </p>
-                    <p>
-                        Fuel price data comes from the US Energy Information
-                        Administration's public API.  This data is updated
-                        weekly.
+                        The bottom line, though, is that when a price index
+                        increases 10%, the average price of that product has
+                        also increased 10%.
                     </p>
 
-                    <h4>What Locations Do We Track</h4>
+                    <h4>Is the data realtime?</h4>
                     <p>
-                        Grocery prices are tracked across the entire operating
-                        area of the grocery chain.  They do not operate in all
-                        50 states, and I don't see any other primary data
-                        sources I can use, so other states are not tracked.
-                    </p>
-                    <p>
-                        Right now, these are the states with data:
-                    </p>
-                    <ul class="states">
-                        <li>SC</li>
-                        <li>OH</li>
-                        <li>MI</li>
-                        <li>IL</li>
-                        <li>IN</li>
-                        <li>KY</li>
-                        <li>VA</li>
-                        <li>TX</li>
-                        <li>KS</li>
-                    </ul>
-                    <p>
-                        Fuel prices are tracked as the US national average as
-                        reported by the EIA.
+                        No, the BLS releases data once per month, usually around
+                        the middle of the month for the last calendar month. For
+                        example, November's data is released in Mid-December.
+                        The data is also subject to revision for 4 months after
+                        it's release, and we'll update our site should the data
+                        be updated.
                     </p>
 
-                    <h4>What Products Do We Track?</h4>
+                    <h4>Disclaimers</h4>
                     <p>
-                        For each product, we track at least 3 individual items.
-                        The prices of these items are checked at 10 locations
-                        across this chain's operating area.  The exact product
-                        is checked each time using the store's internal product
-                        ID, and they are identical items across all locations.
-                    </p>
-                    <p>
-                        The products were intended to be representative of both
-                        name brand and store brand items and common types of
-                        each.  In the future, more granular data about products
-                        may be shared, but right now only aggregated data is
-                        made available.
+                        This site isn't run by an economist, so inaccuracies
+                        (though not intentional) may exist in the calculations
+                        or methodology.  The data, though provided by the BLS,
+                        can also be inaccurate nor can the BLS verify the data
+                        once it's stored elsewhere.
                     </p>
 
-                    <h4>Is The Data Real-Time?</h4>
                     <p>
-                        No.  Through various caches and delays, the data is
-                        delayed about 24 hours.  This is partly due to our
-                        crawling strategy, but largely due to internal caches we
-                        use to speed up the site.
+                        Should you want to, we share the BLS series ID(s) for
+                        each product.  You can download this raw data from the
+                        BLS directly to validate the data.
                     </p>
 
-                    <h4>How Far Back Does The Data Go?</h4>
                     <p>
-                        New products are added periodically, but the oldest data
-                        is from about November 11.  We'll share the exact date
-                        any time it's used in a calulation.
+                        It should go without saying, but this website is
+                        presented in a good-faith effort to highlight prices,
+                        but it's accuracy cannot be absolutely ensured.  Errors
+                        may exist, data may be old and not fully updated, or
+                        other issues may cause the values on the site to not be
+                        accurate.
+                    </p>
+                    <p>
+                        Do not rely on this site to make purchase decisions,
+                        investments, other other important decisions.
                     </p>
 
-                    <h4>Accessing Raw Data</h4>
+                    <h4>Is there an API?</h4>
                     <p>
-                        There is no API for this site ... yet.
-                    </p>
-
-                    <h4>My Prices Are Higher / Lower!</h4>
-                    <p>
-                        This data is a sample, your prices may vary off the
-                        sample we take.  This site speaks in general terms for
-                        that reason.
+                        No, for multiple reasons.  The biggest being that the
+                        data is available directly from the BLS website for
+                        free, so it doesn't make sense to query a secondhand
+                        copy of this primary data.  If you need this data, just
+                        go get it from the BLS.
                     </p>
                 </div>
             </div>
