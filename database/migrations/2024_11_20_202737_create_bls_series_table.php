@@ -16,8 +16,7 @@ return new class extends Migration
                 ->primary(true);
             $table->string('index', 10)
                 ->index();
-            $table->string('group', 50);
-            $table->string('item', 50);
+            $table->string('title', 50);
             $table->string('category', 50);
 
             $table->foreign('category')->references('name')->on('product_categories');

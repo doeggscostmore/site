@@ -13,7 +13,6 @@ class BlsSeries extends Model
     protected $fillable = [
         'series_id',
         'index',
-        'group',
         'title',
         'category',
     ];

@@ -9,7 +9,6 @@ return new class extends Migration
 {
 
     private static $categories = array(
-        0 =>
         array(
             'name' => 'bread',
             'slug' => 'bread',
@@ -17,7 +16,6 @@ return new class extends Migration
             'sort' => 50,
             'visible' => 1,
         ),
-        1 =>
         array(
             'name' => 'canned goods',
             'slug' => 'canned-goods',
@@ -25,7 +23,6 @@ return new class extends Migration
             'sort' => 50,
             'visible' => 1,
         ),
-        2 =>
         array(
             'name' => 'cereal',
             'slug' => 'cereal',
@@ -33,7 +30,6 @@ return new class extends Migration
             'sort' => 50,
             'visible' => 1,
         ),
-        3 =>
         array(
             'name' => 'chips',
             'slug' => 'chips',
@@ -41,7 +37,6 @@ return new class extends Migration
             'sort' => 50,
             'visible' => 1,
         ),
-        4 =>
         array(
             'name' => 'eggs',
             'slug' => 'eggs',
@@ -49,7 +44,6 @@ return new class extends Migration
             'sort' => 1,
             'visible' => 1,
         ),
-        5 =>
         array(
             'name' => 'fresh fruit and vegetables',
             'slug' => 'fresh-fruit-and-vegetables',
@@ -57,7 +51,6 @@ return new class extends Migration
             'sort' => 50,
             'visible' => 1,
         ),
-        6 =>
         array(
             'name' => 'frozen food',
             'slug' => 'frozen-food',
@@ -65,7 +58,6 @@ return new class extends Migration
             'sort' => 50,
             'visible' => 1,
         ),
-        7 =>
         array(
             'name' => 'gas',
             'slug' => 'gas',
@@ -73,7 +65,6 @@ return new class extends Migration
             'sort' => 2,
             'visible' => 1,
         ),
-        8 =>
         array(
             'name' => 'meat',
             'slug' => 'meat',
@@ -81,7 +72,6 @@ return new class extends Migration
             'sort' => 50,
             'visible' => 1,
         ),
-        9 =>
         array(
             'name' => 'milk',
             'slug' => 'milk',
@@ -89,7 +79,6 @@ return new class extends Migration
             'sort' => 3,
             'visible' => 1,
         ),
-        10 =>
         array(
             'name' => 'soda',
             'slug' => 'soda',
@@ -112,8 +101,8 @@ return new class extends Migration
             'visible' => 1,
         ),
         array(
-            'name' => 'medication',
-            'slug' => 'medication',
+            'name' => 'medical care',
+            'slug' => 'medical-care',
             'verb' => 'does',
             'sort' => 50,
             'visible' => 1,
@@ -146,6 +135,20 @@ return new class extends Migration
             'sort' => 50,
             'visible' => 1,
         ),
+        array(
+            'name' => 'alcohol',
+            'slug' => 'alcohol',
+            'verb' => 'does',
+            'sort' => 50,
+            'visible' => 1,
+        ),
+        array(
+            'name' => 'snacks',
+            'slug' => 'snacks',
+            'verb' => 'do',
+            'sort' => 50,
+            'visible' => 1,
+        ),
     );
 
     /**
@@ -154,6 +157,7 @@ return new class extends Migration
     public function up(): void
     {
         foreach (self::$categories as $row) {
+            $row['name'] = ucwords($row['name']);
             $obj = new ProductCategory($row);
             $obj->save();
         }
