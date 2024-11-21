@@ -55,6 +55,7 @@ class Bls
                     'preliminary' => $prelim,
                     'month' => str_replace('M', '', $row->period),
                     'value' => $row->value,
+                    'year' => $year,
                 ]));
             }
         }

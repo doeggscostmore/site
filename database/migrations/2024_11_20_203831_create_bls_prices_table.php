@@ -24,6 +24,12 @@ return new class extends Migration
             $table->boolean('preliminary');
 
             $table->foreign('series_id')->references('series_id')->on('bls_series');
+
+            $table->unique([
+                'series_id',
+                'year',
+                'month',
+            ]);
         });
     }
 
