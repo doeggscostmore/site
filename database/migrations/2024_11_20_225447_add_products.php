@@ -46,7 +46,9 @@ return new class extends Migration
         array("title" => "Milk", "category" => "Milk", "index" => "cpi", "series_id" => "CUSR0000SEFJ01"),
         array("title" => "Frozen fruits and vegetables", "category" => "Frozen Food", "index" => "cpi", "series_id" => "CUSR0000SEFM02"),
         array("title" => "Snacks", "category" => "Snacks", "index" => "cpi", "series_id" => "CUSR0000SEFT03"),
-        array("title" => "Carbonated drinks", "category" => "Soda", "index" => "cpi", "series_id" => "CUSR0000SEFN01")
+        array("title" => "Carbonated drinks", "category" => "Soda", "index" => "cpi", "series_id" => "CUSR0000SEFN01"),
+        array("title" => "New vehicles", "category" => "New And Used Vehicles", "index" => "cpi", "series_id" => "CUSR0000SETA01"),
+        array("title" => "Used vehicles", "category" => "New And Used Vehicles", "index" => "cpi", "series_id" => "CUSR0000SETA02"),
     ];
     /**
      * Run the migrations.
