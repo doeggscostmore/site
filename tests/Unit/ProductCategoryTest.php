@@ -12,36 +12,21 @@ class ProductCategoryTest extends TestCase
     /**
      * Test getting the first day a product has data
      */
-    public function test_CalulateOnEmptyDate(): void
+    public function test_CalulateEggs(): void
     {
-        $category = ProductCategory::find('eggs');
-        $summary = $category->CalculateSummary();
-
-        $this->assertNull($summary->start);
-        $this->assertNull($summary->end);
-        $this->assertNull($summary->start_price);
-        $this->assertNull($summary->end_price);
-        $this->assertNull($summary->change);
-
-        $this->assertEquals(0, $summary->products->count());
-    }
-
-    /**
-     * Test getting the first day a product has data
-     */
-    public function test_Calulate(): void
-    {
-        $category = ProductCategory::find('eggs');
+        $category = ProductCategory::find('Eggs');
         $summary = $category->CalculateSummary(new Carbon('2024-11-16'));
 
         $this->assertInstanceOf(Carbon::class, $summary->start);
         $this->assertInstanceOf(Carbon::class, $summary->end);
 
-        $this->assertEquals(3.37, round($summary->start_price, 2));
-        $this->assertEquals(3.40, round($summary->end_price, 2));
-        $this->assertTrue($summary->isUp);
-        $this->assertEquals(0.85, round($summary->change, 2));
+        $this->assertGreaterThan($summary->start, $summary->end);
 
-        $this->assertEquals(3, $summary->products->count());
+        $this->assertEquals(291.100, round($summary->start_price, 3));
+        $this->assertEquals(337.975, round($summary->end_price, 3));
+        $this->assertTrue($summary->isUp);
+        $this->assertEquals(16.10, round($summary->change, 2));
+
+        $this->assertEquals(1, $summary->products->count());
     }
 }

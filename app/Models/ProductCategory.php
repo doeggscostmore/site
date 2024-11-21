@@ -31,31 +31,25 @@ class ProductCategory extends Model
      */
     public function products()
     {
-        return $this->hasMany(Product::class, 'category', 'name');
+        return $this->hasMany(BlsSeries::class, 'category', 'name');
     }
 
     /**
      * Calculate the summary for this product category.
      */
-    public function CalculateSummary($end = 'now')
+    public function CalculateSummary($now = 'now', $length = 6)
     {
-        if ($end == 'now') {
+        if ($now == 'now') {
             $end = now();
-            $end->subDay();
+        } else {
+            $end = new Carbon($now);
         }
 
+        $start = clone $end;
+        $start->subMonths($length);
         $productSummaries = new Collection();
 
         foreach ($this->products as $product) {
-            $start = $product->GetEarliestDate();
-
-            // @codeCoverageIgnoreStart
-            // This means the product has no data.
-            if (!$start) {
-                continue;
-            }
-            // @codeCoverageIgnoreEnd
-
             $startPrice = $product->GetPriceOnDate($start);
             $endPrice = $product->GetPriceOnDate($end);
 

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BlsPrice;
 use App\Models\Price;
 use App\Models\Product;
 use Exception;
@@ -19,7 +20,7 @@ class PriceSeeder extends Seeder
         eval('$data = ' . file_get_contents('./seeds/prices.php') . ';');
         foreach ($data as $row) {
             try {
-                Price::create($row);
+                BlsPrice::create($row);
             } catch (Exception $e) {
                 // Ignore it.  These fail for data that we have in our migrations, 
             }
