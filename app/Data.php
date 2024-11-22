@@ -20,7 +20,7 @@ class Data
         return Cache::remember('all_summaries', self::CACHE_TIME, function () {
             $out = new Collection();
 
-            foreach (ProductCategory::all() as $category) {
+            foreach (self::Categories() as $category) {
                 $out->add($category->CalculateSummary());
             }
 

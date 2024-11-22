@@ -18,7 +18,6 @@ return new class extends Migration
         array("title" => "Fuel oil", "category" => "Energy", "index" => "cpi", "series_id" => "CUSR0000SEHE01"),
         array("title" => "Electricity", "category" => "Energy", "index" => "cpi", "series_id" => "CUSR0000SEHF01"),
         array("title" => "Utility (piped) gas service", "category" => "Energy", "index" => "cpi", "series_id" => "CUSR0000SEHF02"),
-        array("title" => "Coal", "category" => "Energy", "index" => "ppi", "series_id" => "WPS051"),
         array("title" => "Fruits and vegetables", "category" => "Fresh Fruit And Vegetables", "index" => "cpi", "series_id" => "CUSR0000SAF113"),
         array("title" => "Fresh fruits and vegetables", "category" => "Fresh Fruit And Vegetables", "index" => "cpi", "series_id" => "CUSR0000SAF1131"),
         array("title" => "Fresh fruits", "category" => "Fresh Fruit And Vegetables", "index" => "cpi", "series_id" => "CUSR0000SEFK"),

@@ -24,20 +24,6 @@ return new class extends Migration
             'visible' => 1,
         ),
         array(
-            'name' => 'cereal',
-            'slug' => 'cereal',
-            'verb' => 'does',
-            'sort' => 50,
-            'visible' => 1,
-        ),
-        array(
-            'name' => 'chips',
-            'slug' => 'chips',
-            'verb' => 'do',
-            'sort' => 50,
-            'visible' => 1,
-        ),
-        array(
             'name' => 'eggs',
             'slug' => 'eggs',
             'verb' => 'do',
