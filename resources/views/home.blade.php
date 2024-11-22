@@ -82,7 +82,7 @@ Do Eggs Cost More? | Grocery Price Tracker
                                     </span>
                                     @endif
 
-                                    <a href="{{ url("/prices/$category->slug/") }}">{{ ucwords($category->name) }}</a>
+                                    <a href="{{ url("/prices/$category->slug") }}/">{{ ucwords($category->name) }}</a>
                                 </div>
                             @endforeach
                         </div>
