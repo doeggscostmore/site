@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->date('date')->primary();
+            $table->string('slug')->primary();
+            $table->date('date')->index();
+            $table->date('end');
             $table->string('name');
-            $table->text('description');
+            $table->string('comparison')->nullable()->references('slug')->on('events');
         });
     }
 
