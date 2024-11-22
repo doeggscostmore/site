@@ -100,6 +100,9 @@ Do Eggs Cost More? | Grocery Price Tracker
         <div class="row text-center">
             <div class="col-sm-12">
                 <h3>Compare Past Prices</h3>
+                <p>
+                    Soon you'll be able to see the changes at times in the past.
+                </p>
             </div>
         </div>
     </div>

@@ -75,7 +75,7 @@
                     <div class="row event none">
                         <div class="col">
                             <p>
-                                Once key events after the 2024 election take place, we'll show the changes on those dates.
+                                Soon you'll be able to see the changes at times in the past.
                             </p>
                         </div>
                     </div>
