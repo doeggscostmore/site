@@ -10,4 +10,4 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
 
 Schedule::command(GetData::class)->twiceMonthly(1, 15, '18:00');
-Schedule::command('export')->twiceDaily();
+Schedule::command('export')->daily();
