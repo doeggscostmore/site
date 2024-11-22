@@ -16,13 +16,11 @@
             content="Yes, the prices of {{ $category->name }} have gone up {{ abs(round($data->change, 1)) }}% since the 2024 Election." />
         <meta name="description"
             content="Yes, the prices of {{ $category->name }} have gone up {{ abs(round($data->change, 1)) }}% since the 2024 Election." />
-
     @else
         <meta property="og:description"
             content="No, the prices of {{ $category->name }} have gone down {{ abs(round($data->change, 1)) }}% since the 2024 Election." />
         <meta name="description"
             content="No, the prices of {{ $category->name }} have gone down {{ abs(round($data->change, 1)) }}% since the 2024 Election." />
-
     @endif
 @endsection
 
