@@ -73,7 +73,7 @@ class ProductController extends Controller
             'category' => $category,
             'data' => $summary,
             'categories' => $categories,
-            'canonical' => url("/{$category->slug}"),
+            'canonical' => url("/{$category->slug}/"),
             'events' => $events,
             'summaries' => $summaries,
         ]);

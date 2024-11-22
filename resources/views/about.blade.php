@@ -3,7 +3,7 @@
 @section('title', 'About | Do Eggs Cost More?')
 
 @section('head')
-    <link rel="canonical" href="{{ url('/about') }}" />
+    <link rel="canonical" href="{{ url('/about/') }}" />
 @endsection
 
 @section('content')
