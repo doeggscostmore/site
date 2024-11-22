@@ -9,4 +9,7 @@ php artisan config:cache
 php artisan migrate
 
 php artisan cache:clear
-php artisan export
+
+if [ "$1" = "export" ]; then
+    php artisan export
+fi
