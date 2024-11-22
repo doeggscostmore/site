@@ -61,6 +61,6 @@ class GenerateSitemap extends Command
             $map->add(Url::create($page));
         }
 
-        $map->writeToDisk('r2', 'build/sitemap.xml');
+        $map->writeToDisk('static', 'build/sitemap.xml');
     }
 }
