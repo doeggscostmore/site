@@ -19,5 +19,10 @@ Route::get('/methodology', function () {
     return response()->view('methodology', ['categories' => $categories]);
 });
 
-Route::get('/{id}', [ProductController::class, 'product']);
+Route::get('/prices/{id}', [ProductController::class, 'product']);
 Route::get('/', [ProductController::class, 'home']);
+
+// SEO Redirects
+Route::get('/{id}', function($id) {
+    return redirect(url("/prices/$id"));
+});
