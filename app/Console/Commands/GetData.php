@@ -15,7 +15,7 @@ class GetData extends Command
      *
      * @var string
      */
-    protected $signature = 'app:get-data';
+    protected $signature = 'app:get-data {--backfill}';
 
     /**
      * The console command description.
@@ -36,16 +36,29 @@ class GetData extends Command
         $products = BlsSeries::all();
 
         $prices = new Collection();
-        $bar = $this->output->createProgressBar($products->count() * 2);
+
+        $years = [];
+        if ($this->option('backfill')) {
+            $start = 2016;
+            while ($start <= now()->year) {
+                $years[] = $start;
+                $start ++;
+            }
+        } else {
+            $years = [
+                now()->year,
+                now()->year - 1,
+            ];
+        }
+
+        $bar = $this->output->createProgressBar($products->count() * count($years));
 
         foreach ($products->chunk($chunkSize) as $chunk) {
-            $bar->advance($chunkSize);
-            $prices->add($bls->GetSeriesData($chunk->pluck('series_id')->toArray(), now()->year));
-            sleep(10);
-
-            $bar->advance($chunkSize);
-            $prices->add($bls->GetSeriesData($chunk->pluck('series_id')->toArray(), now()->year - 1));
-            sleep(10);
+            foreach ($years as $year) {
+                $bar->advance($chunkSize);
+                $prices->add($bls->GetSeriesData($chunk->pluck('series_id')->toArray(), $year));
+                sleep(3);
+            }
         }
         $bar->finish();
 
