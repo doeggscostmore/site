@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>@yield('title')</title>
@@ -23,7 +23,7 @@
         <div class="row">
             <p>
                 This website uses cookies and collects some data about your
-                visit. <br /> <a href="/privacy">Learn More</a> or <b><a
+                visit. <br /> <a href="/privacy">See Our Privacy Policy</a> or <b><a
                 href="#" id="optoutpopup">Opt Out</a></b>.
             </p>
 

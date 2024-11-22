@@ -15,7 +15,7 @@ Do Eggs Cost More? | Grocery Price Tracker
         content="Do Eggs Cost More tracks the price of common products and
         groceries like eggs, milk, energy, and housing and compares them to past
         prices." />
-    <meta property="description"
+    <meta name="description"
         content="Do Eggs Cost More tracks the price of common products and
         groceries like eggs, milk, energy, and housing and compares them to past
         prices." />
