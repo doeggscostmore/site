@@ -24,37 +24,37 @@ Do Eggs Cost More? | Grocery Price Tracker
                 <div class="row align-items-center">
                     <div class="col-sm-12 col-lg-6">
                         <h1>{{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?</h1>
-                        @if ($data->change == 0)
-                            <h2>Not Really.</h2>
-                            <span class="tagline">
-                                The prices of {{ $category->name }} hasn't
-                                changed since the 2024 Election.
-                            </span>
-                        @else
-                            @if ($data->isUp)
-                                <h2>Yes.</h2>
-                                <span class="tagline">
-                                    The price of eggs has gone up since the 2024 election,
-                                    @if ($upCount)
-                                        and {{ $upCount - 1 }} other {{ Str::plural('product', $upCount - 1); }} also costs more.
-                                    @else
-                                        but other prices have not.
-                                    @endif
-                                </span>
-                            @else
-                                <h2>No.</h2>
-                                <span class="tagline">
-                                    The price of eggs has gone down since the 2024 election,
-                                    @if ($upCount)
-                                        but {{ $upCount }} other {{ Str::plural('product', $upCount); }} does cost more.
-                                    @else
-                                        and no other products currently cost more.
-                                    @endif
-                                </span>
-                            @endif
+                        @if ($data->isUp)
+                            <h2>Yes.</h2>
+                        @else 
+                            <h2>No.</h2>
                         @endif
                     </div>
-                    <div class="col-sm-12 col-lg-6 item-list">
+                    <div class="col-sm-12 col-lg-6">
+                        @if ($data->isUp)
+                            <span class="tagline">
+                                The price of eggs has gone in the past 6 months,
+                                @if ($upCount)
+                                    and {{ $upCount - 1 }} other {{ Str::plural('product', $upCount - 1); }} also costs more.
+                                @else
+                                    but other prices have not.
+                                @endif
+                            </span>
+                        @else
+                            <h2>No.</h2>
+                            <span class="tagline">
+                                The price of eggs has gone down in the last 6 months,
+                                @if ($upCount)
+                                    but {{ $upCount }} other {{ Str::plural('product', $upCount); }} does cost more.
+                                @else
+                                    and no other products currently cost more.
+                                @endif
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-sm-12 item-list">
                         <div class="row">
                             @foreach ($categories as $category)
                                 @php
@@ -64,7 +64,7 @@ Do Eggs Cost More? | Grocery Price Tracker
                                 @if (!$summary)
                                     @continue
                                 @endif
-                                <div class="col-sm-12 item">
+                                <div class="col-sm-6 col-md-4 item">
                                     @if ($summary->isUp)
                                     <span class="up">
                                         <i class="fa fa-up-long"></i>

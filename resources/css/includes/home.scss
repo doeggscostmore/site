@@ -15,6 +15,8 @@
 }
 
 .item-list {
+    margin-top:3rem !important;
+
     & a {
         color: inherit;
         text-decoration: none;
@@ -25,13 +27,18 @@
     }
 
     & .item {
-        font-size: 1.15rem;
+        font-size: 1.2rem;
         margin-bottom: 1rem;
     }
 
     & .up, & .down {
-        display: inline-block;
-        width: 85px;
+        display: block;
+        width: 90px;
+
+        // This handles should the data wrap, we wrap the text all the way
+        // around the icons.
+        float: left;
+        height: 100%;
 
         & i {
             display: inline-block;
@@ -46,4 +53,8 @@
     & .down {
         color: $secondary;
     }
+}
+
+.home.product .overall {
+    margin-top: 15vh;
 }
