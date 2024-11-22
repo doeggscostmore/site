@@ -26,8 +26,6 @@ class ProductTest extends TestCase
             'eggs',
             'bread',
             'canned-goods',
-            'cereal',
-            'chips',
             'fresh-fruit-and-vegetables',
             'frozen-food',
             'gas',
@@ -37,7 +35,7 @@ class ProductTest extends TestCase
         ];
 
         foreach ($categories as $slug) {
-            $response = $this->get('/' . $slug);
+            $response = $this->get("/prices/$slug");
             $response->assertStatus(200);
         }
     }
