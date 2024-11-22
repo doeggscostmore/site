@@ -12,9 +12,13 @@ Do Eggs Cost More? | Grocery Price Tracker
     <meta property="og:url" content="{{ url('/') }}">
 
     <meta property="og:description"
-        content="Track common grocery item prices and compare them to the price just after the 2024 election." />
-    <meta name="description"
-        content="Track common grocery item prices and compare them to the price just after the 2024 election." />
+        content="Do Eggs Cost More tracks the price of common products and
+        groceries like eggs, milk, energy, and housing and compares them to past
+        prices." />
+    <meta property="description"
+        content="Do Eggs Cost More tracks the price of common products and
+        groceries like eggs, milk, energy, and housing and compares them to past
+        prices." />
 @endsection
 
 @section('content')
@@ -41,7 +45,6 @@ Do Eggs Cost More? | Grocery Price Tracker
                                 @endif
                             </span>
                         @else
-                            <h2>No.</h2>
                             <span class="tagline">
                                 The price of eggs has gone down in the last 6 months,
                                 @if ($upCount)
@@ -79,7 +82,7 @@ Do Eggs Cost More? | Grocery Price Tracker
                                     </span>
                                     @endif
 
-                                    <a href="/{{ $category->slug }}/">{{ ucwords($category->name) }}</a>
+                                    <a href="{{ url("/prices/$category->slug") }}">{{ ucwords($category->name) }}</a>
                                 </div>
                             @endforeach
                         </div>
@@ -96,18 +99,7 @@ Do Eggs Cost More? | Grocery Price Tracker
     <div class="container feature">
         <div class="row text-center">
             <div class="col-sm-12">
-                <h3>Track National Grocery Prices</h3>
-                <p>
-                    Do Eggs Cost More tracks common grocery prices across the
-                    United States and compares them to the prices just after the
-                    2024 election. Grocery prices, specifically eggs, were a
-                    common talking point in the election, so we decided to keep
-                    track and prove people right or wrong.
-                </p>
-                <p>
-                    Explore the links above to check prices and history for
-                    specific groups of items.
-                </p>
+                <h3>Compare Past Prices</h3>
             </div>
         </div>
     </div>

@@ -42,7 +42,7 @@
                     <ul role="navigation" class="nav justify-content-center">
                         @foreach ($categories as $category)
                         <li class="nav-item">
-                            <a href="/{{ $category->slug }}/">{{ ucwords($category->name) }} Prices</a>
+                            <a href="{{ url("/prices/$category->slug") }}">{{ ucwords($category->name) }} Prices</a>
                         </li>
                         @endforeach
                     </ul>
