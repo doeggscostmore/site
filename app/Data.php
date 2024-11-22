@@ -36,6 +36,7 @@ class Data
             return ProductCategory::where('visible', '1')
                 ->orderBy('sort', 'asc')
                 ->orderBy('name', 'asc')
+                ->with('products')
                 ->get();
         });
     }
