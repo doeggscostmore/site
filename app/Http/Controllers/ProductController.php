@@ -41,9 +41,9 @@ class ProductController extends Controller
     /**
      * Get a specific product
      */
-    public function product($id) {
-        $category = Cache::remember("category_$id", data::CACHE_TIME, function() use ($id) {
-            return ProductCategory::where('slug', $id)->first();
+    public function product($slug) {
+        $category = Cache::remember("category_{$slug}", data::CACHE_TIME, function() use ($slug) {
+            return ProductCategory::where('slug', $slug)->first();
         });
 
         if (!$category) {
