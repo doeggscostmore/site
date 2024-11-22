@@ -30,22 +30,21 @@ class BlsSeries extends Model
         }
 
         return Cache::remember("productprice_{$this->series_id}_{$day}", Data::CACHE_TIME, function() use ($day) {
-            $price = BlsPrice::where('series_id', $this->series_id)
-                ->where('month', $day->month)
-                ->where('year', $day->year)
-                ->average('value');
+            $lastMonth = clone $day;
+            $lastMonth->subMonth();
+
+            $price = BlsPrice::whereRaw('series_id = ? AND ((month = ? and year = ?) OR (month = ? and year = ?)) order by year desc, month desc', [
+                    $this->series_id,
+                    $day->month,
+                    $day->year,
+                    $lastMonth->month,
+                    $lastMonth->year,
+                ])
+            ->first();
 
             if ($price) {
-                return $price;
+                return $price->value;
             }
-
-            // If we don't have data for the month we want, go back a month and try again.
-            $day->subMonth();
-
-            return BlsPrice::where('series_id', $this->series_id)
-                ->where('month', $day->month)
-                ->where('year', $day->year)
-                ->average('value');
         });
     }
 }
