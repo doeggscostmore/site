@@ -10,6 +10,8 @@ class Event extends Model
     protected $primaryKey = 'slug';
     public $incrementing = false;
 
+    public $summary;
+
     protected $fillable = [
         'date',
         'end',

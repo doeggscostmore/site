@@ -34,42 +34,64 @@
                 <div class="row">
                     <div class="col text-center">
                         <h3>Price History</h3>
+                        <p>
+                            Compare how the prices of {{
+                            ucwords($category->name) }} changed just before
+                            certain time periods or events, and how the price
+                            compares now.
+                        </p>
                     </div>
                 </div>
                 @forelse ($events as $event)
-                    @php
-                        $summary = $summaries->firstWhere('end', $event->date)
-                    @endphp
-                    @dump($summaries)
-
-                    <div class="row event">
-                        <div class="col-md-6 event-name">
-                            {{ $event->description }}
+                    <div class="row event align-items-center">
+                        <div class="col-md-4 event-name">
+                            {{-- <a href="{{ url("events/{$event->slug}") }}/"> --}}
+                                {{ $event->name }}
+                            {{-- </a> --}}
                         </div>
-                        <div class="col-md-3 event-date">
-                            @php
-                                // $date = new Carbon\Carbon($summary->start)
-                            @endphp
-                            {{-- {{ $date->format('F d, Y') }} --}}
-                            @if ($event->description == '2024 Presidential Election')
-                                <span class="small">This is the earliest data.</span>
+                        <div class="col-md-4 event-change d-flex flex-row justify-content-center align-items-center">
+                            @if ($event->summary->isUp)
+                            <span class="up" data-toggle="tooltip" title="In the {{ $event->length }} months before this event, prices rose {{ abs(round($event->summary->change, 2)) }}%.">
+                                <i class="fa fa-up-long"></i>
+                                <span class="sr-only">Up</span>
+                                <span>
+                                    {{ abs(round($event->summary->change, 2)) }}%
+                                </span>
+                            </span>
+                            @else
+                            <span class="down" data-toggle="tooltip" title="In the {{ $event->length }} months before this event, prices fell {{ abs(round($event->summary->change, 2)) }}%.">
+                                <i class="fa fa-down-long"></i>
+                                <span class="sr-only">Down</span>
+                                <span>
+                                    {{ abs(round($event->summary->change, 2)) }}%
+                                </span>                            
+                            </span>
                             @endif
+                            <span class="small">in {{ $event->length }} months</span>
                         </div>
-                        @if ($event->description != '2024 Presidential Election')
-                            <div class="col-md-3 event-change">
-                                @if ($event->isUp)
-                                    <span class="up">${{ number_format($event->price, 2) }}</span>
-                                    <span class="small">Up {{ abs(round($event->change, 2)) }}%</span>
-                                @else
-                                    <span class="down">${{ number_format($event->price, 2) }}</span>
-                                    <span class="small">Down {{ abs(round($event->change, 2)) }}%</span>
-                                @endif
-                            </div>
-                        @else
-                            <div class="col-md-3 event-change">
-                                <span class="baseline">${{ number_format($event->price, 2) }}</span>
-                            </div>
-                        @endif
+                        <div class="col-md-4 event-change d-flex flex-row justify-content-center align-items-center">
+                            @php
+                                $eventChange = (($data->end_price - $event->summary->end_price) / $event->summary->end_price) * 100;
+                            @endphp
+                            @if ($eventChange > 0)
+                            <span class="up" data-toggle="tooltip" title="Prices now are {{ abs(round($eventChange, 2)) }}% higher than they were at this time.">
+                                <i class="fa fa-up-long"></i>
+                                <span class="sr-only">Up</span>
+                                <span>
+                                    {{ abs(round($eventChange, 2)) }}%
+                                </span>
+                            </span>
+                            @else
+                            <span class="down" data-toggle="tooltip" title="Prices now are {{ abs(round($eventChange, 2)) }}% lower than they were at this time.">
+                                <i class="fa fa-down-long"></i>
+                                <span class="sr-only">Down</span>
+                                <span>
+                                    {{ abs(round($eventChange, 2)) }}%
+                                </span>
+                            </span>
+                            @endif
+                            <span class="small">vs now</span>
+                        </div>
                     </div>
                 @empty
                     <div class="row event none">

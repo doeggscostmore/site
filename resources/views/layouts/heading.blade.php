@@ -12,15 +12,13 @@
                     <h2>Yes.</h2>
                     <span class="tagline">
                         The prices of {{ $category->name }} have gone up <b>{{
-                        abs(round($data->change, 1)) }}%</b> in the past 6
-                        months.
+                        abs(round($data->change, 1)) }}%</b> since {{ $data->start->format('F, Y') }}.
                     </span>
                 @else
                     <h2>No.</h2>
                     <span class="tagline">
                         The prices of {{ $category->name }} have gone down <b>{{
-                        abs(round($data->change, 1)) }}%</b> in the past 6
-                        months.
+                        abs(round($data->change, 1)) }}%</b> since {{ $data->start->format('F, Y') }}
                     </span>
                 @endif
                 {{-- <span class="current">

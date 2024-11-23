@@ -55,19 +55,17 @@ class ProductController extends Controller
             return $category->CalculateSummary();
         });
 
-        // $events = Cache::remember('events_list', Data::CACHE_TIME, function () {
-        //     return Event::where('date', '<', now())
-        //         ->orderBy('date', 'desc')
-        //         ->get();
-        // });
-        $events = new Collection();
+        $events = Cache::remember('events_list', Data::CACHE_TIME, function () {
+            return Event::where('date', '<', now())
+                ->orderBy('date', 'desc')
+                ->get();
+        });
 
         // For each event, get the summary
-        $summaries = new Collection();
-        // foreach ($events as $event) {
-        //     $summary = $category->CalculateSummary($event->date);
-        //     $summaries->add($summary);
-        // }
+        foreach ($events as $event) {
+            $eventSummary = $category->CalculateSummary($event->date, $event->length);
+            $event->summary = $eventSummary;
+        }
 
         return view('product', [
             'category' => $category,
@@ -75,7 +73,6 @@ class ProductController extends Controller
             'categories' => $categories,
             'canonical' => url("/{$category->slug}") . '/',
             'events' => $events,
-            'summaries' => $summaries,
         ]);
     }
 }
