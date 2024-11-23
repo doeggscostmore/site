@@ -71,7 +71,11 @@
                         </div>
                         <div class="col-md-4 event-change d-flex flex-row justify-content-center align-items-center">
                             @php
-                                $eventChange = (($data->end_price - $event->summary->end_price) / $event->summary->end_price) * 100;
+                                if ($event->summary->end_price && $data->end_price) {
+                                    $eventChange = (($data->end_price - $event->summary->end_price) / $event->summary->end_price) * 100;
+                                } else {
+                                    $eventChange = 0;
+                                }
                             @endphp
                             @if ($eventChange > 0)
                             <span class="up" data-toggle="tooltip" title="Prices now are {{ abs(round($eventChange, 2)) }}% higher than they were at this time.">
