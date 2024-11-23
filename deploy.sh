@@ -12,6 +12,5 @@ php artisan cache:clear
 
 if [ "$1" = "export" ]; then
     php artisan export
+    php artisan app:generate-sitemap
 fi
-
-php artisan app:generate-sitemap
