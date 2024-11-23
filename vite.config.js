@@ -14,6 +14,7 @@ export default defineConfig({
 
                 // JS
                 'resources/js/app.js',
+                'resources/js/vendor.js',
             ],
             refresh: true,
         }),
