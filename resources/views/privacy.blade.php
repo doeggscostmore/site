@@ -305,6 +305,12 @@
                         </li>
                         <li>
                             <p>
+                                <strong>To show advertisements</strong> through
+                                the third-party advertisers listed below.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
                                 <strong>For other purposes</strong>: We may use
                                 Your information for other purposes, such as
                                 data analysis, identifying usage trends,
@@ -422,7 +428,8 @@
                         relevant ads to you.
                     </p>
                     <p>
-                        These services may be used, and links to their privacy policies are below.
+                        These services may be used, and links to their privacy
+                        policies are below.
                     </p>
 
                     <ul>
