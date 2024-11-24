@@ -15,6 +15,9 @@ export default defineConfig({
                 // JS
                 'resources/js/app.js',
                 'resources/js/vendor.js',
+
+                // Favicons
+                'resources/img/favicon.png'
             ],
             refresh: true,
         }),

@@ -9,6 +9,8 @@
 
     <meta name="google-adsense-account" content="ca-pub-3722637490494929">
 
+    <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/img/favicon.png') }}">
+
     @yield('head')
 
     @vite('resources/css/app.scss')
