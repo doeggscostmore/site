@@ -31,12 +31,13 @@
             <div class="row">
                 <div class="col">
                     <p>
-                        Last updated: November 19, 2024
+                        Last updated: November 23, 2024
                     </p>
                     <p>
-                        This Privacy Policy describes Our policies and procedures on the collection,
-                        use and disclosure of Your information when You use the Service and tells
-                        You about Your privacy rights and how the law protects You.
+                        This Privacy Policy describes Our policies and
+                        procedures on the collection, use and disclosure of Your
+                        information when You use the Service and tells You about
+                        Your privacy rights and how the law protects You.
                     </p>
                     <p>
                         We use Your Personal data to provide and improve the
@@ -45,6 +46,7 @@
                         this Privacy Policy.
                     </p>
                     <h2>Interpretation and Definitions</h2>
+
                     <h3>Interpretation</h3>
                     <p>
                         The words of which the initial letter is capitalized
@@ -53,6 +55,7 @@
                         regardless of whether they appear in singular or in
                         plural.
                     </p>
+
                     <h3>Definitions</h3>
                     <p>For the purposes of this Privacy Policy:</p>
                     <ul>
@@ -140,6 +143,14 @@
                         </li>
                         <li>
                             <p>
+                                <strong>Location Data</strong> refers to the
+                                approximate geographic location of the browser
+                                and IP address used to access the Service.  This
+                                may include the approximate city, state,
+                                territory or country.
+                            </p>
+                        <li>
+                            <p>
                                 <strong>Website</strong> refers to Do Eggs Cost
                                 More, accessible from https://doeggscostmore.com
                             </p>
@@ -154,11 +165,13 @@
                             </p>
                         </li>
                     </ul>
+
                     <h2>Collecting and Using Your Personal Data</h2>
                     <h3>Types of Data Collected</h3>
                     <h4>Usage Data</h4>
                     <p>
-                        Usage Data is collected automatically when using the Service.
+                        Usage Data is collected automatically when using the
+                        Service.
                     </p>
                     <p>
                         Usage Data may include information such as Your Device's
@@ -183,7 +196,17 @@
                         whenever You visit our Service or when You access the
                         Service by or through a mobile device.
                     </p>
-                    <h4>Tracking Technologies and Cookies</h4>
+                    <h4>Location Data</h4>
+                    <p>
+                        We collect your approximate geographic location based on
+                        the IP address used to access the Service.  This may
+                        include your Country, State or territory, or City.
+                    </p>
+                    <p>
+                        Your exact location is never collected.
+                    </p>
+
+                    <h3>Tracking Technologies and Cookies</h3>
                     <p>
                         We use Cookies and similar tracking technologies to
                         track the activity on Our Service and store certain
@@ -269,6 +292,7 @@
                             </p>
                         </li>
                     </ul>
+
                     <h3>Use of Your Personal Data</h3>
                     <p>The Company may use Personal Data for the following purposes:</p>
                     <ul>
@@ -321,19 +345,13 @@
                             Your consent.
                         </li>
                     </ul>
+
                     <h3 id="opt-out">Opting Out Of Data Collection</h3>
                     <p>
                         You have the right to opt out of any extra data
                         collection.  There are multiple ways to opt out:
                     </p>
                     <ul>
-                        <li>
-                            Visit <a href="https://www.google.com/settings/ads"
-                            rel="noreferrer nofollow">Ads Settings</a>, which
-                            adjusts your ad personalization settings for Google,
-                            who provides the ads on the site and collects data
-                            related to them.
-                        </li>
                         <li>
                             Click the "Opt Out" button that appears in the pop
                             up on the bottom of each page.  If you've dismissed
@@ -364,6 +382,7 @@
                         functionality of Our Service, or We are legally
                         obligated to retain this data for longer time periods.
                     </p>
+
                     <h3>Transfer of Your Personal Data</h3>
                     <p>
                         Your information, including Personal Data, is processed
@@ -389,12 +408,49 @@
                         including the security of Your data and other personal
                         information.
                     </p>
+
+                    <h3>Third Party Advertising</h3>
+                    <p>
+                        We make use of third parties to serve advertisements on
+                        this website.  These services will make use of their own
+                        cookies and tracking methods that may not be covered in
+                        this Privacy Policy.
+                    </p>
+                    <p>
+                        The services may use cookies that also track your visits
+                        to other websites in order to serve more targeted and
+                        relevant ads to you.
+                    </p>
+                    <p>
+                        These services may be used, and links to their privacy policies are below.
+                    </p>
+
+                    <ul>
+                        <li>
+                            <p>
+                                <strong>Google</strong>: <a
+                                href="https://www.google.com/settings/ads">Ads
+                                Settings</a> <a
+                                href="https://policies.google.com/privacy">Privacy
+                                Policy</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <strong>Ad Supply</strong>: <a
+                                href="https://www.adsupply.com/privacy-policy/">Privacy
+                                Policy</a>
+                            </p>
+                        </li>
+                    </ul>
+
                     <h3>Delete Your Personal Data</h3>
                     <p>
-                        You have the right to request We delete any information
-                        we may have collected.  Please send a message to <a
-                        href="mailto:1757192b-6cb9-495d-ab8d-43941f670911@simplelogin.com">1757192b-6cb9-495d-ab8d-43941f670911@simplelogin.com</a>.
+                        You have the right to request your information be
+                        deleted, however we do not collect enough identifying
+                        information correlate a deletion request with user data.
                     </p>
+
                     <h3>Security of Your Personal Data</h3>
                     <p>
                         The security of Your Personal Data is important to Us,
