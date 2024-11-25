@@ -15,12 +15,12 @@ concurrency:
   limit: 1
 
 steps:
-- name: laravel
+- name: php
   image: lbausch/laravel-ci:php82
   commands:
   - make composer
 
-- name: node
+- name: js
   image: lbausch/laravel-ci:php82
   commands:
   - npm i -g yarn
@@ -83,12 +83,12 @@ concurrency:
   limit: 1
 
 steps:
-- name: laravel
+- name: php
   image: lbausch/laravel-ci:php82
   commands:
   - make composer-dev
 
-- name: node
+- name: js
   image: lbausch/laravel-ci:php82
   commands:
   - npm i -g yarn
