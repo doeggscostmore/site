@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 @forelse ($events->where('type', '=', 'election') as $event)
-                    @if (is_null($event->summary))
+                    @if (is_null($event->summary->end))
                         @continue
                     @endif
                     <div class="row event align-items-center">
@@ -116,7 +116,7 @@
                     </div>
                 </div>
                 @forelse ($events->where('type', '=', 'calendar') as $event)
-                    @if (is_null($event->summary))
+                    @if (is_null($event->summary->end))
                         @continue
                     @endif
                     <div class="row event align-items-center">
