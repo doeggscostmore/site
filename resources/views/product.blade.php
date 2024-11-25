@@ -43,6 +43,9 @@
                     </div>
                 </div>
                 @forelse ($events->where('type', '=', 'election') as $event)
+                    @if (is_null($event->summary))
+                        @continue
+                    @endif
                     <div class="row event align-items-center">
                         <div class="col-md-4 event-name">
                             {{-- <a href="{{ url("events/{$event->slug}") }}/"> --}}
@@ -113,7 +116,7 @@
                     </div>
                 </div>
                 @forelse ($events->where('type', '=', 'calendar') as $event)
-                    @if (is_null($event->summart))
+                    @if (is_null($event->summary))
                         @continue
                     @endif
                     <div class="row event align-items-center">
