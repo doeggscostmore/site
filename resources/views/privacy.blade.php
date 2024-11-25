@@ -442,13 +442,13 @@
                                 Policy</a>
                             </p>
                         </li>
-                        <li>
+                        {{-- <li>
                             <p>
                                 <strong>Ad Supply</strong>: <a
                                 href="https://www.adsupply.com/privacy-policy/">Privacy
                                 Policy</a>
                             </p>
-                        </li>
+                        </li> --}}
                     </ul>
 
                     <h3>Delete Your Personal Data</h3>
