@@ -39,7 +39,7 @@ class ProductController extends Controller
             'data' => $summary,
             'categories' => $categories,
             'all' => $allStatus,
-            'canonical' => url("/"),
+            'canonical' => route("home"),
             'events' => $events,
             'upCount' => $allStatus->where('change', '>', 0)->count(),
         ]);
@@ -78,7 +78,7 @@ class ProductController extends Controller
             'category' => $category,
             'data' => $summary,
             'categories' => $categories,
-            'canonical' => url("/{$category->slug}") . '/',
+            'canonical' => route('product', ['id' => $category->slug]) . '/',
             'events' => $events,
         ]);
     }
