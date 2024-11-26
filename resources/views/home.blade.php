@@ -96,7 +96,7 @@ Do Eggs Cost More? | Grocery Price Tracker
         <hr>
     </div>
 
-    <div class="events">
+    {{-- <div class="events">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
@@ -119,7 +119,7 @@ Do Eggs Cost More? | Grocery Price Tracker
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="footer-hero" id="hero-img">
         <div class="overlay">
