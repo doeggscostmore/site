@@ -26,8 +26,8 @@
 
 @section('content')
     <div class="product">
-        @include('layouts/heading')
-        @include('layouts/share')
+        @include('partials/heading')
+        @include('partials/share')
 
         <div class="events">
             <div class="container">
