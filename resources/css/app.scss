@@ -43,11 +43,13 @@ body {
     transform: translate(-50%, 0);
     top: 50px;
     z-index: 1046; // Off-canvas is set to 1045
+    pointer-events: none;
 
     & .hamburger {
         background-color: rgba(255, 255, 255, 0.75);
         border-radius: 10px;
         color: $secondary;
+        pointer-events: all;
 
         &:hover {
             background-color: rgba(255, 255, 255, 0.95);
