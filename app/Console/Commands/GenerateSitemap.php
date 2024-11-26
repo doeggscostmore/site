@@ -46,7 +46,7 @@ class GenerateSitemap extends Command
 
         // Add the category pages
         $categories = ProductCategory::all();
-        foreach ($categories->toArray() as $category) {
+        foreach ($categories as $category) {
             $map->add(Url::create(route('product', ['id' => $category->slug]))
                 ->setLastModificationDate($latestData));
         }
