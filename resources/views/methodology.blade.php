@@ -4,7 +4,7 @@
 
 
 @section('head')
-    <link rel="canonical" href="{{ url("/methodology/") }}" />
+    <link rel="canonical" href="{{ route("methodology") }}/" />
 @endsection
 
 @section('content')

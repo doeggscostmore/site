@@ -6,18 +6,16 @@ use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/about', function () {
-    $categories = Data::Categories();
-    return response()->view('about', ['categories' => $categories]);
-});
-Route::get('/privacy', function () {
-    $categories = Data::Categories();
-    return response()->view('privacy', ['categories' => $categories]);
-});
-Route::get('/methodology', function () {
-    $categories = Data::Categories();
-    return response()->view('methodology', ['categories' => $categories]);
-});
+// Basic page view
+Route::view('/about', 'about')
+    ->name('about');
+Route::view('/privacy', 'privacy')
+    ->name('privacy');
+Route::view('/methodology', 'methodology')
+    ->name('methodology');
 
-Route::get('/prices/{id}', [ProductController::class, 'product']);
-Route::get('/', [ProductController::class, 'home']);
+// Price Categories (The home page is partly a category page)
+Route::get('/prices/{id}', [ProductController::class, 'product'])
+    ->name('product');
+Route::get('/', [ProductController::class, 'home'])
+    ->name('home');

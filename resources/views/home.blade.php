@@ -5,11 +5,11 @@ Do Eggs Cost More? | Grocery Price Tracker
 @endsection
 
 @section('head')
-    <link rel="canonical" href="{{ url('/') }}" />
+    <link rel="canonical" href="{{ route('home') }}" />
 
     <meta property="og:title" content="Do Eggs Cost More? | Grocery Price Tracker">
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:url" content="{{ route('home') }}">
 
     <meta property="og:description"
         content="Do Eggs Cost More tracks the price of common products and
@@ -82,7 +82,7 @@ Do Eggs Cost More? | Grocery Price Tracker
                                     </span>
                                     @endif
 
-                                    <a href="{{ url("/prices/$category->slug") }}/">{{ ucwords($category->name) }}</a>
+                                    <a href="{{ route('product', ['id' => $category->slug]) }}/">{{ ucwords($category->name) }}</a>
                                 </div>
                             @endforeach
                         </div>

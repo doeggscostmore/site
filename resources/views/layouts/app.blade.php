@@ -38,7 +38,7 @@
                         @foreach ($categories as $category)
                             <li class="nav-item">
                                 <a class="nav-link"
-                                    href="{{ url("/prices/$category->slug") }}/">{{ ucwords($category->name) }}</a>
+                                    href="{{ route('product', ['id' => $category->slug]) }}/">{{ ucwords($category->name) }}</a>
                             </li>
                         @endforeach
                     </ul>
