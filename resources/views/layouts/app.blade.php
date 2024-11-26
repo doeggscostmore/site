@@ -29,17 +29,36 @@
         <div class="offcanvas-body px-0">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <span class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#productsmenu" role="button" aria-expanded="false" aria-controls="productsmenu">Products</span>
+                    <span class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#productsmenu"
+                        role="button" aria-expanded="false" aria-controls="productsmenu">Products</span>
                     <ul class="nav collapse" id="productsmenu">
                         @foreach ($categories as $category)
-                            <li class="nav-item" ><a class="nav-link" href="{{ url("/prices/$category->slug") }}/">{{ ucwords($category->name) }}</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                    href="{{ url("/prices/$category->slug") }}/">{{ ucwords($category->name) }}</a>
+                            </li>
                         @endforeach
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <span class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#aboutmenu"
+                        role="button" aria-expanded="false" aria-controls="aboutmenu">About</span>
 
+                    <ul class="nav collapse" id="aboutmenu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/methodology">Methodology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
