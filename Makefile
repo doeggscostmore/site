@@ -1,5 +1,5 @@
 build:
-	tmux kill-server
+	tmux kill-server || true
 	rm -f public/hot
 	tmux new-session './vendor/bin/sail up' \; split-window -h 'make js-dev' \;
 
