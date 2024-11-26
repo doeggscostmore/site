@@ -192,7 +192,7 @@
 
     <div class="container">
         <div class="row">
-            @include('layouts/footer')
+            @include('partials/footer')
         </div>
     </div>
 @endsection

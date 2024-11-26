@@ -43,6 +43,7 @@
                         @endforeach
                     </ul>
                 </li>
+                <hr />
                 <li class="nav-item">
                     <span class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#aboutmenu"
                         role="button" aria-expanded="false" aria-controls="aboutmenu">About</span>

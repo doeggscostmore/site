@@ -128,7 +128,7 @@ Do Eggs Cost More? | Grocery Price Tracker
 
     <div class="container">
         <div class="row">
-            @include('layouts/footer')
+            @include('partials/footer')
         </div>
     </div>
 @endsection
