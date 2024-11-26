@@ -27,10 +27,10 @@ js: yarn
 	yarn run build
 
 composer:
-	composer install --ansi --no-interaction --no-progress --no-dev -o
+	composer install --ansi --no-interaction --no-progress --no-dev -o --no-scripts
 
 composer-dev:
-	composer install --ansi --no-interaction --no-progress -o
+	composer install --ansi --no-interaction --no-progress -o --no-scripts
 
 get-db:
 	scp -P 2222 doeggscostmore.com@10.10.0.23:backups/db/app-latest.sql.gz app.sql.gz
