@@ -27,13 +27,20 @@ class ProductController extends Controller
         $summary = Cache::remember("summary_{$category->slug}", data::CACHE_TIME, function() use ($category) {
             return $category->CalculateSummary();
         });
-        
+
+        $events = Cache::remember('events_list', Data::CACHE_TIME, function () {
+            return Event::where('date', '<', now())
+                ->orderBy('date', 'desc')
+                ->get();
+        });
+
         return view('home', [
             'category' => $category,
             'data' => $summary,
             'categories' => $categories,
             'all' => $allStatus,
             'canonical' => url("/"),
+            'events' => $events,
             'upCount' => $allStatus->where('change', '>', 0)->count(),
         ]);
     }

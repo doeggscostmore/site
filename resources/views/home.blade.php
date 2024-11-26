@@ -96,13 +96,27 @@ Do Eggs Cost More? | Grocery Price Tracker
         <hr>
     </div>
 
-    <div class="container feature">
-        <div class="row text-center">
-            <div class="col-sm-12">
-                <h3>Compare Past Prices</h3>
-                <p>
-                    Soon you'll be able to see the changes at times in the past.
-                </p>
+    <div class="events">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h3>Price History</h3>
+                    <p>
+                        Compare how the prices of {{
+                        ucwords($category->name) }} changed just before
+                        certain time periods or events, and how the price
+                        compares now.
+                    </p>
+                </div>
+            </div>
+            <div class="row event align-items-center">
+                @foreach ($events as $event)
+                    <div class="col-md-6 event-link">
+                        <a href="{{ url("events/{$event->slug}") }}/">
+                            {{ $event->name }}
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

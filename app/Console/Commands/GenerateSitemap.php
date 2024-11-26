@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\BlsPrice;
+use App\Models\Event;
 use App\Models\ProductCategory;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
@@ -16,7 +17,7 @@ class GenerateSitemap extends Command
      *
      * @var string
      */
-    protected $signature = 'app:generate-sitemap';
+    protected $signature = 'app:generate-sitemap {storage}';
 
     /**
      * The console command description.
@@ -35,8 +36,6 @@ class GenerateSitemap extends Command
             ->first();
         $latestData = $price->created_at;
 
-        $categories = ProductCategory::all();
-
         $map = Sitemap::create();
 
         // Add the home page
@@ -46,8 +45,16 @@ class GenerateSitemap extends Command
             ->setPriority(1));
 
         // Add the category pages
+        $categories = ProductCategory::all();
         foreach ($categories->pluck('slug')->toArray() as $category) {
             $map->add(Url::create('/prices/' . $category)
+                ->setLastModificationDate($latestData));
+        }
+
+        // Add the category pages
+        $events = Event::all();
+        foreach ($events->pluck('slug')->toArray() as $event) {
+            $map->add(Url::create('/events/' . $event)
                 ->setLastModificationDate($latestData));
         }
 
@@ -61,6 +68,6 @@ class GenerateSitemap extends Command
             $map->add(Url::create($page));
         }
 
-        $map->writeToDisk('r2', 'sitemap.xml');
+        $map->writeToDisk($this->argument('storage'), 'sitemap.xml');
     }
 }

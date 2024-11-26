@@ -1,4 +1,4 @@
-import { Tooltip } from 'bootstrap';
+import { Tooltip, Collapse } from 'bootstrap';
 
 // Tooltips
 document.querySelectorAll('[data-toggle="tooltip"]')
