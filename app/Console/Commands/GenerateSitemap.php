@@ -39,7 +39,7 @@ class GenerateSitemap extends Command
         $map = Sitemap::create();
 
         // Add the home page
-        $map->add(Url::create('/')
+        $map->add(Url::create(route('home'))
             ->setLastModificationDate($latestData)
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(1));
@@ -47,25 +47,25 @@ class GenerateSitemap extends Command
         // Add the category pages
         $categories = ProductCategory::all();
         foreach ($categories->pluck('slug')->toArray() as $category) {
-            $map->add(Url::create('/prices/' . $category)
+            $map->add(Url::create(route('product', ['id' => $category->slug]))
                 ->setLastModificationDate($latestData));
         }
 
-        // Add the category pages
-        $events = Event::all();
-        foreach ($events->pluck('slug')->toArray() as $event) {
-            $map->add(Url::create('/events/' . $event)
-                ->setLastModificationDate($latestData));
-        }
+        // // Add the category pages
+        // $events = Event::all();
+        // foreach ($events->pluck('slug')->toArray() as $event) {
+        //     $map->add(Url::create('/events/' . $event)
+        //         ->setLastModificationDate($latestData));
+        // }
 
         // Add static pages
         $staticPages = [
-            '/about/',
-            '/privacy/',
-            '/methodology/',
+            'about',
+            'privacy',
+            'methodology',
         ];
         foreach ($staticPages as $page) {
-            $map->add(Url::create($page));
+            $map->add(Url::create(route($page)));
         }
 
         $map->writeToDisk($this->argument('storage'), 'sitemap.xml');
