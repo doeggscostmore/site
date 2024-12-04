@@ -32,13 +32,17 @@ class BlsSeries extends Model
         return Cache::remember("productprice_{$this->series_id}_{$day}", Data::CACHE_TIME, function() use ($day) {
             $lastMonth = clone $day;
             $lastMonth->subMonth();
+            $twoMonthsAgo = clone $lastMonth;
+            $twoMonthsAgo->subMonth();
 
-            $price = BlsPrice::whereRaw('series_id = ? AND ((month = ? and year = ?) OR (month = ? and year = ?)) order by year desc, month desc', [
+            $price = BlsPrice::whereRaw('series_id = ? AND ((month = ? and year = ?) OR (month = ? and year = ?) OR (month = ? and year = ?)) order by year desc, month desc', [
                     $this->series_id,
                     $day->month,
                     $day->year,
                     $lastMonth->month,
                     $lastMonth->year,
+                    $twoMonthsAgo->month,
+                    $twoMonthsAgo->year,
                 ])
             ->first();
 
