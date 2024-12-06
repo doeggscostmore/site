@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Event;
 use App\Models\ProductCategory;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -37,6 +38,18 @@ class Data
                 ->orderBy('sort', 'asc')
                 ->orderBy('name', 'asc')
                 ->with('products')
+                ->get();
+        });
+    }
+
+    /**
+     * Get all events
+     */
+    static function Events() {
+        return Cache::remember('all_events', data::CACHE_TIME, function() {
+            return Event::orderBy('type', 'desc')
+                ->orderBy('date', 'desc')
+                ->where('date', '<', now())
                 ->get();
         });
     }
