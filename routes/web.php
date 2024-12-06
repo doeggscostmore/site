@@ -28,3 +28,9 @@ Route::permanentRedirect('/eggs', '/prices/eggs');
 Route::permanentRedirect('/soda', '/prices/soda');
 Route::permanentRedirect('/frozen-food', '/prices/frozen-food');
 Route::permanentRedirect('/milk', '/prices/milk');
+Route::permanentRedirect('/gas', '/prices/gas');
+Route::permanentRedirect('/housing', '/prices/housing');
+Route::permanentRedirect('/housing', '/prices/housing');
+
+Route::permanentRedirect('/about/privacy', '/privacy');
+Route::permanentRedirect('/about/methodology', '/methodology');
