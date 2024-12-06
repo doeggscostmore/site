@@ -11,6 +11,6 @@ php artisan migrate
 php artisan cache:clear
 
 if [ "$1" = "export" ]; then
-    php artisan export
-    php artisan app:generate-sitemap r2
+    # php artisan export
+    php artisan app:generate-sitemap public
 fi
