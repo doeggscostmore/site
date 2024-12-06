@@ -19,3 +19,12 @@ Route::get('/prices/{id}', [ProductController::class, 'product'])
     ->name('product');
 Route::get('/', [ProductController::class, 'home'])
     ->name('home');
+
+// Old SEO redirects
+Route::permanentRedirect('/bread', '/prices/bread');
+Route::permanentRedirect('/fresh-fruit-and-vegetables', '/prices/fresh-fruit-and-vegetables');
+Route::permanentRedirect('/meat', '/prices/meat');
+Route::permanentRedirect('/eggs', '/prices/eggs');
+Route::permanentRedirect('/soda', '/prices/soda');
+Route::permanentRedirect('/frozen-food', '/prices/frozen-food');
+Route::permanentRedirect('/milk', '/prices/milk');
