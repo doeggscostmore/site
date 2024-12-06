@@ -29,6 +29,8 @@ class GetData extends Command
      */
     public function handle()
     {
+        info('Getting data...');
+        
         // We chunk the requests, I'm not sure what the limit is for the API but 5 seems like a good number.
         $chunkSize = 5;
 

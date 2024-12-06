@@ -31,6 +31,8 @@ class GenerateSitemap extends Command
      */
     public function handle()
     {
+        info('Generating sitemap...');
+
         // Get the last date from the prices table;
         $price = BlsPrice::orderBy('created_at', 'desc')
             ->first();
