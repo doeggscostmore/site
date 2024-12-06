@@ -10,7 +10,7 @@ use stdClass;
 class Data
 {
 
-    const CACHE_TIME = 60 * 60 * 1; // Cache stuff for 1 hour by default.
+    const CACHE_TIME = 60 * 60 * 24; // Cache stuff for 24 hours by default.
 
     /**
      * Get all the summaries for the home page.
