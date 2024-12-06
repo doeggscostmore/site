@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Schedule;
 Schedule::command(GetData::class)->twiceMonthly(14, 28, '18:00');
 Schedule::command(GenerateSitemap::class, ['storage' => 'r2'])->twiceMonthly(14, 28, '20:00');
 
-Schedule::command('export')->daily();
+// Schedule::command('export')->daily();
