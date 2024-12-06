@@ -3,7 +3,7 @@
 @section('page_title', 'About')
 
 @section('head')
-    <link rel="canonical" href="{{ route('about') }}/" />
+    <link rel="canonical" href="{{ route('about') }}" />
 @endsection
 
 @section('breadcrumbs')

@@ -3,7 +3,7 @@
 @section('page_title', 'Privacy')
 
 @section('head')
-    <link rel="canonical" href="{{ route('privacy') }}/" />
+    <link rel="canonical" href="{{ route('privacy') }}" />
 @endsection
 
 @section('breadcrumbs')

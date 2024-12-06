@@ -78,7 +78,7 @@ class ProductController extends Controller
             'category' => $category,
             'data' => $summary,
             'categories' => $categories,
-            'canonical' => route('product', ['id' => $category->slug]) . '/',
+            'canonical' => route('product', ['id' => $category->slug]),
             'events' => $events,
         ]);
     }
