@@ -16,7 +16,7 @@ class ProductController extends Controller
      * Homepage is basically a normal page but just for eggs.
      */
     public function home() {
-        $category = Cache::remember('category_eggs', Data::CACHE_TIME, function() {
+        $category = Cache::remember('categorymeta_eggs', Data::CACHE_TIME, function() {
             return ProductCategory::where('slug', 'eggs')->first();
         });
 
@@ -24,15 +24,11 @@ class ProductController extends Controller
         $categories = Data::Categories();
         $allStatus = Data::GetAllSummaries();
 
-        $summary = Cache::remember("summary_{$category->slug}", data::CACHE_TIME, function() use ($category) {
+        $summary = Cache::remember("cateogycurrent_{$category->slug}", data::CACHE_TIME, function() use ($category) {
             return $category->CalculateSummary();
         });
 
-        $events = Cache::remember('events_list', Data::CACHE_TIME, function () {
-            return Event::where('date', '<', now())
-                ->orderBy('date', 'desc')
-                ->get();
-        });
+        $events = Data::Events();
 
         return view('home', [
             'category' => $category,
@@ -49,7 +45,7 @@ class ProductController extends Controller
      * Get a specific product
      */
     public function product($slug) {
-        $category = Cache::remember("category_{$slug}", data::CACHE_TIME, function() use ($slug) {
+        $category = Cache::remember("categorymeta_{$slug}", data::CACHE_TIME, function() use ($slug) {
             return ProductCategory::where('slug', $slug)->first();
         });
 
@@ -58,19 +54,18 @@ class ProductController extends Controller
         }
 
         $categories = Data::Categories();
-        $summary = Cache::remember("summary_{$category->slug}", data::CACHE_TIME, function() use ($category) {
+        $summary = Cache::remember("cateogycurrent_{$category->slug}", data::CACHE_TIME, function() use ($category) {
             return $category->CalculateSummary();
         });
 
-        $events = Cache::remember('events_list', Data::CACHE_TIME, function () {
-            return Event::where('date', '<', now()->subDays(45))
-                ->orderBy('date', 'desc')
-                ->get();
-        });
+        $events = Data::Events();
 
         // For each event, get the summary
         foreach ($events as $event) {
-            $eventSummary = $category->CalculateSummary($event->date, $event->length);
+            $cache = 'categoryevent_' . sha1($category->slug . ':' . $event->date . ':' . $event->length);
+            $eventSummary = Cache::remember($cache, Data::CACHE_TIME, function() use ($category, $event) {
+                return $category->CalculateSummary($event->date, $event->length);
+            });
             $event->summary = $eventSummary;
         }
 

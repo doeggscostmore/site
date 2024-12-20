@@ -29,7 +29,8 @@ class BlsSeries extends Model
             $day = new Carbon($day);
         }
 
-        return Cache::remember("productprice_{$this->series_id}_{$day}", Data::CACHE_TIME, function() use ($day) {
+        $cache = 'productprice_' . sha1($this->series_id . ':' . $day);
+        return Cache::remember($cache, Data::CACHE_TIME, function() use ($day) {
             $lastMonth = clone $day;
             $lastMonth->subMonth();
             $twoMonthsAgo = clone $lastMonth;

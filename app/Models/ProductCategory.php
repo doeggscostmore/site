@@ -50,22 +50,28 @@ class ProductCategory extends Model
         $productSummaries = new Collection();
 
         foreach ($this->products as $product) {
-            $startPrice = $product->GetPriceOnDate($start);
-            $endPrice = $product->GetPriceOnDate($end);
+            $cache = 'productsummary_' . sha1($product->series_id . ':' . $start . ':' . $end);
+            $row = Cache::remember($cache, Data::CACHE_TIME, function() use ($start, $end, $product) {
+                $startPrice = $product->GetPriceOnDate($start);
+                $endPrice = $product->GetPriceOnDate($end);
+    
+                // This can trigger a div/0
+                if (!$startPrice || !$endPrice) {
+                    return;
+                }
+    
+                $row = new PriceSummary();
+                $row->start = $start;
+                $row->end = $end;
+                $row->start_price = $startPrice;
+                $row->end_price = $endPrice;
+                $row->change = (($endPrice - $startPrice) / $startPrice) * 100;
+                $row->isUp = ($endPrice > $startPrice);
+                $row->product = $product;
 
-            // This can trigger a div/0
-            if (!$startPrice || !$endPrice) {
-                continue;
-            }
-
-            $row = new PriceSummary();
-            $row->start = $start;
-            $row->end = $end;
-            $row->start_price = $startPrice;
-            $row->end_price = $endPrice;
-            $row->change = (($endPrice - $startPrice) / $startPrice) * 100;
-            $row->isUp = ($endPrice > $startPrice);
-            $row->product = $product;
+                return $row;
+            });
+           
             $productSummaries->add($row);
         }
 
