@@ -53,12 +53,12 @@ class GenerateSitemap extends Command
                 ->setLastModificationDate($latestData));
         }
 
-        // // Add the category pages
-        // $events = Event::all();
-        // foreach ($events->pluck('slug')->toArray() as $event) {
-        //     $map->add(Url::create('/events/' . $event)
-        //         ->setLastModificationDate($latestData));
-        // }
+        // Add the category pages
+        $events = Event::where('date', '<', now())->get();
+        foreach ($events->pluck('slug')->toArray() as $event) {
+            $map->add(Url::create('/events/' . $event)
+                ->setLastModificationDate($latestData));
+        }
 
         // Add static pages
         $staticPages = [

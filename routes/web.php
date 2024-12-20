@@ -1,6 +1,7 @@
 <?php
 
 use App\Data;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProductController;
 use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Cache;
@@ -19,6 +20,10 @@ Route::get('/prices/{id}', [ProductController::class, 'product'])
     ->name('product');
 Route::get('/', [ProductController::class, 'home'])
     ->name('home');
+
+// Event Pages
+Route::get('/events/{id}', [EventController::class, 'event'])
+    ->name('event');
 
 // Old SEO redirects
 Route::permanentRedirect('/bread', '/prices/bread');

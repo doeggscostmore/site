@@ -43,6 +43,18 @@
                         @endforeach
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <span class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#eventsmenu"
+                        role="button" aria-expanded="false" aria-controls="eventsmenu">Past Events</span>
+                    <ul class="nav collapse" id="eventsmenu">
+                        @foreach ($events as $event)
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                    href="{{ route('event', ['id' => $event->slug]) }}/">{{ ucwords($event->name) }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
                 <hr />
                 <li class="nav-item">
                     <span class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#aboutmenu"

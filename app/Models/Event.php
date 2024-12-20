@@ -20,4 +20,11 @@ class Event extends Model
         'name',
         'description',
     ];
+
+    protected function casts(): array
+{
+    return [
+        'date' => 'datetime',
+    ];
+}
 }

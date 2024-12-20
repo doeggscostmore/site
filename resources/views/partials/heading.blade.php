@@ -6,7 +6,7 @@
     @endif
         <div class="row align-items-center">
             <div class="col col-lg-6">
-                <a href="/" class="back-link"><i class="fa fa-arrow-left"></i>Other Products</a>
+                <a href="/" class="back-link"><i class="fa fa-arrow-left"></i>Home</a>
                 <h1>{{ ucwords($category->verb) }} {{ ucwords($category->name) }} Cost More?</h1>
                 @if ($data->isUp)
                     <h2>Yes.</h2>

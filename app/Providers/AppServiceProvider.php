@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         // what we want.
         try {
             View::share('categories', Data::Categories());
+            View::share('events', Data::Events());
         } catch (Exception $e) {
             //
         }

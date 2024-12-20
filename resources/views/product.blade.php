@@ -48,9 +48,9 @@
                     @endif
                     <div class="row event align-items-center">
                         <div class="col-md-4 event-name">
-                            {{-- <a href="{{ url("events/{$event->slug}") }}/"> --}}
+                            <a href="{{ url("events/{$event->slug}") }}/">
                                 {{ $event->name }}
-                            {{-- </a> --}}
+                            </a>
                         </div>
                         <div class="col-md-4 event-change d-flex flex-row justify-content-center align-items-center">
                             @if ($event->summary->isUp)
@@ -121,9 +121,9 @@
                     @endif
                     <div class="row event align-items-center">
                         <div class="col-md-4 event-name">
-                            {{-- <a href="{{ url("events/{$event->slug}") }}/"> --}}
-                                {{ $event->summary->end->format('Y') }}
-                            {{-- </a> --}}
+                            <a href="{{ url("events/{$event->slug}") }}/">
+                                {{ $event->name }}
+                            </a>
                         </div>
                         <div class="col-md-4 event-change d-flex flex-row justify-content-center align-items-center">
                             @if ($event->summary->isUp)
