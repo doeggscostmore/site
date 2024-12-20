@@ -84,6 +84,7 @@ class ProductCategory extends Model
         $out->isUp = ($out->change > 0);
         $out->slug = $this->slug;
         $out->products = $productSummaries;
+        $out->product = $this;
 
         return $out;
     }
