@@ -17,6 +17,10 @@ class EventController extends Controller
             abort(404);
         }
 
+        if ($event->date > now()->subDays(45)) {
+            abort(404);
+        }
+
         return view('event', [
             'event' => $event,
             'canonical' => route('event', ['id' => $event->slug])

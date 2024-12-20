@@ -63,7 +63,7 @@ class ProductController extends Controller
         });
 
         $events = Cache::remember('events_list', Data::CACHE_TIME, function () {
-            return Event::where('date', '<', now())
+            return Event::where('date', '<', now()->subDays(45))
                 ->orderBy('date', 'desc')
                 ->get();
         });

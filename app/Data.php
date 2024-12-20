@@ -49,7 +49,7 @@ class Data
         return Cache::remember('all_events', data::CACHE_TIME, function() {
             return Event::orderBy('type', 'desc')
                 ->orderBy('date', 'desc')
-                ->where('date', '<', now())
+                ->where('date', '<', now()->subDays(45))
                 ->get();
         });
     }
