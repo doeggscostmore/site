@@ -48,7 +48,11 @@ class BlsSeries extends Model
             ->first();
 
             if ($price) {
-                return $price->value;
+                return [
+                    $price->value,
+                    $price->month,
+                    $price->year,
+                ];
             }
         });
     }

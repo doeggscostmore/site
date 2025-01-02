@@ -45,16 +45,20 @@ class ProductCategory extends Model
             $end = new Carbon($now);
         }
 
-        $start = clone $end;
-        $start->subMonths($length);
         $productSummaries = new Collection();
 
         foreach ($this->products as $product) {
-            $cache = 'productsummary_' . sha1($product->series_id . ':' . $start . ':' . $end);
-            $row = Cache::remember($cache, Data::CACHE_TIME, function() use ($start, $end, $product) {
-                $startPrice = $product->GetPriceOnDate($start);
-                $endPrice = $product->GetPriceOnDate($end);
-    
+            $cache = 'productsummary_' . sha1($product->series_id . ':' . $end . ':' . $length);
+            $row = Cache::remember($cache, Data::CACHE_TIME, function() use ($length, $end, $product) {
+                $endData = $product->GetPriceOnDate($end);
+
+                $start = new Carbon("{$endData[1]}/1/{$endData[2]}");
+                $start->subMonth($length);
+                $startData = $product->GetPriceOnDate($start);
+
+                $startPrice = $startData[0];
+                $endPrice = $endData[0];
+
                 // This can trigger a div/0
                 if (!$startPrice || !$endPrice) {
                     return;
