@@ -22,10 +22,10 @@ class ProductCategoryTest extends TestCase
 
         $this->assertGreaterThan($summary->start, $summary->end);
 
-        $this->assertEquals(291.100, round($summary->start_price, 3));
+        $this->assertEquals(292.19, round($summary->start_price, 3));
         $this->assertEquals(337.975, round($summary->end_price, 3));
         $this->assertTrue($summary->isUp);
-        $this->assertEquals(16.10, round($summary->change, 2));
+        $this->assertEquals(15.67, round($summary->change, 2));
 
         $this->assertEquals(1, $summary->products->count());
     }

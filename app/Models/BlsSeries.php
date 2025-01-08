@@ -56,4 +56,25 @@ class BlsSeries extends Model
             }
         });
     }
+
+    /**
+     * Get the most recent price of a product.
+     */
+    public function GetMostRecentPrice() {
+        $cache = 'productprice_' . sha1($this->series_id . ':latest');
+        return Cache::remember($cache, Data::CACHE_TIME, function() {
+            $price = BlsPrice::whereRaw('series_id = ? order by year desc, month desc', [
+                    $this->series_id,
+                ])
+            ->first();
+
+            if ($price) {
+                return [
+                    $price->value,
+                    $price->month,
+                    $price->year,
+                ];
+            }
+        });
+    }
 }

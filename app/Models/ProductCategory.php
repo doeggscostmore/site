@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Data;
+use App\Exceptions\InvalidDataException;
 use Carbon\Carbon;
 use DateInterval;
 use DateTime;
@@ -41,16 +42,26 @@ class ProductCategory extends Model
     {
         if ($now == 'now') {
             $end = now();
+            $offset = false;
         } else {
             $end = new Carbon($now);
+            $offset = true;
         }
 
         $productSummaries = new Collection();
 
         foreach ($this->products as $product) {
             $cache = 'productsummary_' . sha1($product->series_id . ':' . $end . ':' . $length);
-            $row = Cache::remember($cache, Data::CACHE_TIME, function() use ($length, $end, $product) {
-                $endData = $product->GetPriceOnDate($end);
+            $row = Cache::remember($cache, Data::CACHE_TIME, function() use ($offset, $length, $end, $product) {
+                if ($offset) {
+                    $endData = $product->GetPriceOnDate($end);
+                } else {
+                    $endData = $product->GetMostRecentPrice();
+                }
+
+                if (!is_array($endData) || count($endData) < 3) {
+                    return;
+                }
 
                 $start = new Carbon("{$endData[1]}/1/{$endData[2]}");
                 $start->subMonth($length);
@@ -77,6 +88,10 @@ class ProductCategory extends Model
             });
            
             $productSummaries->add($row);
+        }
+
+        if ($productSummaries->count() == 0) {
+            throw new InvalidDataException("series has no valid data");
         }
 
         $out = new PriceSummary();

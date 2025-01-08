@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Exceptions\InvalidDataException;
 use App\Models\Event;
 use App\Models\ProductCategory;
 use Illuminate\Database\Eloquent\Collection;
@@ -22,7 +23,11 @@ class Data
             $out = new Collection();
 
             foreach (self::Categories() as $category) {
-                $out->add($category->CalculateSummary());
+                try {
+                    $out->add($category->CalculateSummary());
+                } catch (InvalidDataException $e) {
+                    //
+                }
             }
 
             return $out;
