@@ -41,7 +41,7 @@ class GetData extends Command
 
         $years = [];
         if ($this->option('backfill')) {
-            $start = 2016;
+            $start = 2000;
             while ($start <= now()->year) {
                 $years[] = $start;
                 $start ++;
