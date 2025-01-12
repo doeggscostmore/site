@@ -36,6 +36,29 @@ class ProductCategory extends Model
     }
 
     /**
+     * Get raw data for a category
+     */
+    public function GetRawData() {
+        $data = new Collection();
+
+        foreach ($this->products as $product) {
+            $cache = 'productraw_' . sha1($product->series_id);
+            $prices = Cache::remember($cache, Data::CACHE_TIME, function() use ($product) {
+                return BlsPrice::where('series_id', '=', $product->series_id)
+                    ->with('product')
+                    ->limit(24)
+                    ->orderBy('year', 'asc')
+                    ->orderBy('month', 'asc')
+                    ->get();
+            });
+            
+            $data->add($prices);
+        }
+
+        return $data;
+    }
+
+    /**
      * Calculate the summary for this product category.
      */
     public function CalculateSummary($now = 'now', $length = 6)

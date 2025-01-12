@@ -29,7 +29,7 @@
         @include('partials/heading')
         @include('partials/share')
 
-        <div class="events">
+        <div class="chart">
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
@@ -37,6 +37,20 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col">
+                        <canvas id="prices"></canvas>
+
+                        <script type="text/javascript">
+                            const prices = {{ Illuminate\Support\Js::from($rawData) }};
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="events">
+            <div class="container">
                 <div class="row mt-5">
                     <div class="col text-center">
                         <h4>Past Elections</h4>

@@ -69,12 +69,17 @@ class ProductController extends Controller
             $event->summary = $eventSummary;
         }
 
+        $rawData = Cache::remember("cateogyraw_{$category->slug}", data::CACHE_TIME, function() use ($category) {
+            return $category->GetRawData();
+        });
+
         return view('product', [
             'category' => $category,
             'data' => $summary,
             'categories' => $categories,
             'canonical' => route('product', ['id' => $category->slug]),
             'events' => $events,
+            'rawData' => $rawData,
         ]);
     }
 }

@@ -13,4 +13,8 @@ class BlsPrice extends Model
         'value',
         'preliminary'
     ];
+
+    function product() {
+        return $this->hasOne(BlsSeries::class, 'series_id', 'series_id');
+    }
 }

@@ -1,6 +1,7 @@
 // App Code
 import './includes/images'
 import './includes/consent'
+import './includes/chart'
 
 var offCanvas = document.getElementById('offcanvas');
 var hamburger = document.getElementById('hamburger');
