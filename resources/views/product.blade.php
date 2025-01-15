@@ -33,7 +33,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
-                        <h3>Price History</h3>
+                        <h3>Past Data</h3>
                     </div>
                 </div>
 
