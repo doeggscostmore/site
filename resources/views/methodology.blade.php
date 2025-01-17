@@ -27,17 +27,38 @@
     <p>
         All data on this site comes from either the Consumer Price Index or
         Producer Price Index calculated by the Bureau of Labor Statistics. Data
-        is released on all products Monthly.
+        is released on all products Monthly, and we collect data periodically
+        once it is released.
     </p>
     <p>
         The data is a <a href="https://en.wikipedia.org/wiki/Price_index"
         rel="noreferrer nofollow">Price Index</a>, which means it's a normalized
         sample of prices for a given product. A specific product is not tracked,
-        but a group of products is tracked and weighted by smart people.
+        but a group of products is tracked and weighted by smart people.  The
+        value of the index does not represent the exact price that is paid,
+        rather the relative cost compared to a fixed point in time in the past.
     </p>
     <p>
         The bottom line, though, is that when a price index increases 10%, the
         average price of that product has also increased 10%.
+    </p>
+
+    <h4>Calculations We Do</h4>
+    <p>
+        When looking at prices for a specific date range, we calculate the
+        percent change from the average index value of all product at the start
+        vs at the end.
+    </p>
+    <p>
+        For the overall pages (pages that aren't looking at a specific event),
+        we look at the last 6 months of data.  Keep in mind that due to the
+        somewhat delayed nature of how the data is released, it may be slightly
+        longer than 6 months.
+    </p>
+    <p>
+        For events, we look at either the last 6 months of data or the calendar
+        year.  In all cases, the start date or length of time is shown next to
+        each figure.
     </p>
 
     <h4>Is the data realtime?</h4>
