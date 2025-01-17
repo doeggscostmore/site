@@ -21,10 +21,21 @@
                         abs(round($data->change, 1)) }}%</b> since {{ $data->start->format('F, Y') }}
                     </span>
                 @endif
-                {{-- <span class="current">
-                    The current average price of all our sampled
-                    products is <b>${{ number_format($data->end_price, 2) }}</b>.
-                </span> --}}
+                
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#past-data">Past Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#past-elections" class="nav-link">Past Elections</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#past-years" class="nav-link">Past Years</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                </ul>
             </div>
             <div class="col col-lg-6 d-none d-lg-block">
                 @if ($data->isUp)

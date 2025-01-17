@@ -29,11 +29,11 @@
         @include('partials/heading')
         @include('partials/share')
 
-        <div class="chart">
+        <div class="chart section">
             <div class="container">
-                <div class="row">
+                <div class="row mt-5">
                     <div class="col text-center">
-                        <h3>Past Data</h3>
+                        <h3 id="past-data">Past Data</h3>
                     </div>
                 </div>
 
@@ -49,11 +49,11 @@
             </div>
         </div>
 
-        <div class="events">
+        <div class="events section">
             <div class="container">
                 <div class="row mt-5">
                     <div class="col text-center">
-                        <h4>Past Elections</h4>
+                        <h3 id="past-elections">Past Elections</h3>
                     </div>
                 </div>
                 @forelse ($events->where('type', '=', 'election') as $event)
@@ -123,10 +123,14 @@
                         </div>
                     </div>
                 @endforelse
+            </div>
+        </div>
 
+        <div class="events section">
+            <div class="container">
                 <div class="row mt-5">
                     <div class="col text-center">
-                        <h4>Past Years</h4>
+                        <h3 id="past-years">Past Years</h3>
                     </div>
                 </div>
                 @forelse ($events->where('type', '=', 'calendar') as $event)
@@ -196,6 +200,41 @@
                         </div>
                     </div>
                 @endforelse
+            </div>
+        </div>
+
+        <div class="section about">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <h3 id="about">About This Data</h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-center">
+                        <p>
+                            This data is taken from the following price indexes:
+                        </p>
+                        <ul>
+                            @foreach ($rawData as $row)
+                                <li>
+                                    {{ $row[0]->product->title }} ({{ $row[0]->product->series_id }})
+                                </li>
+                            @endforeach
+                        </ul>
+                        <p>
+                            Data is generally available monthly, and the numbers
+                            indicate the relative price of the commodity.
+                            Higher numbers indicate it is more expensive, lower
+                            numbers indicate it's less expensive.
+                        </p>
+                        <p>
+                            There's more information about how data is collected
+                            and calculated on our <a href={{
+                            route('methodology') }}>methodology</a> page.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
