@@ -38,36 +38,35 @@ class ProductCategory extends Model
     /**
      * Get raw data for a category
      */
-    public function GetRawData()
+    public function GetRawData($start = 'now', $length = 24)
     {
-
-        $cache = 'categorytimescale_' . sha1($this->slug);
-        $data = Cache::remember($cache, Data::CACHE_TIME, function () {
-            $data = new Collection();
-
+        if ($start == 'now') {
             $date = now();
-            for ($x = 24; $x > 0; $x--) {
-                $average = BlsPrice::whereIn('series_id', $this->products->pluck('series_id'))
-                    ->where('year', '=', $date->year)
-                    ->where('month', '=', $date->month)
-                    ->avg('value');
+        } else {
+            $date = new Carbon($start);
+        }
 
-                if (!is_null($average)) {
-                    $summary = new TimeseriesSummary();
-                    $summary->month = $date->month;
-                    $summary->year = $date->year;
-                    $summary->value = $average;
+        $data = new Collection();
+        while ($data->count() <= $length) {
+            $average = BlsPrice::whereIn('series_id', $this->products->pluck('series_id'))
+                ->where('year', '=', $date->year)
+                ->where('month', '=', $date->month)
+                ->avg('value');
 
-                    $data->add($summary);
-                }
+            if (!is_null($average)) {
+                $summary = new TimeseriesSummary();
+                $summary->month = $date->month;
+                $summary->year = $date->year;
+                $summary->value = $average;
+                $summary->category = $this;
 
-                $date->subMonth();
+                $data->add($summary);
             }
 
-            return $data->reverse()->values();
-        });
+            $date->subMonthNoOverflow();
+        }
 
-        return $data;
+        return $data->reverse()->values();
     }
 
     /**
@@ -99,7 +98,7 @@ class ProductCategory extends Model
                 }
 
                 $start = new Carbon("{$endData[1]}/1/{$endData[2]}");
-                $start->subMonth($length);
+                $start->subMonthNoOverflow($length);
                 $startData = $product->GetPriceOnDate($start);
 
                 $startPrice = $startData[0];

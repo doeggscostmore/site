@@ -74,6 +74,26 @@
                 </div>
             </div>
         </div>
+
+        <div class="chart section">
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col text-center">
+                        <h3 id="past-data">Past Data</h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <canvas id="eventprices"></canvas>
+
+                        <script type="text/javascript">
+                            const prices = {{ Illuminate\Support\Js::from($trends) }};
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="footer-hero" id="hero-img">

@@ -69,7 +69,8 @@ class ProductController extends Controller
             $event->summary = $eventSummary;
         }
 
-        $rawData = Cache::remember("cateogyraw_{$category->slug}", data::CACHE_TIME, function() use ($category) {
+        $cache = 'categortrend_' . sha1($category->slug . ':latest');
+        $rawData = Cache::remember($cache, data::CACHE_TIME, function() use ($category) {
             return $category->GetRawData();
         });
 

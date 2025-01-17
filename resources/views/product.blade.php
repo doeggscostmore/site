@@ -39,7 +39,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <canvas id="prices"></canvas>
+                        <canvas id="productprices"></canvas>
 
                         <script type="text/javascript">
                             const prices = {{ Illuminate\Support\Js::from($rawData) }};
