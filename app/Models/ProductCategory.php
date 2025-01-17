@@ -38,23 +38,34 @@ class ProductCategory extends Model
     /**
      * Get raw data for a category
      */
-    public function GetRawData() {
-        $data = new Collection();
+    public function GetRawData()
+    {
 
-        foreach ($this->products as $product) {
-            $cache = 'productraw_' . sha1($product->series_id);
-            $prices = Cache::remember($cache, Data::CACHE_TIME, function() use ($product) {
-                $rows = BlsPrice::where('series_id', '=', $product->series_id)
-                    ->with('product')
-                    ->limit(24)
-                    ->orderBy('year', 'desc')
-                    ->orderBy('month', 'desc')
-                    ->get();
+        $cache = 'categorytimescale_' . sha1($this->slug);
+        $data = Cache::remember($cache, Data::CACHE_TIME, function () {
+            $data = new Collection();
 
-                return $rows->reverse();
-            });
-            $data->add($prices->values());
-        }
+            $date = now();
+            for ($x = 24; $x > 0; $x--) {
+                $average = BlsPrice::whereIn('series_id', $this->products->pluck('series_id'))
+                    ->where('year', '=', $date->year)
+                    ->where('month', '=', $date->month)
+                    ->avg('value');
+
+                if (!is_null($average)) {
+                    $summary = new TimeseriesSummary();
+                    $summary->month = $date->month;
+                    $summary->year = $date->year;
+                    $summary->value = $average;
+
+                    $data->add($summary);
+                }
+
+                $date->subMonth();
+            }
+
+            return $data->reverse()->values();
+        });
 
         return $data;
     }
@@ -76,7 +87,7 @@ class ProductCategory extends Model
 
         foreach ($this->products as $product) {
             $cache = 'productsummary_' . sha1($product->series_id . ':' . $end . ':' . $length);
-            $row = Cache::remember($cache, Data::CACHE_TIME, function() use ($offset, $length, $end, $product) {
+            $row = Cache::remember($cache, Data::CACHE_TIME, function () use ($offset, $length, $end, $product) {
                 if ($offset) {
                     $endData = $product->GetPriceOnDate($end);
                 } else {
@@ -98,7 +109,7 @@ class ProductCategory extends Model
                 if (!$startPrice || !$endPrice) {
                     return;
                 }
-    
+
                 $row = new PriceSummary();
                 $row->start = $start;
                 $row->end = $end;
@@ -110,7 +121,7 @@ class ProductCategory extends Model
 
                 return $row;
             });
-           
+
             $productSummaries->add($row);
         }
 

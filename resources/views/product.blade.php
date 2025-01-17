@@ -43,6 +43,7 @@
 
                         <script type="text/javascript">
                             const prices = {{ Illuminate\Support\Js::from($rawData) }};
+                            const label = {{ Illuminate\Support\Js::from($category->name) }}
                         </script>
                     </div>
                 </div>
@@ -217,15 +218,15 @@
                             This data is taken from the following price indexes:
                         </p>
                         <ul>
-                            @foreach ($rawData as $row)
+                            @foreach ($category->products as $product)
                                 <li>
-                                    {{ $row[0]->product->title }} ({{ $row[0]->product->series_id }})
+                                    {{ $product->title }} ({{ $product->series_id }})
                                 </li>
                             @endforeach
                         </ul>
                         <p>
                             Data is generally available monthly, and the numbers
-                            indicate the relative price of the commodity.
+                            indicate the relative price of the commodity. <br />
                             Higher numbers indicate it is more expensive, lower
                             numbers indicate it's less expensive.
                         </p>
