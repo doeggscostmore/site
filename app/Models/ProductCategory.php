@@ -86,7 +86,7 @@ class ProductCategory extends Model
         $productSummaries = new Collection();
 
         foreach ($this->products as $product) {
-            $cache = 'productsummary_' . sha1($product->series_id . ':' . $end . ':' . $length);
+            $cache = 'productsummary_' . sha1($product->series_id . ':' . $end->month . ':' . $end->year . ':' . $length);
             $row = Cache::remember($cache, Data::CACHE_TIME, function () use ($offset, $length, $end, $product) {
                 if ($offset) {
                     $endData = $product->GetPriceOnDate($end);
