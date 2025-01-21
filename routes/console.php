@@ -11,6 +11,6 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
 
 Schedule::command(GetData::class)->weekly('18:00');
-Schedule::command(GenerateSitemap::class, ['storage' => 'r2'])->weekly('20:00');
+Schedule::command(GenerateSitemap::class, ['storage' => 'public'])->weekly('20:00');
 
 // Schedule::command('export')->daily();
