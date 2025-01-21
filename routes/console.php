@@ -10,7 +10,7 @@ use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
 
-Schedule::command(GetData::class)->twiceMonthly(14, 28, '18:00');
-Schedule::command(GenerateSitemap::class, ['storage' => 'r2'])->twiceMonthly(14, 28, '20:00');
+Schedule::command(GetData::class)->weekly('18:00');
+Schedule::command(GenerateSitemap::class, ['storage' => 'r2'])->weekly('20:00');
 
 // Schedule::command('export')->daily();
