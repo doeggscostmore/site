@@ -67,6 +67,7 @@ class GenerateSitemap extends Command
             'privacy',
             'methodology',
             'updates',
+            'bot',
         ];
         foreach ($staticPages as $page) {
             $map->add(Url::create(route($page)));
