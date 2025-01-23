@@ -15,6 +15,8 @@ Route::view('/privacy', 'privacy')
     ->name('privacy');
 Route::view('/methodology', 'methodology')
     ->name('methodology');
+Route::view('/bot', 'bot')
+    ->name('bot');
 
 // Price Categories (The home page is partly a category page)
 Route::get('/prices/{id}', [ProductController::class, 'product'])
