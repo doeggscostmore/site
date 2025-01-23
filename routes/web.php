@@ -3,7 +3,9 @@
 use App\Data;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RedditApi;
 use App\Http\Controllers\UpdatesController;
+use App\Http\Middleware\ApiToken;
 use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -48,3 +50,8 @@ Route::permanentRedirect('/housing', '/prices/housing');
 
 Route::permanentRedirect('/about/privacy', '/privacy');
 Route::permanentRedirect('/about/methodology', '/methodology');
+
+// API Routes
+Route::middleware([ApiToken::class])->prefix('api')->group(function(){
+    Route::post('/reddit/comment', [RedditApi::class, 'comment']);
+});
