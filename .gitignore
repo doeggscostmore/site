@@ -25,3 +25,4 @@ yarn-error.log
 /static/
 /test.sqlite
 /public/coverage
+public/sitemap.xml
