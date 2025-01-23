@@ -126,5 +126,13 @@ return [
     // BLS specific stuff
     'bls' => [
         'token' => env('BLS_TOKEN'),
+    ],
+
+    // Reddit specific stuff
+    'reddit' => [
+        'secret' => env('REDDIT_SECRET'),
+        'app_id' => env('REDDIT_APP_ID'),
+        'username' => env("REDDIT_USERNAME"),
+        'password' => env("REDDIT_PASSWORD"),
     ]
 ];
