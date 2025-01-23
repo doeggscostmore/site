@@ -57,6 +57,9 @@
                 </li>
                 <hr />
                 <li class="nav-item">
+                    <a href="{{ route('updates') }}" class="nav-link">Updates</a>
+                </li>
+                <li class="nav-item">
                     <span class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#aboutmenu"
                         role="button" aria-expanded="false" aria-controls="aboutmenu">About</span>
 

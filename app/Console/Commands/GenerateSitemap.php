@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\UpdatesController;
 use App\Models\BlsPrice;
 use App\Models\Event;
 use App\Models\ProductCategory;
@@ -65,9 +66,15 @@ class GenerateSitemap extends Command
             'about',
             'privacy',
             'methodology',
+            'updates',
         ];
         foreach ($staticPages as $page) {
             $map->add(Url::create(route($page)));
+        }
+
+        // Add our updates
+        foreach (UpdatesController::getPosts() as $post) {
+            $map->add(Url::create(route('update-post', $post->slug)));
         }
 
         $map->writeToDisk($this->argument('storage'), 'sitemap.xml');

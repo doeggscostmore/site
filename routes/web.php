@@ -3,6 +3,7 @@
 use App\Data;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UpdatesController;
 use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,12 @@ Route::get('/', [ProductController::class, 'home'])
 // Event Pages
 Route::get('/events/{id}', [EventController::class, 'event'])
     ->name('event');
+
+// Updates 
+Route::get('/updates', [UpdatesController::class, 'updates'])
+    ->name('updates');
+Route::get('/updates/{slug}', [UpdatesController::class, 'post'])
+    ->name('update-post');
 
 // Old SEO redirects
 Route::permanentRedirect('/bread', '/prices/bread');
