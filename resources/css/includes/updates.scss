@@ -1,0 +1,23 @@
+.updates {
+    article {
+        padding: 4rem 0;
+        border-bottom: 1px solid $secondary;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+
+        & h3 {
+            margin-top: 0;
+        }
+
+        & a {
+            color: $primary;
+            font-size: 0.85rem;
+        }
+    }
+}
+
+.three-col {
+    columns: 3;
+}

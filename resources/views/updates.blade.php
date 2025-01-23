@@ -16,15 +16,17 @@
 @endsection
 
 @section('page_content')
-    @forelse ($posts as $post)
-        <article>
-            <h3>{{ $post->title }}</h3>
-            <p>
-                {{ $post->summary }}
-            </p>
-            <a href="{{ route('update-post', $post->slug) }}">Read More</a>
-        </article>
-    @empty
-        <p>No posts right now.</p>
-    @endforelse
+    <div class="updates">
+        @forelse ($posts as $post)
+            <article>
+                <h3>{{ $post->title }}</h3>
+                <p>
+                    {{ $post->summary }}
+                </p>
+                <a href="{{ route('update-post', $post->slug) }}">Read More</a>
+            </article>
+        @empty
+            <p>No posts right now.</p>
+        @endforelse
+    </div>
 @endsection

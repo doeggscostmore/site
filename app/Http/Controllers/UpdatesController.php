@@ -15,7 +15,7 @@ class UpdatesController extends Controller
             //     'title' => 'Introducing Our Reddit Bot',
             //     'date' => new Carbon('2025-01-22'),
             //     'layout' => 'reddit-bot',
-            //     'summary' => 'Test Summary',
+            //     'summary' => 'We\'re happy to announce a new way to share stats quickly on Reddit! Using our bot, you can quickly leave a comment that shares the current change in price for a product category.',
             //     'slug' => 'introducing-our-reddit-bot',
             // ]),
         ]);
