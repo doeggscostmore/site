@@ -26,8 +26,8 @@ class RunRedditBot extends Command
      */
     public function handle()
     {
-        Process::run('/bin/python3 scripts/reddit.py', function (string $type, string $output) {
-            echo $output;
-        });
+        // Process::run('/bin/python3 scripts/reddit.py', function (string $type, string $output) {
+        //     echo $output;
+        // });
     }
 }
