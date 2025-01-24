@@ -26,6 +26,10 @@ class ApiToken
             
             return response()->json('Unauthorized', 401);
         } 
+
+        // If we're using a token, we're going to want JSON no matter what.
+        // This "fixes" some globals we set for views by not calling those at all.
+        $request->headers->set('Accept', 'application/json');
     
         return $next($request);
     }

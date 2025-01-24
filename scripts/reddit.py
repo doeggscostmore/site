@@ -36,12 +36,17 @@ logging.info('Starting comment loop')
 subreddit = reddit.subreddit("all")
 for comment in subreddit.stream.comments(skip_existing=True):
     # We use substr because it's faster than a regex and is much more strict.
-    if not comment.body.startswith("/doeggscostmore"):
+    if not comment.body.startswith("!doeggscostmore"):
         continue
+
+    # # sanity check to prevent sending a very long message into the API
+    # if len(comment.body) > 200:
+    #     continue
 
     logging.info("processing comment id %s" % comment.id)
     data = {
-        "comment": comment.id
+        "comment": comment.id,
+        "body": comment.body.strip("!"),
     }
 
     requests.post(url, headers=headers, data=data)

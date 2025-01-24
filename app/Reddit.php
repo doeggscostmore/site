@@ -4,6 +4,9 @@ namespace App;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
+
+use function Illuminate\Log\log;
 
 class Reddit
 {
@@ -15,6 +18,7 @@ class Reddit
     private $password;
 
     private $client;
+    private $current_token;
 
     public function __construct($client_id, $secret, $username, $password)
     {
@@ -63,5 +67,70 @@ class Reddit
         Cache::add('reddit_auth_token', $data->access_token, $expire);
         
         return $data->access_token;
+    }
+
+    private function RefreshToken() {
+        $this->current_token = $this->GetToken();
+    }
+
+    public function HandleComment($commentId, $commentBody) {
+        $this->RefreshToken();
+
+        // Do the regex on the body to see if it's a valid command.
+        $pattern = '/doeggscostmore\s?(.*)?/i';
+        $matches = [];
+        if (!preg_match($pattern, $commentBody, $matches)) {
+            // The message didn't pass our regex, ignore it.
+            return;
+        }
+        $product = 'eggs';
+        $categories = Data::Categories();
+        $slugs = $categories->pluck('slug')->toArray();
+
+        if ($matches[1] && in_array($matches[1], $slugs)) {
+            $product = $matches[1];
+        }
+
+        $category = $categories->where('slug', '=', $product)->first();
+
+        $summary = Cache::remember("cateogycurrent_{$category->slug}", data::CACHE_TIME, function() use ($category) {
+            return $category->CalculateSummary();
+        });
+
+        $more = 'more';
+        if ($summary->change < 0) {
+            $more = 'less';
+        }
+
+        $comment = sprintf(<<<EOT
+%s cost %s %s than 6 months ago.  This is as of %s, which is the most recent published data available.
+
+***
+
+I'm a bot, learn more [over here](https://doeggscostmore.com/bot).
+EOT, ucwords($category->name), number_format($summary->change, 2) . '%', $more, $summary->end->format('F, Y'));
+
+        $this->PostReply($commentId, $comment);
+    }
+
+    public function PostReply($parent, $reply) {
+
+        $resp = $this->client->post('https://oauth.reddit.com/api/comment', [
+            'form_params' => [
+                'api_type' => 'json',
+                'text' => $reply,
+                'thing_id' => 't1_' . $parent,
+            ],
+            'headers' => [
+                'User-Agent' => self::USERAGENT,
+                'Authorization' => 'Bearer ' . $this->current_token,
+            ],
+        ]);
+
+        $data = json_decode($resp->getBody());
+
+        if (!empty($data->errors)) {
+            Log::error('Error posting reddit comment, got these errors: ' . implode(" ", $data->errors), ['parent' => $parent]);
+        }
     }
 }
