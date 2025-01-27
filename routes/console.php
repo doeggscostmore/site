@@ -14,6 +14,3 @@ use Illuminate\Support\Facades\Schedule;
 
 Schedule::command(GetData::class)->weekly('18:00');
 Schedule::command(GenerateSitemap::class, ['storage' => 'public'])->weekly('20:00');
-
-// Run the bots every minute, but let them run
-Schedule::command(RunRedditBot::class)->everyMinute()->withoutOverlapping();
