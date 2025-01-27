@@ -39,9 +39,9 @@ for comment in subreddit.stream.comments(skip_existing=True):
     if not comment.body.startswith("!doeggscostmore"):
         continue
 
-    # # sanity check to prevent sending a very long message into the API
-    # if len(comment.body) > 200:
-    #     continue
+    # sanity check to prevent sending a very long message into the API
+    if len(comment.body) > 200:
+        continue
 
     logging.info("processing comment id %s" % comment.id)
     data = {
