@@ -102,13 +102,20 @@ class Reddit
             $more = 'less';
         }
 
+        $routeParams = [
+            'id' => $category->slug,
+            'utm_source' => 'reddit',
+            'utm_medium' => 'bot_comment',
+            'utm_campaign' => 'comment_' . $commentId,
+        ];
+
         $comment = sprintf(<<<EOT
-%s cost %s %s than 6 months ago.  This is as of %s, which is the most recent published data available.
+%s cost %s %s than 6 months ago.  [See more data](%s)
 
 ***
 
 I'm a bot, learn more [over here](https://doeggscostmore.com/bot).
-EOT, ucwords($category->name), number_format($summary->change, 2) . '%', $more, $summary->end->format('F, Y'));
+EOT, ucwords($category->name), number_format($summary->change, 2) . '%', $more, route('product', $routeParams));
 
         $this->PostReply($commentId, $comment);
     }
