@@ -26,7 +26,7 @@
 
     <h3>Usage</h3>
     <p>
-        To use the bot, simply type a comment this message:
+        To use the bot, simply type a comment with this message:
         <pre>!doeggscostmore</pre> You can optionally specify one of our product
         categories as well.  If no product category is specified, the price of
         eggs is returned.
