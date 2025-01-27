@@ -134,6 +134,7 @@ return [
         'app_id' => env('REDDIT_APP_ID'),
         'username' => env("REDDIT_USERNAME"),
         'password' => env("REDDIT_PASSWORD"),
+        'user-agent' => env("REDDIT_USER_AGENT")
     ],
 
     // Internal API token

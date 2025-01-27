@@ -10,8 +10,6 @@ use function Illuminate\Log\log;
 
 class Reddit
 {
-    const USERAGENT = 'DoEggsCostMore/1.0 by DoEggsCostMore';
-
     private $client_id;
     private $secret;
     private $username;
@@ -32,6 +30,9 @@ class Reddit
         ]);
     }
 
+    /**
+     * Get an auth token
+     */
     public function GetToken()
     {
         $token = Cache::get('reddit_auth_token');
@@ -46,7 +47,7 @@ class Reddit
                 'password' => $this->password,
             ],
             'headers' => [
-                'User-Agent' => self::USERAGENT,
+                'User-Agent' => config('app.reddit.user-agent'),
             ],
             'auth' => [
                 $this->client_id,
@@ -69,10 +70,16 @@ class Reddit
         return $data->access_token;
     }
 
+    /**
+     * Get a token and store it in this class
+     */
     private function RefreshToken() {
         $this->current_token = $this->GetToken();
     }
 
+    /**
+     * Handle a comment and reply to it if needed.
+     */
     public function HandleComment($commentId, $commentBody) {
         $this->RefreshToken();
 
@@ -109,7 +116,7 @@ class Reddit
             'utm_campaign' => 'comment_' . $commentId,
         ];
 
-        $comment = sprintf(<<<EOT
+        $reply = sprintf(<<<EOT
 %s cost %s %s than 6 months ago.  [See more data](%s)
 
 ***
@@ -117,19 +124,16 @@ class Reddit
 I'm a bot, learn more [over here](https://doeggscostmore.com/bot).
 EOT, ucwords($category->name), number_format($summary->change, 2) . '%', $more, route('product', $routeParams));
 
-        $this->PostReply($commentId, $comment);
-    }
-
-    public function PostReply($parent, $reply) {
-
+        Log::info("Posting comment to comment parent " . $commentId);
+        
         $resp = $this->client->post('https://oauth.reddit.com/api/comment', [
             'form_params' => [
                 'api_type' => 'json',
                 'text' => $reply,
-                'thing_id' => 't1_' . $parent,
+                'thing_id' => 't1_' . $commentId,
             ],
             'headers' => [
-                'User-Agent' => self::USERAGENT,
+                'User-Agent' => config('app.reddit.user-agent'),
                 'Authorization' => 'Bearer ' . $this->current_token,
             ],
         ]);
@@ -137,7 +141,9 @@ EOT, ucwords($category->name), number_format($summary->change, 2) . '%', $more, 
         $data = json_decode($resp->getBody());
 
         if (!empty($data->errors)) {
-            Log::error('Error posting reddit comment, got these errors: ' . implode(" ", $data->errors), ['parent' => $parent]);
+            Log::error('Error posting reddit comment, got these errors: ' . implode(" ", $data->errors), ['parent' => $commentId]);
         }
+
+        return true;
     }
 }
