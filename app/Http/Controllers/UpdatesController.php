@@ -11,13 +11,13 @@ class UpdatesController extends Controller
     public static function getPosts()
     {
         return collect([
-            // new UpdatePost([
-            //     'title' => 'Introducing Our Reddit Bot',
-            //     'date' => new Carbon('2025-01-22'),
-            //     'layout' => 'reddit-bot',
-            //     'summary' => 'We\'re happy to announce a new way to share stats quickly on Reddit! Using our bot, you can quickly leave a comment that shares the current change in price for a product category.',
-            //     'slug' => 'introducing-our-reddit-bot',
-            // ]),
+            new UpdatePost([
+                'title' => 'Introducing Our Reddit Bot',
+                'date' => new Carbon('2025-01-22'),
+                'layout' => 'reddit-bot',
+                'summary' => 'We\'re happy to announce a new way to share stats quickly on Reddit! Using our bot, you can quickly leave a comment that shares the current change in price for a product category.',
+                'slug' => 'introducing-our-reddit-bot',
+            ]),
         ]);
     }
 

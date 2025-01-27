@@ -31,19 +31,26 @@
     
     <h3>I'm a mod and I don't want your bot around.</h3>
     <p>
-        Look at the documentation for your platform to how to block or remove
-        our bot.  In some cases, like Discord, the bot has to be installed
-        manually (we didn't just add it).
+        In all cases, the bot needs to be added to your community or server
+        before it will respond.  You can remove the bot, or just ban it to keep
+        it from replying again.
     </p>
 
     <h3>Does the bot collect any information bout me?</h3>
     <p>
-        No, our bot only count the number of times its summoned in each channel.
-        For example, we'll log that the bot was summoned on Reddit, but nothing
-        more.
+        No.  Our bot will only collect information about where it was summoned.
+        It doesn't collect any information about the thread, who summoned it, or
+        other details about other conversations.
     </p>
     <p>
-        If you visit our site, we'll use our <a href="{{ route('privacy')
-        }}">Privacy Policy</a>
+        If you follow the link to visit our site, we'll use our <a href="{{
+        route('privacy') }}">Privacy Policy</a>
+    </p>
+
+    <h3>Supported Bots</h3>
+    <p>
+        Right now, we just have a <a href="{{ route('update-post',
+        'introducing-our-reddit-bot') }}">Reddit Bot</a>, but we're working on
+        adding bots for other platforms.
     </p>
 @endsection
