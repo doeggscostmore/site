@@ -18,7 +18,7 @@
 
 @section('page_content')
     <p>
-        Last updated: November 23, 2024
+        Last updated: January 27, 2025
     </p>
     <p>
         This Privacy Policy describes Our policies and procedures on the
@@ -266,12 +266,6 @@
         </li>
         <li>
             <p>
-                <strong>To show advertisements</strong> through the third-party
-                advertisers listed below.
-            </p>
-        </li>
-        <li>
-            <p>
                 <strong>For other purposes</strong>: We may use Your information
                 for other purposes, such as data analysis, identifying usage
                 trends, determining the effectiveness of our promotional
@@ -361,38 +355,6 @@
         a country unless there are adequate controls in place including the
         security of Your data and other personal information.
     </p>
-
-    <h3>Third Party Advertising</h3>
-    <p>
-        We make use of third parties to serve advertisements on this website.
-        These services will make use of their own cookies and tracking methods
-        that may not be covered in this Privacy Policy.
-    </p>
-    <p>
-        The services may use cookies that also track your visits to other
-        websites in order to serve more targeted and relevant ads to you.
-    </p>
-    <p>
-        These services may be used, and links to their privacy policies are
-        below.
-    </p>
-
-    <ul>
-        <li>
-            <p>
-                <strong>Google</strong>: <a href="https://www.google.com/settings/ads">Ads
-                    Settings</a> <a href="https://policies.google.com/privacy">Privacy
-                    Policy</a>
-            </p>
-        </li>
-        {{-- <li>
-                            <p>
-                                <strong>Ad Supply</strong>: <a
-                                href="https://www.adsupply.com/privacy-policy/">Privacy
-                                Policy</a>
-                            </p>
-                        </li> --}}
-    </ul>
 
     <h3>Delete Your Personal Data</h3>
     <p>
