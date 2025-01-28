@@ -17,25 +17,24 @@
 
 @section('page_content')
     <p>
-        Do Eggs Cost More is a slightly political site that tracks the prices of
-        common grocery items, and compares them to various key dates after the
-        2024 election. While political in nature, the data presented is not
-        skewed or modified to make a point (if I'm wrong, I'm wrong).
+        Do Eggs Cost More is an apolitical site that tracks the prices of common
+        grocery items, and compares them to various key dates in the past and
+        past US elections.
     </p>
     <p>
         I drew inspiration largely from others who vowed to track grocery prices
-        manually after arguments about grocery prices were made. Since some of
-        this data is available on free APIs, I made use of those and created
-        this cheeky website to summarize what we all really want to know: do
-        eggs cost more than they did.
+        manually after arguments about grocery prices were made during the 2024
+        election cycle. Since some of this data is available on free APIs, I
+        made use of those and created this cheeky website to summarize what we
+        all really want to know: do eggs cost more than they did.
     </p>
 
     <h2>Contact</h2>
     <p>
         This site is run anonymously. I know what happens when you put an email
         on the internet, and I know what happens when you point out someone is
-        wrong. If you absolutely need to get a hold of me, you should already
-        know where to look.
+        wrong.  If you really want to get a hold of me, email <a
+        href="mailto:Rice7765@proton.me">Rice7765@proton.me</a>
     </p>
 
     <h2>Terms / Legal </h2>
