@@ -126,7 +126,7 @@ class Reddit
 ***
 
 I'm a bot, learn more [over here](https://doeggscostmore.com/bot).
-EOT, ucwords($category->name), number_format($summary->change, 2) . '%', $more, route('product', $routeParams));
+EOT, ucwords($category->name), abs(number_format($summary->change, 2)) . '%', $more, route('product', $routeParams));
 
         Log::info("Posting comment to comment parent " . $commentId);
 
