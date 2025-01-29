@@ -17,4 +17,4 @@ fi
 
 # Restart all the workers
 echo "Restarting Reddit Comment Worker"
-pkill -f "reddit-comments.py"
+pkill -f "reddit-comments.py" || true
