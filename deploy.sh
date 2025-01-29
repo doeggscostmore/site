@@ -14,3 +14,7 @@ if [ "$1" = "export" ]; then
     # php artisan export
     php artisan app:generate-sitemap public
 fi
+
+# Restart all the workers
+echo "Restarting Reddit Comment Worker"
+pkill -f "reddit-comments.py"
