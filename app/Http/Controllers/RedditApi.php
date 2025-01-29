@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subreddit;
 use App\Reddit;
 use Illuminate\Http\Request;
 
 class RedditApi extends Controller
 {
-    public function comment(Request $request) {
+    public function comment(Request $request)
+    {
         $comment = $request->post('comment');
         if (!$comment) {
             abort(400);
@@ -28,5 +30,12 @@ class RedditApi extends Controller
 
         $reddit->HandleComment($comment, $body);
         return response()->json(['status' => 'ok']);
+    }
+
+    public function getSubreddits()
+    {
+        $subreddits = Subreddit::all()->pluck('subreddit');
+
+        return response()->json(['data' => $subreddits]);
     }
 }
