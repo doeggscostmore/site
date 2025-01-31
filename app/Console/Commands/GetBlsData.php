@@ -8,14 +8,14 @@ use App\Models\BlsSeries;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 
-class GetData extends Command
+class GetBlsData extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:get-data {--backfill}';
+    protected $signature = 'app:get-data:bls {--backfill}';
 
     /**
      * The console command description.
