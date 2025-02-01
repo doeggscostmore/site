@@ -22,7 +22,7 @@ Schedule::command(GetKrogerData::class)->dailyAt('19:00');
 Schedule::command(GetEiaData::class)->dailyAt('20:00');
 
 // Make the sitemap
-Schedule::command(GenerateSitemap::class, ['storage' => 'public'])->daily('23:00');
+Schedule::command(GenerateSitemap::class, ['storage' => 'public'])->dailyAt('23:00');
 
 // Bot things
 Schedule::command(ProcessRedditMail::class)->everyFiveMinutes();
