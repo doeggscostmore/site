@@ -37,7 +37,7 @@ Do Eggs Cost More? | Grocery Price Tracker
                     <div class="col-sm-12 col-lg-6">
                         @if ($data->isUp)
                             <span class="tagline">
-                                The price of eggs has gone in the past 6 months,
+                                The price of eggs has gone up in the past 6 months,
                                 @if ($upCount)
                                     and {{ $upCount - 1 }} other {{ Str::plural('product', $upCount - 1); }} also cost more.
                                 @else
