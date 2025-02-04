@@ -8,7 +8,7 @@
    
 
     & .share {
-        margin: 8vh auto 10vh auto;
+        margin: 0 auto 20vh auto;
 
         & h3 {
             color: $secondary;
@@ -33,9 +33,7 @@
     }
 
     & .nav {
-        & .nav-item:first-of-type .nav-link {
-            padding-left: 0;
-        }
+        justify-content: center;
 
         & .nav-link {
             color: $secondary;
