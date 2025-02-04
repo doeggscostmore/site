@@ -25,64 +25,83 @@
 
     <h4>Where Does The Data Come From</h4>
     <p>
-        All data on this site comes from either the Consumer Price Index or
-        Producer Price Index calculated by the Bureau of Labor Statistics. Data
-        is released on all products Monthly, and we collect data periodically
-        once it is released.
+        Data on this site can come from four sources, depending on which product
+        and and summary you're looking at.  The four sources are:
+    </p>
+    <ul>
+        <li>The Consumer Price Index</li>
+        <li>The Producer Price Index</li>
+        <li>The US Energy Information Administration</li>
+        <li>Prices scraped from a public grocery chain's API</li>
+    </ul>
+
+    <h5>CPI/PPI Data</h5>
+    <p>
+        This data is published monthly, and data is usually delayed a few weeks
+        (February's data is available in mid-March).
     </p>
     <p>
-        The data is a <a href="https://en.wikipedia.org/wiki/Price_index"
-        rel="noreferrer nofollow">Price Index</a>, which means it's a normalized
-        sample of prices for a given product. A specific product is not tracked,
-        but a group of products is tracked and weighted by smart people.  The
-        value of the index does not represent the exact price that is paid,
-        rather the relative cost compared to a fixed point in time in the past.
+        This data is maintained by the Bureau of Labor Statistics, and they are
+        both Price Indexes.  A <a
+        href="https://en.wikipedia.org/wiki/Price_index" rel="noreferrer
+        nofollow">Price Index</a> tracks the average cost of a standard set of
+        goods in a particular category, and is the most often cited metric to
+        track inflation.
     </p>
     <p>
-        The bottom line, though, is that when a price index increases 10%, the
-        average price of that product has also increased 10%.
+        The value here doesn't represent the exact cost, but the relative cost.
+        If the CPI increases 10%, though, the average cost of goods in that
+        category have also increased 10%.
+    </p>
+    <p>
+        This data is used when making most comparisons on the site.  It has the
+        most complete data that goes back the furthest, but is also the slowest
+        to update.
     </p>
 
-    <h4>Calculations We Do</h4>
+    <h5>EIA Data</h5>
     <p>
-        When looking at prices for a specific date range, we calculate the
-        percent change from the average index value of all product at the start
-        vs at the end.
+        This data is the average price of Regular, Premium and Diesel fuel in
+        the US.  It's updated Weekly and is the actual average price for fuel,
+        not a price index.
     </p>
     <p>
-        For the overall pages (pages that aren't looking at a specific event),
-        we look at the last 6 months of data.  Keep in mind that due to the
-        somewhat delayed nature of how the data is released, it may be slightly
-        longer than 6 months.
-    </p>
-    <p>
-        For events, we look at either the last 6 months of data or the calendar
-        year.  In all cases, the start date or length of time is shown next to
-        each figure.
+        We use this on the Gas overview page to show changes in the last week.
     </p>
 
-    <h4>Is the data realtime?</h4>
+    <h5>Grocery Store Data</h5>
     <p>
-        No, the BLS releases data once per month, usually around the middle of
-        the month for the last calendar month. For example, November's data is
-        released in Mid-December. The data is also subject to revision for 4
-        months after it's release, and we'll update our site should the data be
-        updated.
+        We also crawl the API of a national grocery store chain for the price of
+        a sample of products.  For most categories, we sample 3-5 different
+        products ranging from store brand to name brand and get the prices at
+        many store locations.
+    </p>
+    <p>
+        The same products are sampled across all stores, and the same products
+        are sampled each day.  Specific products or the chain we're scraping are
+        not shared as they are immaterial to the data on the page.
+    </p>
+    <p>
+        This data is collected daily, and the prices exclude promotional or sale
+        prices.  The average of these prices is used on product overview pages
+        to show the current price and changes in the last week.
+    </p>
+
+    <h4>What Calculations We Do</h4>
+    <p>
+        The numbers we share all generally are just the percentage change
+        between the start and end of a time period.  The time period may be 6
+        months, a year, or a week and is called out next to each percentage.
+    </p>
+    <p>
+        We don't adjust or modify the data in any other way.
     </p>
 
     <h4>Disclaimers</h4>
     <p>
         This site isn't run by an economist, so inaccuracies (though not
-        intentional) may exist in the calculations or methodology. The data,
-        though provided by the BLS, can also be inaccurate nor can the BLS
-        verify the data once it's stored elsewhere.
+        intentional) may exist in the calculations or methodology.
     </p>
-
-    <p>
-        Should you want to, we share the BLS series ID(s) for each product. You
-        can download this raw data from the BLS directly to validate the data.
-    </p>
-
     <p>
         It should go without saying, but this website is presented in a
         good-faith effort to highlight prices, but it's accuracy cannot be
@@ -97,10 +116,8 @@
 
     <h4>Is there an API?</h4>
     <p>
-        No, for multiple reasons. The biggest being that the data is available
-        directly from the BLS website for free, so it doesn't make sense to
-        query a secondhand copy of this primary data. If you need this data,
-        just go get it from the BLS.
+        Not currently.  If there's interest, I can make the raw data available
+        via and API.
     </p>
 
 @endsection

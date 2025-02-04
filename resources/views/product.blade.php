@@ -69,48 +69,54 @@
                         </div>
                         <div class="col-md-4 event-change d-flex flex-row justify-content-center align-items-center">
                             @if ($event->summary->isUp)
-                            <span class="up" data-toggle="tooltip" title="In the {{ $event->length }} months before this election, prices rose {{ abs(round($event->summary->change, 2)) }}%.">
-                                <i class="fa fa-up-long"></i>
-                                <span class="sr-only">Up</span>
-                                <span>
-                                    {{ abs(round($event->summary->change, 2)) }}%
+                                <span class="up" data-toggle="tooltip"
+                                    title="In the {{ $event->length }} months before this election, prices rose {{ abs(round($event->summary->change, 2)) }}%.">
+                                    <i class="fa fa-up-long"></i>
+                                    <span class="sr-only">Up</span>
+                                    <span>
+                                        {{ abs(round($event->summary->change, 2)) }}%
+                                    </span>
                                 </span>
-                            </span>
                             @else
-                            <span class="down" data-toggle="tooltip" title="In the {{ $event->length }} months before this election, prices fell {{ abs(round($event->summary->change, 2)) }}%.">
-                                <i class="fa fa-down-long"></i>
-                                <span class="sr-only">Down</span>
-                                <span>
-                                    {{ abs(round($event->summary->change, 2)) }}%
-                                </span>                            
-                            </span>
+                                <span class="down" data-toggle="tooltip"
+                                    title="In the {{ $event->length }} months before this election, prices fell {{ abs(round($event->summary->change, 2)) }}%.">
+                                    <i class="fa fa-down-long"></i>
+                                    <span class="sr-only">Down</span>
+                                    <span>
+                                        {{ abs(round($event->summary->change, 2)) }}%
+                                    </span>
+                                </span>
                             @endif
                             <span class="small">in {{ $event->length }} months</span>
                         </div>
                         <div class="col-md-4 event-change d-flex flex-row justify-content-center align-items-center">
                             @php
                                 if ($event->summary->end_price && $data->end_price) {
-                                    $eventChange = (($data->end_price - $event->summary->end_price) / $event->summary->end_price) * 100;
+                                    $eventChange =
+                                        (($data->end_price - $event->summary->end_price) / $event->summary->end_price) *
+                                        100;
                                 } else {
                                     $eventChange = 0;
                                 }
                             @endphp
                             @if ($eventChange > 0)
-                            <span class="up" data-toggle="tooltip" title="Prices now are {{ abs(round($eventChange, 2)) }}% higher than they were at that time.">
-                                <i class="fa fa-up-long"></i>
-                                <span class="sr-only">Up</span>
-                                <span>
-                                    {{ abs(round($eventChange, 2)) }}%
+                                <span class="up" data-toggle="tooltip"
+                                    title="Prices now are {{ abs(round($eventChange, 2)) }}% higher than they were at that time.">
+                                    <i class="fa fa-up-long"></i>
+                                    <span class="sr-only">Up</span>
+                                    <span>
+                                        {{ abs(round($eventChange, 2)) }}%
+                                    </span>
                                 </span>
-                            </span>
                             @else
-                            <span class="down" data-toggle="tooltip" title="Prices now are {{ abs(round($eventChange, 2)) }}% lower than they were at that time.">
-                                <i class="fa fa-down-long"></i>
-                                <span class="sr-only">Down</span>
-                                <span>
-                                    {{ abs(round($eventChange, 2)) }}%
+                                <span class="down" data-toggle="tooltip"
+                                    title="Prices now are {{ abs(round($eventChange, 2)) }}% lower than they were at that time.">
+                                    <i class="fa fa-down-long"></i>
+                                    <span class="sr-only">Down</span>
+                                    <span>
+                                        {{ abs(round($eventChange, 2)) }}%
+                                    </span>
                                 </span>
-                            </span>
                             @endif
                             <span class="small">vs now</span>
                         </div>
@@ -146,48 +152,54 @@
                         </div>
                         <div class="col-md-4 event-change d-flex flex-row justify-content-center align-items-center">
                             @if ($event->summary->isUp)
-                            <span class="up" data-toggle="tooltip" title="In this year, prices rose {{ abs(round($event->summary->change, 2)) }}%.">
-                                <i class="fa fa-up-long"></i>
-                                <span class="sr-only">Up</span>
-                                <span>
-                                    {{ abs(round($event->summary->change, 2)) }}%
+                                <span class="up" data-toggle="tooltip"
+                                    title="In this year, prices rose {{ abs(round($event->summary->change, 2)) }}%.">
+                                    <i class="fa fa-up-long"></i>
+                                    <span class="sr-only">Up</span>
+                                    <span>
+                                        {{ abs(round($event->summary->change, 2)) }}%
+                                    </span>
                                 </span>
-                            </span>
                             @else
-                            <span class="down" data-toggle="tooltip" title="In this year, prices fell {{ abs(round($event->summary->change, 2)) }}%.">
-                                <i class="fa fa-down-long"></i>
-                                <span class="sr-only">Down</span>
-                                <span>
-                                    {{ abs(round($event->summary->change, 2)) }}%
-                                </span>                            
-                            </span>
+                                <span class="down" data-toggle="tooltip"
+                                    title="In this year, prices fell {{ abs(round($event->summary->change, 2)) }}%.">
+                                    <i class="fa fa-down-long"></i>
+                                    <span class="sr-only">Down</span>
+                                    <span>
+                                        {{ abs(round($event->summary->change, 2)) }}%
+                                    </span>
+                                </span>
                             @endif
                             <span class="small">in {{ $event->length }} months</span>
                         </div>
                         <div class="col-md-4 event-change d-flex flex-row justify-content-center align-items-center">
                             @php
                                 if ($event->summary->end_price && $data->end_price) {
-                                    $eventChange = (($data->end_price - $event->summary->end_price) / $event->summary->end_price) * 100;
+                                    $eventChange =
+                                        (($data->end_price - $event->summary->end_price) / $event->summary->end_price) *
+                                        100;
                                 } else {
                                     $eventChange = 0;
                                 }
                             @endphp
                             @if ($eventChange > 0)
-                            <span class="up" data-toggle="tooltip" title="Prices now are {{ abs(round($eventChange, 2)) }}% higher than they were at the end of this year.">
-                                <i class="fa fa-up-long"></i>
-                                <span class="sr-only">Up</span>
-                                <span>
-                                    {{ abs(round($eventChange, 2)) }}%
+                                <span class="up" data-toggle="tooltip"
+                                    title="Prices now are {{ abs(round($eventChange, 2)) }}% higher than they were at the end of this year.">
+                                    <i class="fa fa-up-long"></i>
+                                    <span class="sr-only">Up</span>
+                                    <span>
+                                        {{ abs(round($eventChange, 2)) }}%
+                                    </span>
                                 </span>
-                            </span>
                             @else
-                            <span class="down" data-toggle="tooltip" title="Prices now are {{ abs(round($eventChange, 2)) }}% lower than they were at the end of this year.">
-                                <i class="fa fa-down-long"></i>
-                                <span class="sr-only">Down</span>
-                                <span>
-                                    {{ abs(round($eventChange, 2)) }}%
+                                <span class="down" data-toggle="tooltip"
+                                    title="Prices now are {{ abs(round($eventChange, 2)) }}% lower than they were at the end of this year.">
+                                    <i class="fa fa-down-long"></i>
+                                    <span class="sr-only">Down</span>
+                                    <span>
+                                        {{ abs(round($eventChange, 2)) }}%
+                                    </span>
                                 </span>
-                            </span>
                             @endif
                             <span class="small">vs now</span>
                         </div>
@@ -214,9 +226,16 @@
 
                 <div class="row">
                     <div class="col text-center">
-                        <p>
-                            This data is taken from the following price indexes:
-                        </p>
+                        @if ($weekSummary)
+                            <p>
+                                This data contains data from the price indexes and scraped prices from grocery stores.<br />
+                                These are the indexes used for long-term calculations:
+                            </p>
+                        @else
+                            <p>
+                                This data is taken from the following price indexes:
+                            </p>
+                        @endif
                         <ul>
                             @foreach ($category->products as $product)
                                 <li>
@@ -225,15 +244,8 @@
                             @endforeach
                         </ul>
                         <p>
-                            Data is generally available monthly, and the numbers
-                            indicate the relative price of the commodity. <br />
-                            Higher numbers indicate it is more expensive, lower
-                            numbers indicate it's less expensive.
-                        </p>
-                        <p>
                             There's more information about how data is collected
-                            and calculated on our <a href={{
-                            route('methodology') }}>methodology</a> page.
+                            and calculated on our <a href={{ route('methodology') }}>methodology</a> page.
                     </div>
                 </div>
             </div>
