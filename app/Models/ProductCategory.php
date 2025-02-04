@@ -157,7 +157,7 @@ class ProductCategory extends Model
         $now = now();
         $now->subDay();
         $lastWeek = now();
-        $lastWeek->subDays(2); // For now for testing
+        $lastWeek->subDays(7);
 
         $productSummaries = new Collection();
 
@@ -183,7 +183,9 @@ class ProductCategory extends Model
                 return $row;
             });
 
-            $productSummaries->add($row);
+            if ($row) {
+                $productSummaries->add($row);
+            }
         }
 
         if ($productSummaries->count() == 0) {
