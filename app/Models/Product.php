@@ -42,7 +42,7 @@ class Product extends Model
     /**
      * Get the prices on a date.
      */
-    public function GetPriceOnDate($day)
+    public function GetPriceOnDate($day = '')
     {
         if (!$day instanceof Carbon) {
             $day = new Carbon($day);

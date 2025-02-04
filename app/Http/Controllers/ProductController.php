@@ -58,6 +58,10 @@ class ProductController extends Controller
             return $category->CalculateSummary();
         });
 
+        $weekSummary = Cache::remember("cateogyweekly_{$category->slug}", data::CACHE_TIME, function() use ($category) {
+            return $category->CalculateWeekSummary();
+        });
+
         $events = Data::Events();
 
         // For each event, get the summary
@@ -81,6 +85,7 @@ class ProductController extends Controller
             'canonical' => route('product', ['id' => $category->slug]),
             'events' => $events,
             'rawData' => $rawData,
+            'weekSummary' => $weekSummary,
         ]);
     }
 }
