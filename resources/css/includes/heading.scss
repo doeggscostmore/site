@@ -41,6 +41,13 @@
             color: $dark;
         }
 
+        & .week-tagline {
+            font-size: 1.25rem;
+            display: block;
+            margin-bottom: 3rem;
+            color: $dark;
+        }
+
         & .current {
             display: block;
             color: $secondary;

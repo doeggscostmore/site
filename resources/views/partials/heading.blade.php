@@ -30,7 +30,7 @@
                 @if ($weekSummary->change == 0)
                     <span class="week-tagline">
                         In the past {{ round($weekSummary->start->diffInDays($weekSummary->end)) }} days, prices have
-                        remained the same at ${{ number_format($weekSummary->start_price, 2) }}.
+                        remained the same at <b>${{ number_format($weekSummary->start_price, 2) }}</b>.
                     </span>
                 @else
                     @if ($weekSummary->isUp)
@@ -38,14 +38,14 @@
                             In the past {{ round($weekSummary->start->diffInDays($weekSummary->end)) }} days, prices
                             have gone
                             up from ${{ number_format($weekSummary->start_price, 2) }} to
-                            ${{ number_format($weekSummary->end_price, 2) }}.
+                            <b>${{ number_format($weekSummary->end_price, 2) }}</b>.
                         </span>
                     @else
                         <span class="week-tagline">
                             In the past {{ round($weekSummary->start->diffInDays($weekSummary->end)) }} days, prices
                             have gone
                             down from ${{ number_format($weekSummary->start_price, 2) }} to
-                            ${{ number_format($weekSummary->end_price, 2) }}.
+                            <b>${{ number_format($weekSummary->end_price, 2) }}</b>.
                         </span>
                     @endif
                 @endif
