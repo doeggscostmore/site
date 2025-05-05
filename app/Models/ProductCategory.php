@@ -157,7 +157,7 @@ class ProductCategory extends Model
         $now = now();
         $now->subDay();
         $lastWeek = now();
-        $lastWeek->subDays(8);
+        $lastWeek->subDays(15);
 
         $productSummaries = new Collection();
 
