@@ -25,4 +25,4 @@ Schedule::command(GetEiaData::class)->dailyAt('20:00');
 Schedule::command(GenerateSitemap::class, ['storage' => 'public'])->dailyAt('23:00');
 
 // Bot things
-Schedule::command(ProcessRedditMail::class)->everyFiveMinutes();
+Schedule::command(ProcessRedditMail::class)->everyTwoMinutes();
