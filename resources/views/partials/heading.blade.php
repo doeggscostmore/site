@@ -37,13 +37,13 @@
                         <span class="week-tagline">
                             In the past {{ round($weekSummary->start->diffInDays($weekSummary->end)) }} days, the
                             average price of our sampled goods has gone
-                            up <b>{{ number_format($weekSummary->change, 1) }}%</b>.
+                            up <b>{{ number_format(abs($weekSummary->change), 1) }}%</b>.
                         </span>
                     @else
                         <span class="week-tagline">
                             In the past {{ round($weekSummary->start->diffInDays($weekSummary->end)) }} days, the
                             average price of our sampled goods has gone
-                            down <b>{{ number_format($weekSummary->change, 1) }}%</b>.
+                            down <b>{{ number_format(abs($weekSummary->change), 1) }}%</b>.
                         </span>
                     @endif
                 @endif
