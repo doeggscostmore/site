@@ -51,8 +51,8 @@ Route::permanentRedirect('/housing', '/prices/housing');
 Route::permanentRedirect('/about/privacy', '/privacy');
 Route::permanentRedirect('/about/methodology', '/methodology');
 
-// API Routes
-Route::middleware([ApiToken::class])->prefix('api')->group(function(){
-    Route::post('/reddit/comment', [RedditApi::class, 'comment']);
-    Route::get('/reddit/subreddits', [RedditApi::class, 'getSubreddits']);
-});
+// // API Routes
+// Route::middleware([ApiToken::class])->prefix('api')->group(function(){
+//     Route::post('/reddit/comment', [RedditApi::class, 'comment']);
+//     Route::get('/reddit/subreddits', [RedditApi::class, 'getSubreddits']);
+// });
