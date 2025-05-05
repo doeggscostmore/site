@@ -31,9 +31,7 @@
     
     <h3>I'm a mod and I don't want your bot around.</h3>
     <p>
-        In all cases, the bot needs to be added to your community or server
-        before it will respond.  You can remove the bot, or just ban it to keep
-        it from replying again.
+        Feel free to block our bot user to prevent any future replies.
     </p>
 
     <h3>Does the bot collect any information bout me?</h3>

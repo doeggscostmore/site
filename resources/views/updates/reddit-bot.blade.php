@@ -26,10 +26,17 @@
 
     <h3>Usage</h3>
     <p>
-        To use the bot, simply type a comment with this message:
-        <pre>!doeggscostmore</pre> You can optionally specify one of our product
-        categories as well.  If no product category is specified, the price of
-        eggs is returned.
+        To use the bot, mention our bot user in a comment and we'll reply, some
+        examples are below.  We'll reply with the prices for the last 6 months
+        for the product category you requested, or eggs if you didn't request
+        any specific category.
+    </p>
+    <p>
+        The bot will link to the relevant page on our site, but the comment won't be updated should the prices change in the future.
+    </p>
+    <p>
+        <pre>u/doeggcostmore energy</pre><br />
+        <pre>u/doeggscostmore</pre>
     </p>
     <p>
         These are our currently supported categories:
@@ -43,27 +50,6 @@
         We'll return the price change at that time for the last 6 months.  The
         comment won't be updated should the price change in the future and will
         contain a link to our product page.
-    </p>
-
-
-    <h3>Adding The Bot To A Subreddit You Moderate</h3>
-    <p>
-        For a number of reasons, we don't reply in subreddits where we haven't
-        been given permission.  This is mostly to prevent the impression of spam
-        messages or showing up in communities with stricter bot policies.
-    </p>
-    <p>
-        If you are a moderator of a subreddit and would like our bot to reply,
-        send a direct message to <a
-        href="https://reddit.com/u/DoEggsCostMore">/u/DoEggsCostMore</a> with
-        the word "add" and the name of the subreddit you'd like us to respond to
-        (ie "add politics"). We'll reply back letting you know the bot has been
-        added, and within a few hours we'll start to reply to comments.
-    </p>
-    <p>
-        To remove the bot, send another DM with "remove" then the name of the
-        subreddit ("remove politics").  We'll reply back to confirm.  You an
-        also just ban our bot user /u/DoEggsCostMore, and we'll no longer reply.
     </p>
 
     <h3>Privacy</h3>

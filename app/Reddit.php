@@ -88,7 +88,7 @@ class Reddit
         $this->RefreshToken();
 
         // Do the regex on the body to see if it's a valid command.
-        $pattern = '/doeggscostmore\s?(.*)?/i';
+        $pattern = '/u\/doeggscostmore\s?(.*)?/i';
         $matches = [];
         if (!preg_match($pattern, $commentBody, $matches)) {
             // The message didn't pass our regex, ignore it.
@@ -134,7 +134,7 @@ EOT, ucwords($category->name), abs(number_format($summary->change, 2)) . '%', $m
             'form_params' => [
                 'api_type' => 'json',
                 'text' => $reply,
-                'thing_id' => 't1_' . $commentId,
+                'thing_id' => $commentId,
             ],
             'headers' => [
                 'User-Agent' => config('app.reddit.user-agent'),
@@ -183,18 +183,16 @@ EOT, ucwords($category->name), abs(number_format($summary->change, 2)) . '%', $m
         $toRead = array();
         foreach ($data->data->children as $message) {
             if ($message->kind == 't1') {
+                $out = $this->HandleComment($message->data->name, $message->data->body);
+
                 $toRead[] = $message->data->name;
 
                 if ($output) {
-                    $output->info("Marking notification {$message->data->name} from {$message->data->author} as read.");
-                }
-            }
-
-            if ($message->kind == 't4') {
-                $this->HandleMessage($message->data);
-
-                if ($output) {
-                    $output->info("Processed command message {$message->data->name} from {$message->data->author}.");
+                    if ($out) {
+                        $output->info("Handled comment with mention {$message->data->name} from {$message->data->author}.");
+                    } else {
+                        $output->info("Marking notification {$message->data->name} from {$message->data->author} as read.");
+                    }
                 }
             }
         }
@@ -236,144 +234,5 @@ EOT, ucwords($category->name), abs(number_format($summary->change, 2)) . '%', $m
         }
 
         return true;
-    }
-
-    /**
-     * Handle a direct message.
-     */
-    public function HandleMessage($message)
-    {
-        $pattern = '/(\w+) (\w+)/i';
-        $matches = [];
-        if (!preg_match($pattern, $message->body, $matches)) {
-            // The message didn't pass our regex, ignore it.
-            return;
-        }
-
-        $command = strtolower($matches[1]);
-        $subreddit = strtolower($matches[2]);
-
-        if (empty($command) || empty($subreddit)) {
-            return;
-        }
-        if (!in_array($command, ['add', 'remove'])) {
-            return;
-        }
-
-        // We have a valid command, check if the user is a moderator.
-        if (!$this->IsModerator($subreddit, $message->author)) {
-            $this->SendMessage($message->author, "Bot Request Status: Failed", <<<EOT
-Sorry, the bot could not added or removed to r/{$subreddit} because it looks like you are not currently a moderator.  Please have a moderator send that same message to add the bot.
-
-If you need help, send another message with what issues you're facing and a human will see it.
-EOT);
-            $this->MarkMessagesRead([$message->name]);
-            return;
-        }
-
-        // Check if we're already subscribed
-        $subredditModel = Subreddit::where('subreddit', $subreddit)->first();
-        $subscribed = (!empty($subredditModel));
-
-        // We have a valid command, and a mod sent it.  Act on it now.
-        if ($command == 'add' && $subscribed) {
-            $this->SendMessage($message->author, "Bot Request Status: Failed", <<<EOT
-Sorry, the bot could not added to r/{$subreddit} because it has already been added.
-
-If you need help, send another message with what issues you're facing and a human will see it.
-EOT);
-            $this->MarkMessagesRead([$message->name]);
-            return;
-        }
-        if ($command == 'remove' && !$subscribed) {
-            $this->SendMessage($message->author, "Bot Request Status: Failed", <<<EOT
-Sorry, the bot could not removed from r/{$subreddit} because it has not been added.
-
-If you need help, send another message with what issues you're facing and a human will see it.
-EOT);
-            $this->MarkMessagesRead([$message->name]);
-            return;
-        }
-
-        if ($command == 'add' && !$subscribed) {
-            Subreddit::create([
-                'mod' => $message->author,
-                'subreddit' => $subreddit
-            ]);
-            $this->SendMessage($message->author, "Bot Request Status: Success", <<<EOT
-The bot has been added to r/{$subreddit}!  It will now reply when summoned with `!doeggscostmore`.
-
-If you need help, send another message with what issues you're facing and a human will see it.
-EOT);
-            $this->MarkMessagesRead([$message->name]);
-            return;
-        }
-
-        if ($command == 'remove' && $subscribed) {
-            $subredditModel->delete();
-
-            $this->SendMessage($message->author, "Bot Request Status: Success", <<<EOT
-The bot has been removed from r/{$subreddit}!  It will no longer reply to any comments.
-
-If you need help, send another message with what issues you're facing and a human will see it.
-EOT);
-            $this->MarkMessagesRead([$message->name]);
-            return;
-        }
-    }
-
-    /**
-     * Check if a user is a moderator of a subreddit
-     */
-    public function IsModerator($subreddit, $user)
-    {
-        $this->RefreshToken();
-
-        $resp = $this->client->get("https://oauth.reddit.com/r/{$subreddit}/about/moderators", [
-            'headers' => [
-                'User-Agent' => config('app.reddit.user-agent'),
-                'Authorization' => 'Bearer ' . $this->current_token,
-            ],
-        ]);
-
-        $data = json_decode($resp->getBody());
-
-        if (!empty($data->errors)) {
-            Log::error('Error checking for moderator, got these errors: ' . implode(" ", $data->errors));
-        }
-
-        $mods = collect($data->data->children);
-        $modUser = $mods->where('name', '=', $user);
-
-        return $modUser->count() === 1;
-    }
-
-    /**
-     * Send a direct message
-     */
-    public function SendMessage($user, $subject, $message)
-    {
-        $this->RefreshToken();
-
-        $resp = $this->client->post('https://oauth.reddit.com/api/compose', [
-            'form_params' => [
-                'api_type' => 'json',
-                'to' => $user,
-                'subject' => $subject,
-                'text' => $message,
-            ],
-            'headers' => [
-                'User-Agent' => config('app.reddit.user-agent'),
-                'Authorization' => 'Bearer ' . $this->current_token,
-            ],
-        ]);
-
-        $data = json_decode($resp->getBody());
-
-        if (!empty($data->errors)) {
-            Log::error('Error sending message, got these errors: ' . implode(" ", $data->errors));
-        }
-
-        return;
     }
 }
