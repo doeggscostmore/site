@@ -12,6 +12,13 @@ class UpdatesController extends Controller
     {
         return collect([
             new UpdatePost([
+                'title' => 'May 2025 Updates',
+                'date' => new Carbon('2025-05-04'),
+                'layout' => 'may-2025-updates',
+                'summary' => 'We made some minor changes to the site for May to display data in a more consentient format and account for upcoming Reddit API changes.',
+                'slug' => 'may-2025-changes',
+            ]),
+            new UpdatePost([
                 'title' => 'Introducing Our Reddit Bot',
                 'date' => new Carbon('2025-01-22'),
                 'layout' => 'reddit-bot',
