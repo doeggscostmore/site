@@ -29,7 +29,7 @@ steps:
 - name: rsync
   image: drillster/drone-rsync
   settings:
-    hosts: [10.10.0.23]
+    hosts: [10.0.254.50]
     user: doeggscostmore.com
     key:
       from_secret: deploy_key
@@ -46,7 +46,7 @@ steps:
   image: appleboy/drone-ssh
   settings:
     host:
-      - 10.10.0.23
+      - 10.0.254.50
     username: doeggscostmore.com
     key:
       from_secret: deploy_key
@@ -102,7 +102,7 @@ steps:
 - name: rsync
   image: drillster/drone-rsync
   settings:
-    hosts: [10.10.0.23]
+    hosts: [10.0.254.50]
     user: staging.doeggscostmore.com
     key:
       from_secret: deploy_key
@@ -126,7 +126,7 @@ steps:
   image: appleboy/drone-ssh
   settings:
     host:
-      - 10.10.0.23
+      - 10.0.254.50
     username: staging.doeggscostmore.com
     key:
       from_secret: deploy_key
