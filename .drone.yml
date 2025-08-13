@@ -30,7 +30,7 @@ steps:
   image: drillster/drone-rsync
   settings:
     hosts: [10.0.254.50]
-    user: doeggscostmore.com
+    user: doeggscostmore
     key:
       from_secret: deploy_key
     port: 2222
@@ -47,7 +47,7 @@ steps:
   settings:
     host:
       - 10.0.254.50
-    username: doeggscostmore.com
+    username: doeggscostmore
     key:
       from_secret: deploy_key
     port: 2222
@@ -103,7 +103,7 @@ steps:
   image: drillster/drone-rsync
   settings:
     hosts: [10.0.254.50]
-    user: staging.doeggscostmore.com
+    user: doeggscostmore-staging
     key:
       from_secret: deploy_key
     port: 2222
@@ -127,7 +127,7 @@ steps:
   settings:
     host:
       - 10.0.254.50
-    username: staging.doeggscostmore.com
+    user: doeggscostmore-staging
     key:
       from_secret: deploy_key
     port: 2222
